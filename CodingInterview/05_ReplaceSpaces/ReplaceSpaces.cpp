@@ -59,6 +59,26 @@ void replace_blank(char *str, int length) {
 
 }
 
+// fusion two ordered int array
+void fusion(int *A1, int*A2, int length1, int length2) {
+
+	int fusion_length = length1 + length2 - 1;
+	--length1;
+	--length2;
+	while (fusion_length >= 0 && length2 >=0 && length1 >= 0) {
+		if (A1[length1] >= A2[length2]) {
+			A1[fusion_length] = A1[length1];
+			--fusion_length;
+			--length1;
+		}
+		else {
+			A1[fusion_length] = A2[length2];
+			--fusion_length;
+			--length2;
+		}
+	}
+}
+
 
 
 int main(int argc, char* argv[]){
