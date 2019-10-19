@@ -25,3 +25,16 @@ vector<int> printListFromTailToHead(ListNode* head) {
 	vector<int> result(temp.rbegin(), temp.rend());
 	return result;
 }
+
+vector<int> printListFromTailToHead(ListNode* head) {
+	vector<int> result;
+	if (head != nullptr) {
+		ListNode* pNode = head;
+		while (pNode->next != nullptr) {
+			result.insert(result.begin(), pNode->val);
+			pNode = pNode->next;
+		}
+		result.insert(result.begin(), pNode->val);
+	}
+	return result;
+}
