@@ -39,6 +39,7 @@ vector<int> printListFromTailToHead(ListNode* head) {
 	return result;
 }
 
+/*********** Stack ***********/
 vector<int> printListFromTailToHead(ListNode* head) {
 	stack<int> stack;
 	vector<int> result;
@@ -58,3 +59,17 @@ vector<int> printListFromTailToHead(ListNode* head) {
 	}
 	return  result;
 }
+
+/*********** recursivie **********/
+vector<int> printListFromTailToHead(ListNode* head) {
+	vector<int> result;
+	ListNode* pNode = head;
+	if (pNode != nullptr) {
+		if (pNode->next != nullptr) {
+			printListFromTailToHead(pNode->next);
+		}
+		result.push_back(pNode->val);
+	}
+	return  result;
+}
+
