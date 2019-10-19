@@ -38,3 +38,23 @@ vector<int> printListFromTailToHead(ListNode* head) {
 	}
 	return result;
 }
+
+vector<int> printListFromTailToHead(ListNode* head) {
+	stack<int> stack;
+	vector<int> result;
+	if (head != nullptr) {
+		ListNode* pNode = head;
+		while (pNode->next != nullptr) {
+			stack.push(pNode->val);
+			pNode = pNode->next;
+		}
+		stack.push(pNode->val);
+	}
+	int len = stack.size();
+	for (int i = 0; i < len; i++)
+	{
+		result.push_back(stack.top());
+		stack.pop();
+	}
+	return  result;
+}
