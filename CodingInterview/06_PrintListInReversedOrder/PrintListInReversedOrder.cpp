@@ -1,3 +1,13 @@
+
+
+struct ListNode {
+        int val;
+        struct ListNode *next;
+        ListNode(int x) : val(x), next(NULL) { }
+};
+
+
+
 vector<int> printListFromTailToHead(ListNode* head) {
 	deque<int> temp;
 	if (head != nullptr) {
