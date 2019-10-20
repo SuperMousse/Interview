@@ -9,7 +9,7 @@ struct TreeNode {
 using it = vector<int>::iterator;
 TreeNode* ConstructCore(it startPreorder, it endPreorder, it startInorder, it endInorder);
 TreeNode* reConstructBinaryTree(vector<int> pre, vector<int> vin) {
-	if (pre.empty() || vin.empty() || (pre.size()!=vin.size()) {
+	if (pre.empty() || vin.empty() || (pre.size()!=vin.size())) {
 		return nullptr;
 	}
 	return ConstructCore(pre.begin(), pre.end()-1, vin.begin(), vin.end()-1);
