@@ -12,8 +12,7 @@ public:
 			for (int i = 0; i < n-1; ++i) {
 				result = pre + post;
 				// swap
-				int temp = post;
-				pre = temp;
+				pre=post;
 				post = result;
 			}
 			return result;
