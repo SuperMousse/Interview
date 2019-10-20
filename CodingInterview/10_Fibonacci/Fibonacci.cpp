@@ -31,6 +31,8 @@ long long binpow(long long a, long long b) {
 		return res * res;
 }
 
+// 13转化为1101
+// 1的时候要乘在res上, 0的时候不乘只是计算a的幂次并翻倍
 // 快速幂非递归
 long long binpow(long long a, long long b) {
 	long long res = 1;
