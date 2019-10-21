@@ -8,6 +8,7 @@ void swap_num(vector<int> &data, int a, int b) {
 	data[b] = temp;
 }
 
+// 单端扫描Partition
 int Partition(vector<int>& data, int start, int end)
 {
 	if (data.empty() || start < 0 || start >= end) {
@@ -30,6 +31,8 @@ int Partition(vector<int>& data, int start, int end)
 
 	return small_num;
 }
+
+// 双端扫描Partition
 
 void QuickSort(vector<int>& data, int start, int end) {
 	if (data.empty() || start < 0 || start >= end) {
