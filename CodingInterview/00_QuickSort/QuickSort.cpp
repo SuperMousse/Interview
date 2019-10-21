@@ -33,6 +33,7 @@ int Partition(vector<int>& data, int start, int end)
 }
 
 // 双端扫描Partition
+// 此处双端扫描不能使用随机的base, 原因就在于只有将base位于队尾或者队头的时候才能进行扫描，否则数据会乱
 int Partition(vector<int>& data, int start, int end) {
 	if (data.empty() || start < 0 || start >= end) {
 		throw runtime_error("Invalid Input");
