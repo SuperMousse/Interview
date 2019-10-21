@@ -40,7 +40,7 @@ bool hasPathCore(const char* matrix, int rows, int cols, int row, int col,
 		hasPath = hasPathCore(matrix, rows, cols, row - 1, col, str, pathLength, visited)
 				    || hasPathCore(matrix, rows, cols, row + 1, col, str, pathLength, visited)
 				    || hasPathCore(matrix, rows, cols, row, col - 1, str, pathLength, visited)
-					|| hasPathCore(matrix, rows, cols, row, col + 1, str, pathLength, visited);
+				    || hasPathCore(matrix, rows, cols, row, col + 1, str, pathLength, visited);
 
 		if (!hasPath) {
 			--pathLength;
