@@ -33,6 +33,37 @@ int Partition(vector<int>& data, int start, int end)
 }
 
 // 双端扫描Partition
+int Partition(vector<int>& data, int start, int end) {
+	if (data.empty() || start < 0 || start >= end) {
+		throw runtime_error("Invalid Input");
+	}
+	int base = start; //int base = rand() % (end - start + 1) + start; 
+	int left = start;
+	int right = end;
+	while (true) {
+		while (left < right && data[right] >= data[base]) // 右端扫描到第一个小于data[base]的数字停下来
+			--right;
+		while (left < right && data[left] <= data[base]) // 左端扫描到第一个大于data[base]的数字停下来
+			++left;
+		if (left == right)
+			break;
+		swap_num(data, left, right);
+	}
+	/*
+	while (left != right) {
+		while (left < right && data[right] >= data[base]) // 右端扫描到第一个小于data[base]的数字停下来
+			--right;
+		while (left < right && data[left] <= data[base]) // 左端扫描到第一个大于data[base]的数字停下来
+			++left;
+		if (left < right)
+			swap_num(data, left, right);
+	}
+	*/
+	// 基准数归位
+	swap_num(data, base, left);
+
+	return left;
+}
 
 void QuickSort(vector<int>& data, int start, int end) {
 	if (data.empty() || start < 0 || start >= end) {
