@@ -1,3 +1,6 @@
+
+// 快速排序
+// 最优时间复杂度O(N logN), 平均时间复杂度O(N logN), 最差时间复杂度O(N^2)
 void swap_num(vector<int> &data, int a, int b) {
 	int temp = data[a];
 	data[a] =  data[b];
