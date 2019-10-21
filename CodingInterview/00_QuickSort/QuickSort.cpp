@@ -2,6 +2,7 @@
 // 快速排序
 // 最优时间复杂度O(N logN), 平均时间复杂度O(N logN), 最差时间复杂度O(N^2)
 // 顺序扫描O(N), 二分法O(logN), 总体时间复杂度O(N logN)
+// 最差情况: 数组本身已经有序，并且每次都选择最差的比较数字, 则退化成了冒泡排序, n-1+n-2+...+1=O(N^2)复杂度
 void swap_num(vector<int> &data, int a, int b) {
 	int temp = data[a];
 	data[a] =  data[b];
