@@ -1,3 +1,4 @@
+// iterator写法
 int minNumberInRotateArray(vector<int> rotateArray) {
 	if (rotateArray.empty()) {
 		throw runtime_error("Invalid Input");
@@ -35,3 +36,6 @@ int minInOrder(vector<int>& data, vector<int>::iterator start, vector<int>::iter
 	}
 	return result;
 }
+
+
+// int作为索引的写法
