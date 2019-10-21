@@ -5,6 +5,7 @@ bool hasPath(char* matrix, int rows, int cols, char* str)
 	}
 	// visited matrix init
 	bool* visited = new bool[rows * cols];
+	//memset(visited, 0, rows*cols)
 	for (int i = 0; i < rows * cols; ++i) {
 		visited[i] = 0;
 	}
@@ -13,6 +14,7 @@ bool hasPath(char* matrix, int rows, int cols, char* str)
 	for (int row = 0; row < rows; ++row) {
 		for (int col = 0; col < cols; ++col) {
 			if (hasPathCore(matrix, rows, cols, row, col, str, pathLength, visited)) {
+				delete[] visited;
 				return true;
 			}
 		}
