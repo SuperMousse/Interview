@@ -32,7 +32,7 @@ int Partition(vector<int>& data, int start, int end)
 }
 
 void QuickSort(vector<int>& data, int start, int end) {
-	if (start >= end) {
+	if (data.empty() || start < 0 || start >= end) {
 		return;
 	}
 	int index = Partition(data, start, end);
