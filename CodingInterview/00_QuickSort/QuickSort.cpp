@@ -15,7 +15,8 @@ int Partition(vector<int>& data, int start, int end)
 		throw runtime_error("Invalid Parameters");
 	}
 	int base = (rand() % (end - start + 1)) + start;
-	swap_num(data, base, end); // 随机选择基准数放到队尾方便操作
+	swap_num(data, base, end); // 随机选择基准数放到队尾方便操作, 此处可以直接将base换为end, 而且不进行数据交换, 但是不能为start
+	                           // 因为数据是从左往右放的, base受到影响
 
 	int small_num = start - 1; // 使用index顺序扫描序列, 并将其依次放在++small_num上
 	for (int index = start; index < end; ++index) {
