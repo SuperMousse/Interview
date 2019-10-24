@@ -11,7 +11,7 @@ void DeleteNode(ListNode** pListHead, ListNode *pToBeDeleted){
 		delete pNext;
 		pNext = nullptr;
 	}
-	// 删除的是头结点
+	// 删除的是头结点, 也是尾结点, 因为只有一个结点
 	else if (pToBeDeleted == *pListHead) {
 		delete pToBeDeleted;
 		pToBeDeleted == nullptr;
