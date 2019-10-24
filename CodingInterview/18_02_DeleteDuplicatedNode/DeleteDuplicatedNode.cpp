@@ -27,7 +27,7 @@ ListNode* deleteDuplication(ListNode* pHead)
 				pToBeDel = pNext;
 			}
 			if (pPre == nullptr) {
-				pHead = pNext;
+				pHead = pNext; // 第一个就是重复元素
 			}
 			else {
 				pPre->next = pNext;
