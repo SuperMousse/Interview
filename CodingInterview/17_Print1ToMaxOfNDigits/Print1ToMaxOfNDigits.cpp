@@ -1,3 +1,4 @@
+// 解法一
 bool Increment(char* number);
 void PrintNumber(char* number);
 
@@ -59,3 +60,7 @@ void PrintNumber(char* number) {
 
 	cout << "\t";
 }
+
+
+
+// 解法二
