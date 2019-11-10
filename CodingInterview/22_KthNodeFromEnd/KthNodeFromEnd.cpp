@@ -6,6 +6,7 @@ struct ListNode {
 	}
 };
 
+// 单指针遍历两次
 ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
 	if (pListHead == nullptr || k <= 0) {
 		return nullptr;
@@ -28,3 +29,5 @@ ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
 	return pCurrent;
 
 }
+
+// 双指针遍历一次
