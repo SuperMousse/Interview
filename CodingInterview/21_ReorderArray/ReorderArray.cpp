@@ -71,6 +71,7 @@ void reOrderArray(vector<int>& array) {
 		return;
 	unsigned int before = 0;
 	unsigned int after = before + 1;
+	int i = 0;
 	while (before < array.size()) {
 		while (before < array.size() && (array[before] % 2 != 0)) {
 			++before;
@@ -81,7 +82,7 @@ void reOrderArray(vector<int>& array) {
 		}
 		if (after < array.size()) {
 			int temp = array[after];
-			for (unsigned int i = before + 1; i <= after; ++i) {
+			for (unsigned int i = after; i > before; --i) {
 				array[i] = array[i - 1];
 			}
 			array[before] = temp;
@@ -89,6 +90,7 @@ void reOrderArray(vector<int>& array) {
 		else {
 			break;
 		}
+
 		
 	}
 
