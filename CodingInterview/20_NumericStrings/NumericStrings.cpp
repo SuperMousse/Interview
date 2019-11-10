@@ -2,6 +2,8 @@
 // (可以有正负号，也可以没有)，而B是一个无符号整数
 
 bool scanUnsignedInteger(char** string) {
+	// 指针的指针, 修改了string指向的值，函数外部也可以获得改变
+	// 如果只是使用指针，传递的是指针的值拷贝
 	const char* before = *string;
 	while (**string != '\0' && **string >= '0' && **string <= '9') {
 		++(*string);
