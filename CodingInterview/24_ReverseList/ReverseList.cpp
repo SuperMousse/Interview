@@ -7,6 +7,7 @@ struct ListNode {
 };
 
 
+// 非递归解法
 ListNode* ReverseList(ListNode* pHead) {
 	if (pHead == nullptr) {
 		return nullptr;
@@ -26,3 +27,6 @@ ListNode* ReverseList(ListNode* pHead) {
 	}
 	return pReverseHead;
 }
+
+
+// 递归解法
