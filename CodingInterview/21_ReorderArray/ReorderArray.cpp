@@ -28,3 +28,7 @@ bool isOk(int n) {
 	return ((n & 1) == 1);　//奇数返回真
 }
 
+// lamda解法
+void reOrderArray(vector<int>& array) {
+	stable_partition(array.begin(), array.end(), [](int n) {return ((n & 1) == 1); }); // stable partition根据谓词把序列分成两个子列，并且保持原有的序列顺序
+}
