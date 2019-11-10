@@ -31,3 +31,24 @@ ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
 }
 
 // 双指针遍历一次
+ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
+	if (pListHead == nullptr || k <= 0) {
+		return nullptr;
+	}
+
+	ListNode* pAhead = pListHead;
+	ListNode* pBehind = pListHead;
+	for (unsigned int i = 0; i < k - 1; ++i) {
+		if (pAhead->next != nullptr) {
+			pAhead = pAhead->next;
+		}
+		else {
+			return nullptr;
+		}
+	}
+	while (pAhead->next != nullptr) {
+		pAhead = pAhead->next;
+		pBehind = pBehind->next;
+	}
+	return pBehind;
+}
