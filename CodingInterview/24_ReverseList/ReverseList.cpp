@@ -9,8 +9,8 @@ struct ListNode {
 
 // 非递归解法
 ListNode* ReverseList(ListNode* pHead) {
-	if (pHead == nullptr) {
-		return nullptr;
+	if (pHead == nullptr || pHead->next == nullptr) {
+		return pHead;
 	}
 	ListNode* pReverseHead = nullptr;
 	ListNode* pCurrent = pHead;
