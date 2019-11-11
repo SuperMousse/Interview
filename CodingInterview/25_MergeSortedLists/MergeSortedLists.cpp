@@ -6,6 +6,7 @@ struct ListNode {
 	}
 };
 
+// 递归解法
 ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
 {
 	if (pHead1 == nullptr) {
