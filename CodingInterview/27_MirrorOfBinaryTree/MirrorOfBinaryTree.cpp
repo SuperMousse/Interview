@@ -34,3 +34,33 @@ void Mirror(TreeNode* pRoot) {
 }
 
 // 非递归->循环
+void Mirror(TreeNode* pRoot) {
+	// pRoot is null
+	if (pRoot == nullptr) {
+		return;
+	}
+	// only sigle node 
+	if (pRoot->left == nullptr && pRoot->right == nullptr) {
+		return;
+	}
+
+	stack<TreeNode*> stackTreeNode;
+	stackTreeNode.push(pRoot);
+
+	while (stackTreeNode.size() > 0) {
+		TreeNode* pNode = stackTreeNode.top();
+		stackTreeNode.pop();
+
+		TreeNode* pTemp = pNode->left;
+		pNode->left = pNode->right;
+		pNode->right = pTemp;
+
+		if (pNode->left) {
+			stackTreeNode.push(pNode->left);
+		}
+		if (pNode->right != nullptr) {
+			stackTreeNode.push(pNode->right);
+		}
+	}
+	return;
+}
