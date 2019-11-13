@@ -8,6 +8,7 @@ struct TreeNode {
 };
 
 
+// 递归
 void Mirror(TreeNode* pRoot) {
 	// pRoot is null
 	if (pRoot == nullptr) {
@@ -31,3 +32,5 @@ void Mirror(TreeNode* pRoot) {
 	}
 	return;
 }
+
+// 非递归->循环
