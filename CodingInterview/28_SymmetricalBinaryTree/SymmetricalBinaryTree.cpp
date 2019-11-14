@@ -27,7 +27,7 @@ bool isSymmetrical(TreeNode* pRoot1, TreeNode* pRoot2) {
 	return isSymmetrical(pRoot1->left, pRoot2->right) && isSymmetrical(pRoot1->right, pRoot2->left);
 }
 
-
+// 非递归
 // depth first search
 bool isSymmetricalDFS(TreeNode* pRoot)
 {
