@@ -72,8 +72,8 @@ vector<int> printMatrix(vector<vector<int> > matrix) {
 	int left = 0;
 	int right = columns - 1;
 	while (true) {
-		// 最上面一行
-		for (int col = left; left <= right; ++col) {
+		 // 最上面一行
+		for (int col = left; col <= right; ++col) {
 			result.push_back(matrix[up][col]);
 		}
 		++up; // 向下
