@@ -1,4 +1,4 @@
-// 
+// 当输入的value不是最小值的时候, 辅助栈添加元素
 class Solution {
 public:
 	void push(int value) {
@@ -27,6 +27,7 @@ private:
 
 
 
+// 当输入的value不是最小值的时候, 辅助栈不添加元素
 
 class Solution {
 public:
