@@ -17,7 +17,7 @@ public:
 	int top() {
 		return data_stack.top();
 	}
-	int min_() {
+	int min() {
 		return min_stack.top();
 	}
 private:
