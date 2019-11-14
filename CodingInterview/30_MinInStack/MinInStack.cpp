@@ -7,7 +7,7 @@ public:
 			min_stack.push(value);
 		}
 		else {
-			min_stack.push(data_stack.top());
+			min_stack.push(min_stack.top());
 		}
 	}
 	void pop() {
