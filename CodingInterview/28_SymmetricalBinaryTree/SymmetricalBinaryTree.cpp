@@ -14,6 +14,7 @@ bool isSymmetrical(TreeNode* pRoot)
 	return isSymmetrical(pRoot, pRoot);
 }
 
+// 递归先序遍历/深度优先
 bool isSymmetrical(TreeNode* pRoot1, TreeNode* pRoot2) {
 	if (pRoot1 == nullptr && pRoot2 == nullptr) {
 		return true;
