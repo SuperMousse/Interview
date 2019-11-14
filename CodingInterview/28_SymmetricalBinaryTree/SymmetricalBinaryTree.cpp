@@ -29,8 +29,68 @@ bool isSymmetrical(TreeNode* pRoot1, TreeNode* pRoot2) {
 
 
 // depth first search
-
+bool isSymmetricalDFS(TreeNode* pRoot)
+{
+	if (pRoot == nullptr) {
+		return true;
+	}
+	stack<TreeNode*> stackTreeNode;
+	stackTreeNode.push(pRoot->left);
+	stackTreeNode.push(pRoot->right);
+	while (!stackTreeNode.empty()) {
+		TreeNode* right = stackTreeNode.top();
+		stackTreeNode.pop();
+		TreeNode* left = stackTreeNode.top();
+		stackTreeNode.pop();
+		if (left == nullptr && right == nullptr) {
+			continue;
+		}
+		if (left == nullptr || right == nullptr) {
+			return false;
+		}
+		if (left->val != right->val) {
+			return false;
+		}
+		// 成对插入
+		stackTreeNode.push(left->left);
+		stackTreeNode.push(right->right);
+		stackTreeNode.push(left->right);
+		stackTreeNode.push(right->left);
+	}
+	return true;
+}
 
 
 
 // breadth first search
+bool isSymmetricalBFS(TreeNode* pRoot)
+{
+	if (pRoot == nullptr) {
+		return true;
+	}
+	queue<TreeNode*> queueTreeNode;
+	queueTreeNode.push(pRoot->left);
+	queueTreeNode.push(pRoot->right);
+	while (!queueTreeNode.empty()) {
+		TreeNode* right = queueTreeNode.front();
+		queueTreeNode.pop();
+		TreeNode* left = queueTreeNode.front();
+		queueTreeNode.pop();
+		if (left == nullptr && right == nullptr) {
+			continue;
+		}
+		if (left == nullptr || right == nullptr) {
+			return false;
+		}
+		if (left->val != right->val) {
+			return false;
+		}
+		// 成对插入
+		queueTreeNode.push(left->left);
+		queueTreeNode.push(right->right);
+		queueTreeNode.push(left->right);
+		queueTreeNode.push(right->left);
+	}
+	return true;
+}
+
