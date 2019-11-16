@@ -8,6 +8,7 @@ struct TreeNode {
 	}
 };
 
+// 广度优先遍历二叉树
 vector<int> PrintFromTopToBottom(TreeNode* root) {
 	vector<int> result;
 	queue<TreeNode*> queueTreeNode;
@@ -33,3 +34,7 @@ vector<int> PrintFromTopToBottom(TreeNode* root) {
 	return result;
 	
 }
+
+
+
+// 广度优先遍历有向图
