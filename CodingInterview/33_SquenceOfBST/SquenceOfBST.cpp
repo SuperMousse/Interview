@@ -1,3 +1,4 @@
+// 判断数组是否是二叉树的后序遍历序列
 bool VerifySquenceOfBST(vector<int> sequence) {
 	if (sequence.empty()) {
 		return false;
@@ -41,3 +42,6 @@ bool BST(vector<int> sequence, int begin, int end) {
 	}
 	return(left && right);
 }
+
+
+// 判断数组是否是二叉树的前序遍历序列
