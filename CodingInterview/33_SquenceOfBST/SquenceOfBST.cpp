@@ -45,3 +45,44 @@ bool BST(vector<int> sequence, int begin, int end) {
 
 
 // 判断数组是否是二叉树的前序遍历序列
+bool VerifySquenceOfBST(vector<int> sequence) {
+	if (sequence.empty()) {
+		return false;
+	}
+	int length = sequence.size() - 1;
+	return BST(sequence, 0, length);
+}
+
+
+bool BST(vector<int> sequence, int begin, int end) {
+	if (sequence.empty() || begin > end) {
+		return false;
+	}
+	int root = sequence[begin];
+
+	int i = begin + 1;
+	for (; i < end; ++i) {
+		if (sequence[i] > root) {
+			break; // 找到第一个比根节点大的元素, 其后即为右子树
+		}
+	}
+
+	int j = i;
+	for (; j < end; ++j) {
+		if (sequence[j] < root) {
+			return false; // 右子树上所有节点都需要比根节点大 
+		}
+	}
+
+	int left = true;
+	if (i > begin + 1) {
+		left = BST(sequence, begin + 1, i - 1);
+	}
+
+	int right = true;
+	if (i < end) {
+		right = BST(sequence, i, end);
+	}
+
+	return left && right;
+}
