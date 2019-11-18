@@ -1,4 +1,3 @@
-// 剑指offer 解法
 struct RandomListNode {
 	int label;
 	struct RandomListNode *next, *random;
@@ -7,6 +6,10 @@ struct RandomListNode {
 	}
 };
 
+// 剑指offer 解法
+// 1. 复制链表所有节点，并将新复制的节点连接到旧节点后
+// 2. 为新复制的节点设置random ptr
+// 3. 将两个链表进行拆分
 RandomListNode* Clone(RandomListNode* pHead)
 {
 	CloneNodes(pHead);
@@ -62,3 +65,4 @@ RandomListNode* ReconnectNodes(RandomListNode* pHead) {
 
 
 // 牛客网解法
+// 与剑指offer解法思路相同，但是进行了精简
