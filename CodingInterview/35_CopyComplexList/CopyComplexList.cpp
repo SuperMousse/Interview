@@ -65,4 +65,40 @@ RandomListNode* ReconnectNodes(RandomListNode* pHead) {
 
 
 // 牛客网解法
-// 与剑指offer解法思路相同，但是进行了精简
+// 与剑指offer解法思路相同
+// 但是在拆分时进行了精简
+
+RandomListNode* Clone(RandomListNode* pHead)
+{
+	if (pHead == nullptr) {
+		return nullptr;
+	}
+	RandomListNode* pNode = pHead;
+	// 节点复制
+	while (pNode != nullptr) {
+		RandomListNode* pCloned = new RandomListNode(pNode->label);
+		pCloned->next = pNode->next;
+		pNode->next = pCloned;
+		pNode = pCloned->next;
+	}
+	// 设置random ptr
+	pNode = pHead;
+	while (pNode != nullptr) {
+		RandomListNode* pCloned = pNode->next;
+		if (pNode->random != nullptr) {
+			pCloned->random = pNode->random->next;
+		}
+		pNode = pCloned->next;
+	}
+	// 拆分
+	pNode = pHead;
+	RandomListNode* pClonedHead = pHead->next;
+	RandomListNode* pTmp = nullptr;
+	while (pNode->next != nullptr) {
+		pTmp = pNode->next;
+		pNode->next = pTmp->next;
+		pNode = pTmp;
+	}
+
+	return pClonedHead;
+}
