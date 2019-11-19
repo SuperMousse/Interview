@@ -7,10 +7,30 @@ struct TreeNode {
 	}
 };
 
-
 char* Serialize(TreeNode* root) {
-
+	char* result = nullptr;
+	if (root == nullptr) {
+		return result;
+	}
+	string str;
+	Serialize(root, str);
+	result = new char[str.length() + 1];
+	int i = 0;
+	for (i = 0; i < str.length(); i++) {
+		result[i] = str[i];
+	}
+	result[i] = '\0';
+	return result;
 }
-TreeNode* Deserialize(char* str) {
 
+void Serialize(TreeNode* root, string& str) {
+	if (root == nullptr) {
+		str += '#';
+		return;
+	}
+	string r = to_string(root->val);
+	str += r;
+	str += ',';
+	Serialize(root->left, str);
+	Serialize(root->right, str);
 }
