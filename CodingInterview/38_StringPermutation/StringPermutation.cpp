@@ -46,25 +46,31 @@ void swap(char& first, char& second)
 
 // 去重全排列解法二: 数字交换时与其后面非重复出现的数字进行交换, 即i, j交换时, [i, j)区间内没有等于j的数字
 
-
 void PermutationCore(string str, vector<string>& result, int begin) {
 	if (begin == str.size() - 1) { 		// begin指向str最后一个元素
-		if (find(result.begin(), result.end(), str) == result.end()) {
-			// 如果result中不存在str,才添加，避免重复添加
-			result.push_back(str);
-		}
+		result.push_back(str);
 	}
 	else {
-		//第一次循环i与begin相等，相当于第一个位置自身交换，关键在于之后的循环，
-		// 之后i != begin，则会交换两个不同位置上的字符，直到begin==str.size()-1，进行输出；
+		// 为了实现去重全排列, 检查[i,j)区间内是否含有j, 不含有j时才进行交换
 		for (int i = begin; i < str.size(); ++i) {
-			swap(str[i], str[begin]);
-			PermutationCore(str, result, begin + 1);
-			swap(str[i], str[begin]); // 复位，用以恢复之前字符串顺序，达到第一位依次跟其他位交换的目的
+			if (IsSwap(str, begin, i)) {
+				swap(str[i], str[begin]);
+				PermutationCore(str, result, begin + 1);
+				swap(str[i], str[begin]); // 复位，用以恢复之前字符串顺序，达到第一位依次跟其他位交换的目的
+			}
+
 		}
 	}
 }
 
+bool IsSwap(string str, int begin, int end) {
+	for (; begin < end; ++begin)
+	{
+		if (str[begin] == str[end])
+			return false;
+	}
+	return true;
+}
 
 /*****************************************************************************************/
 
