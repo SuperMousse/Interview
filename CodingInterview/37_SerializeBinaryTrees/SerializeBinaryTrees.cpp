@@ -54,7 +54,7 @@ TreeNode* DeserializeCore(char** str) { // 递归时字符串指针还需要向�
 	int num = 0;
 	while (**str != '\0' && **str != ',') {
 		num = num * 10 + ((**str) - '0');
-		++(*str);
+		++(*str); // 跳过逗号
 	}
 
 	TreeNode* root = new TreeNode(num);
