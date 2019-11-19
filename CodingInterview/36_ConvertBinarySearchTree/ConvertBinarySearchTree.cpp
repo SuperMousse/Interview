@@ -24,11 +24,13 @@ void ConvertNode(TreeNode* pNode, TreeNode** pLastNodeInList) {
 		ConvertNode(pCurrent->left, pLastNodeInList);
 	}
 
-	pCurrent->left = *pLastNodeInList;
+	// 连接当前节点与左子树的最小节点
+	pCurrent->left = *pLastNodeInList;  // 处理当前节点到pLastNodeInlist的左链接
 	if (*pLastNodeInList != nullptr) {
-		(*pLastNodeInList)->right = pCurrent;
+		(*pLastNodeInList)->right = pCurrent; // 处理pLastNodeInlist到当前节点右链接
 	}
 
+	// 切换pLastNodeInList到当前节点, 即中序遍历的根节点处理 
 	*pLastNodeInList = pCurrent;
 
 	if (pCurrent->right != nullptr) {
