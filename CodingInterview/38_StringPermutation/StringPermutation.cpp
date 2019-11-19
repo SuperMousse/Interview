@@ -1,3 +1,4 @@
+// 字符串的排列
 vector<string> Permutation(string str) {
 	vector<string> result;
 	if (str.empty()) {
@@ -34,3 +35,6 @@ void swap(char& first, char& second)
 	first = second;
 	second = temp;
 }
+
+
+// 字符串的组合
