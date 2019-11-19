@@ -47,6 +47,9 @@ TreeNode* Deserialize(char* str) {
 
 
 TreeNode* DeserializeCore(char** str) { // 递归时字符串指针还需要向后移动, 若只是使用指针则无法影响函数外部
+	if (str == nullptr || *str == nullptr) {
+		return nullptr;
+	}
 	if (**str == '#') {
 		++(*str);
 		return nullptr;
