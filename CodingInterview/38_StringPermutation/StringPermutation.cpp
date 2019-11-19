@@ -38,3 +38,32 @@ void swap(char& first, char& second)
 
 
 // 字符串的组合
+
+// 解法一
+// 位计算法
+// 若字符串长度为n, 则所有组合之和为C(1,n)+C(2,n)+...+C(n,n)=2^(n)-1;
+vector<string> combination(string str) {
+	vector<string> result;
+	if (str.empty()) {
+		return result;
+	}
+	int length = str.size();
+	int n = 1 << length; // 2^n
+	for (int i = 1; i < n; ++i)    //从 1 循环到 2^len -1
+	{
+		string s;
+		for (int j = 0; j < length; ++j)
+		{
+			int temp = i;
+			if (temp & (1 << j))   //对应位上为1，则输出对应的字符
+			{
+				s += str[j];
+			}
+		}
+		result.push_back(s);
+
+	}
+
+	sort(result.begin(), result.end());
+	return result;
+}
