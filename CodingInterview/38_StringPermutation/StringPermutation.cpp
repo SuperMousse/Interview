@@ -1,4 +1,9 @@
-// 字符串的排列
+// 字符串的全排列
+// 剑指offer解法: 有重的全排列
+
+
+// 牛客网AC解法: 去重的全排列
+// 去重全排列解法一: 考虑使用find来查找是否已经重复
 vector<string> Permutation(string str) {
 	vector<string> result;
 	if (str.empty()) {
@@ -35,6 +40,9 @@ void swap(char& first, char& second)
 	first = second;
 	second = temp;
 }
+
+
+// 去重全排列解法二: 数字交换时与其后面非重复出现的数字进行交换, 即i, j交换时, [i, j)区间内没有等于j的数字
 
 
 // 字符串的组合
