@@ -1,0 +1,38 @@
+//递归方法求解八皇后过程
+vector<vector<int> > eightQueen(int k)
+{
+	vector<vector<int>> result;
+	if (k <= 0) {
+		return result;
+	}
+	vector<int> queen(k, 0);
+	int position = 0;
+	hasEightQueen(result, queen, k, position);
+
+	return result;
+}
+
+void hasEightQueen(vector<vector<int>>& result, vector<int>& queen, int k, int position) {
+	if (position == k) {
+		result.push_back(queen);
+		return;
+	}
+	for (int col = 0; col < k; ++col) {
+		queen[position] = col;
+		if (canPlaceQueen(queen, position)) {
+			hasEightQueen(result, queen, k, position + 1);
+		}
+	}
+}
+
+//剪枝函数
+bool canPlaceQueen(vector<int> queen, int position)
+{
+	for (int i = 0; i < position; ++i)
+	{
+		//判断是否处于同一列或同一斜线
+		if (queen[i] == queen[position] || abs(position - i) == abs(queen[position] - queen[i]))
+			return false;
+	}
+	return true;
+}
