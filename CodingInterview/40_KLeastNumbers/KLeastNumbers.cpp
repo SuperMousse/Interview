@@ -1,10 +1,11 @@
 // 解法一, 与寻找中位数方法一样，寻找k-1位数,然后k-1位数之前的都是比其小的数字
 // 时间复杂度O(N), 空间复杂度O(1)
 vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
-	vector<int> result;
-	if (input.empty() || k <= 0) {
-		return result;
-	}
+       vector<int> result;
+        int length = input.size();
+        if (input.empty() || k <= 0 || k > length) {
+            return result;
+        }
 	int length = input.size();
 	int start = 0;
 	int end = length - 1;
