@@ -24,7 +24,7 @@ int MoreThanHalfNum_Solution(vector<int> numbers) {
 }
 
 
-// 剑指offer解法, 两种空间复杂度O(1)的解法
+// 剑指offer解法, 两种时间复杂度O(N),空间复杂度O(1)的解法
 // 解法一, 利用quick sort的partition函数来查找中位数
 int MoreThanHalfNum_Solution(vector<int> numbers) {
 	if (numbers.empty()) {
@@ -96,4 +96,49 @@ int Partition(vector<int>& numbers, int start, int end) {
 		numbers[right] = temp;
 	}
 	return left;
+}
+
+
+// 剑指offer解法二
+int MoreThanHalfNum_Solution(vector<int> numbers) {
+	if (numbers.empty()) {
+		return 0;
+	}
+	int result = numbers[0];
+	int times = 1;
+	for (int i = 1; i < numbers.size(); ++i) {
+		if (times == 0) {
+			result = numbers[i];
+			times = 1;
+		}
+		else if(numbers[i]==result){
+			++times;
+		}
+		else {
+			--times;
+		}
+	}
+
+	if (!CheckMoreThanHalf(numbers, result)) {
+		return 0;
+	}
+	return result;
+}
+
+bool CheckMoreThanHalf(vector<int>& numbers, int result) {
+	if (numbers.empty()) {
+		return false;
+	}
+	int times = 0;
+	for (int i = 0; i < numbers.size(); ++i) {
+		if (numbers[i] == result) {
+			++times;
+		}
+	}
+
+	bool isMoreThanHalf = true;
+	if (times * 2 <= numbers.size()) {
+		return false;
+	}
+	return isMoreThanHalf;
 }
