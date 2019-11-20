@@ -68,3 +68,34 @@ int Partition(vector<int>& input, int start, int end) {
 
 
 // 解法二
+// 维护一个k大小的容器,循环遍历数组，确定是否插入到容器中
+// set/multiset(底层红黑树)可以在O(logK)实现查找、删除、插入
+// 共N个节点,总时间复杂度O(NlogK)
+// 适用于海量数据
+vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
+	vector<int> result;
+	int length = input.size();
+	if (input.empty() || k <= 0 || k > length) {
+		return result;
+	}
+	multiset<int, greater<int> > KSet; // greater表示内置类型从大到小排序
+	multiset<int, greater<int> >::iterator KSetIterator; // erase
+	for (int i = 0; i < length; ++i) {
+		if (KSet.size() < k) {
+			KSet.insert(input[i]);
+		}
+		else {
+			KSetIterator = KSet.begin();
+			if (input[i] < *KSetIterator) {
+				// 不能使用earse(value)的原因就是erase(value)会删除掉所有对应的value, 
+				// 但是iter的erase可以只是删除掉指向的那个
+				KSet.erase(KSetIterator); 
+				KSet.insert(input[i]);
+			}
+		}
+	}
+	result = vector<int>(KSet.begin(), KSet.end());
+
+	return result;
+
+}
