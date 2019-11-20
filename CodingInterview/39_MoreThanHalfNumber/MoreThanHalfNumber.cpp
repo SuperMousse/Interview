@@ -100,6 +100,8 @@ int Partition(vector<int>& numbers, int start, int end) {
 
 
 // 剑指offer解法二
+// 下一个数字域保存的数字相同则次数+1, 不同则次数-1,次数为0时重置次数为1, 想要的数字为最后一次把数字置1的值
+// 利用了出现次数超过一半的数字比其他所有数字之和还多的特点
 int MoreThanHalfNum_Solution(vector<int> numbers) {
 	if (numbers.empty()) {
 		return 0;
@@ -142,3 +144,8 @@ bool CheckMoreThanHalf(vector<int>& numbers, int result) {
 	}
 	return isMoreThanHalf;
 }
+
+
+// 牛客网解法
+// 目标数超过数组长度的一半，对数组同时去掉两个不同的数字，到最后剩下的一个数就是该数字。如果剩下两个，那么这两个也是一样的，就是结果
+// 该思路原理上与剑指offer解法二相同
