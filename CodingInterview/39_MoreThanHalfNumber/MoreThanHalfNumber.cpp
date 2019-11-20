@@ -1,4 +1,4 @@
-// 第一反应的解法, 哈希表
+// 第一反应的解法, 哈希表, 空间复杂度O(N)
 
 int MoreThanHalfNum_Solution(vector<int> numbers) {
 	if (numbers.empty()) {
@@ -24,7 +24,7 @@ int MoreThanHalfNum_Solution(vector<int> numbers) {
 }
 
 
-// 剑指offer解法
+// 剑指offer解法, 两种空间复杂度O(1)的解法
 // 解法一, 利用quick sort的partition函数来查找中位数
 int MoreThanHalfNum_Solution(vector<int> numbers) {
 	if (numbers.empty()) {
