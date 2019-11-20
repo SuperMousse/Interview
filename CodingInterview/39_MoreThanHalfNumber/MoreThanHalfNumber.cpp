@@ -95,6 +95,10 @@ int Partition(vector<int>& numbers, int start, int end) {
 		numbers[left] = numbers[right];
 		numbers[right] = temp;
 	}
+	
+	int temp = input[base]; // 一定记得基准数归位
+	input[base] = input[left];
+	input[left] = temp;
 	return left;
 }
 
