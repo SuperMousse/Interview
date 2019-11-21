@@ -29,7 +29,7 @@
 // pop_heap后序列转换为{6, 5, 3, 4, 2, 1, 7}, 将堆顶元素放置到队尾
 // push_heap与pop_heap都只能用于调整顺序，都不能真正的插入和删除元素, 必须结合push_back, pop_back进行使用
 
-// 该题想要通过牛客网编译, 必须在size为偶数时插入最大堆, 否则报错
+// 偶数size向最小堆插入元素
 class Solution {
 public:
 	void Insert(int num)
