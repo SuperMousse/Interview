@@ -1,3 +1,14 @@
+// 最大堆: 每一个根节点的数值都比其子节点大, 堆顶为最大值, 底层实现为数组, 但展现出了二叉树的性能
+// 最小堆: 与最大堆相反
+// make_heap(vec.begin(), vec.end()) 创建堆, 默认为最大堆, 若不进行make_heap则不能进行sort_heap,但不影响push_heap的正常使用
+// push_heap(vec.begin, vec.end()) 将vec处理成最大堆序列, greater<int>()用于创建最小堆, 原因是堆创建时使用了比较然后下沉的创建方法
+// 若a>b则a下沉, 所以greater<int>(创建了最小堆)
+
+// 若输入的vector = {1, 2, 3, 4, 5, 6, 7}
+// make_heap/push_heap后序列转换为{7, 5, 6, 4, 2, 1, 3} 对应最大堆的广度优先遍历序列
+// pop_heap后序列转换为{6, 5, 3, 4, 2, 1, 7}, 将堆顶元素放置到队尾
+// push_heap与pop_heap都只能用于调整顺序，都不能真正的插入和删除元素, 必须结合push_back, pop_back进行使用
+
 // 该题想要通过牛客网编译, 必须在size为偶数时插入最大堆, 否则报错
 class Solution {
 public:
