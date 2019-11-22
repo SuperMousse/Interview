@@ -28,7 +28,7 @@ int TreeDepth(TreeNode* pRoot) {
 
 
 // 解法二:每个节点只遍历一次
-
+// 利用二叉树的后序遍历
 bool IsBalanced_Solution(TreeNode* pRoot) {
 	if (pRoot == nullptr) {
 		return true;
