@@ -26,3 +26,5 @@ int TreeDepth(TreeNode* pRoot) {
 	return (nLeft > nRight) ? (nLeft + 1) : (nRight + 1);
 }
 
+
+// 解法二:每个节点只遍历一次
