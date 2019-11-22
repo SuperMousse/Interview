@@ -43,6 +43,7 @@ int GetMissingNumber(vector<int> data) {
 		}
 		middle = (start + end) >> 1;
 	}
+	// 缺失n-1
 	if (start == length) {
 		return length;
 	}
