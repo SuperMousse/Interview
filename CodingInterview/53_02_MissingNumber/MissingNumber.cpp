@@ -1,6 +1,6 @@
 // 傻瓜解法一
 // 1~n求和 - 数组元素求和
-int GetMissingNumber(vector<int> data, int k) {
+int GetMissingNumber(vector<int> data) {
 	if (data.empty()) {
 		return -1;
 	}
