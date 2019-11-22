@@ -64,6 +64,43 @@ void KthNodeCore(TreeNode* pRoot, int k, vector<TreeNode*>& result) {
 
 
 // 递归中序遍历, 使用计数器
+TreeNode* KthNode(TreeNode* pRoot, int k)
+{
+	if (pRoot == nullptr || k <= 0) {
+		return nullptr;
+	}
+	int count = 0;
+	TreeNode* pResult = KthNodeCore(pRoot, k, count);
+
+	return pResult;
+}
+
+TreeNode* KthNodeCore(TreeNode* pRoot, int k, int& count) {
+	if (pRoot == nullptr || k <= 0) {
+		return nullptr;
+	}
+
+	TreeNode* pNode = nullptr;
+	pNode = KthNodeCore(pRoot->left, k, count);
+	if (pNode != nullptr) {
+		return pNode;
+	}
+
+	++count; // 根节点计数
+	if (count == k) {
+		return pRoot;
+	}
+
+	if (pNode->right != nullptr) {
+		pNode = KthNodeCore(pRoot->right, k, count);
+	}
+
+	if (pNode != nullptr) {
+		return pNode;
+	}
+
+	return nullptr;
+}
 
 
 
