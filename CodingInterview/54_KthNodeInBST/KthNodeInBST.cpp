@@ -1,4 +1,5 @@
 // 递归中序遍历
+// 借助vector<TreeNode*> 而不是使用计数器
 
 TreeNode* KthNode(TreeNode* pRoot, int k)
 {
