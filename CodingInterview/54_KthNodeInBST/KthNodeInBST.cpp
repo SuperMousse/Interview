@@ -1,5 +1,5 @@
 // 递归中序遍历
-// 借助vector<TreeNode*> 而不是使用计数器
+// 借助vector<TreeNode*> , 空间占用略高, 使用计数器可以节省空间复杂度
 
 TreeNode* KthNode(TreeNode* pRoot, int k)
 {
