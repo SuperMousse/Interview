@@ -82,6 +82,8 @@ TreeNode* KthNodeCore(TreeNode* pRoot, int k, int& count) {
 
 	TreeNode* pNode = nullptr;
 	pNode = KthNodeCore(pRoot->left, k, count);
+
+	// 递归标记找到了这个节点
 	if (pNode != nullptr) {
 		return pNode;
 	}
@@ -91,9 +93,7 @@ TreeNode* KthNodeCore(TreeNode* pRoot, int k, int& count) {
 		return pRoot;
 	}
 
-	if (pNode->right != nullptr) {
-		pNode = KthNodeCore(pRoot->right, k, count);
-	}
+	pNode = KthNodeCore(pRoot->right, k, count);
 
 	if (pNode != nullptr) {
 		return pNode;
@@ -101,7 +101,6 @@ TreeNode* KthNodeCore(TreeNode* pRoot, int k, int& count) {
 
 	return nullptr;
 }
-
 
 
 
