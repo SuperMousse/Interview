@@ -30,5 +30,34 @@ void KthNodeCore(TreeNode* pRoot, int k, vector<TreeNode*>& result) {
 	return;
 }
 
+
+// 递归中序遍历, 使用计数器
+
 // 非递归中序遍历
 // 借助vector<TreeNode*> 而不是使用计数器
+void KthNodeCore(TreeNode* pRoot, int k, vector<TreeNode*>& result) {
+	if (pRoot == nullptr) {
+		return;
+	}
+	stack<TreeNode*> stackTreeNode;
+	TreeNode* pNode = pRoot;
+	while (pNode != nullptr || !stackTreeNode.empty()) {
+		while (pNode != nullptr) {
+			stackTreeNode.push(pNode);
+			pNode = pNode->left;
+		}
+		if (!stackTreeNode.empty()) {
+			pNode = stackTreeNode.top();
+			stackTreeNode.pop();
+			result.push_back(pNode);
+			pNode = pNode->right;
+		}
+
+	}
+
+
+	return;
+}
+
+
+// 非递归中序遍历, 使用计数器
