@@ -105,3 +105,28 @@ TreeNode* KthNodeCore(TreeNode* pRoot, int k, int& count) {
 
 
 // 非递归中序遍历, 使用计数器
+
+TreeNode* KthNodeCore(TreeNode* pRoot, int k, int& count) {
+	if (pRoot == nullptr || k <= 0) {
+		return nullptr;
+	}
+	stack<TreeNode*> stackTreeNode;
+	TreeNode* pNode = pRoot;
+	
+	while (pNode != nullptr || !stackTreeNode.empty()) {
+		while (pNode != nullptr) {
+			stackTreeNode.push(pNode);
+			pNode = pNode->left;
+		}
+		if (!stackTreeNode.empty()) {
+			pNode = stackTreeNode.top();
+			stackTreeNode.pop();
+			++count;
+			if (count == k) {
+				return pNode;
+			}
+			pNode = pNode->right;
+		}
+	}
+	return nullptr;
+}
