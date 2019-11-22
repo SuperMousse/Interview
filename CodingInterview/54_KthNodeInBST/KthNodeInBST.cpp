@@ -23,6 +23,9 @@ void KthNodeCore(TreeNode* pRoot, int k, vector<TreeNode*>& result) {
 		KthNodeCore(pRoot->left, k, result);
 	}
 	result.push_back(pRoot);
+	if (result.size() == k) {
+		return;
+	}
 	if (pRoot->right != nullptr) {
 		KthNodeCore(pRoot->right, k, result);
 	}
@@ -47,6 +50,9 @@ void KthNodeCore(TreeNode* pRoot, int k, vector<TreeNode*>& result) {
 			pNode = stackTreeNode.top();
 			stackTreeNode.pop();
 			result.push_back(pNode);
+			if (result.size() == k) {
+				return;
+			}
 			pNode = pNode->right;
 		}
 
