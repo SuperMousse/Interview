@@ -30,9 +30,6 @@ void KthNodeCore(TreeNode* pRoot, int k, vector<TreeNode*>& result) {
 	return;
 }
 
-
-// 递归中序遍历, 使用计数器
-
 // 非递归中序遍历
 // 借助vector<TreeNode*> 而不是使用计数器
 void KthNodeCore(TreeNode* pRoot, int k, vector<TreeNode*>& result) {
@@ -58,6 +55,11 @@ void KthNodeCore(TreeNode* pRoot, int k, vector<TreeNode*>& result) {
 
 	return;
 }
+
+
+// 递归中序遍历, 使用计数器
+
+
 
 
 // 非递归中序遍历, 使用计数器
