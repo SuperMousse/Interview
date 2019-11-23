@@ -15,7 +15,7 @@ vector<vector<int> > FindNumbersWithSum(int sum) {
 			}
 			result.push_back(temp);
 		}
-		// curSum大了, 一直left向右移动
+		// curSum > sum
 		while (curSum > sum && left < middle) {
 			curSum -= left;
 			++left;
@@ -27,7 +27,7 @@ vector<vector<int> > FindNumbersWithSum(int sum) {
 				result.push_back(temp);
 			}
 		}
-		// curSum小了, ++right
+		// curSum < sum
 		++right;
 		curSum += right;
 	}
