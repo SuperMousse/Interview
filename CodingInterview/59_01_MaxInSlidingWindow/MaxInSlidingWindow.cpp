@@ -1,3 +1,5 @@
+
+// 滑动窗口的最大值
 vector<int> maxInWindows(const vector<int>& num, unsigned int size)
 {
 	vector<int> result;
@@ -33,3 +35,6 @@ vector<int> maxInWindows(const vector<int>& num, unsigned int size)
 
 	return result;
 }
+
+
+// 队列的最大值
