@@ -1,6 +1,7 @@
 // 由于是有序数组, 所以才可以用双索引
 // 左右双索引
 // 和小了++left, 和大了--right
+// 时间复杂度O(N)， 空间复杂度O(1)
 vector<int> FindNumbersWithSum(vector<int> array, int sum) {
 	vector<int> result;
 	if (array.empty()) {
