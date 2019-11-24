@@ -1,8 +1,9 @@
 // 解法一: 依次删除每一个元素, 使用list模拟环形链表
 // 注意: list的迭代器不支持算数加减法, 只能自增或自减运算
+// n < m的条件不应该加上, 因为环形所以可以多转一圈
 int LastRemaining_Solution(int n, int m)
 {
-	if (n < 1 || m < 1) { // n< m
+	if (n < 1 || m < 1) { // n < m
 		return -1;
 	}
 	
@@ -27,6 +28,7 @@ int LastRemaining_Solution(int n, int m)
 			next = numbers.begin();
 		}
 
+		--current;
 		numbers.erase(current);
 		current = next;
 	}
