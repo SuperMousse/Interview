@@ -37,9 +37,10 @@ void Probability(int number, vector<int>& pProbabilities, int g_maxValue) {
 
 void Probability(int original, int current, int sum, vector<int>& pProbabilities, int g_maxValue) {
 	if (current == 1) {
-		++pProbabilities[sum - original];
+		++pProbabilities[sum - original]; // original为骰子个数, 用于换算数组位置
 	}
 	else {
+		// 向前一步, current-1, i+sum
 		for (int i = 1; i <= g_maxValue; ++i)
 		{
 			Probability(original, current - 1, i + sum, pProbabilities, g_maxValue);
