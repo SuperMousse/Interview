@@ -72,6 +72,8 @@ vector<int> PrintProbability(int number) {
 	for (int i = 1; i <= g_maxValue; ++i)
 	{
 		pProbabilities[flag][i] = 1; 	// 初始化第一个骰子各面出现次数, 初始化时flag=0存放次数, flag=1存放求和之后的次数
+		                                // 此后使用flag存放前一状态的次数, 使用1-flag存放新的次数
+
 		                                
 	}
 
