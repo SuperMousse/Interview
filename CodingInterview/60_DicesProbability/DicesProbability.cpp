@@ -17,7 +17,7 @@ vector<int> PrintProbability(int number) {
 
 	Probability(number, pProbabilities, g_maxValue);
 
-	int total = pow((double)g_maxValue, number);
+	double total = pow((double)g_maxValue, number);
 	for (int i = number; i <= maxSum; ++i) {
 		double ratio = (double)pProbabilities[i - number] / total;
 		result.push_back(ratio);
