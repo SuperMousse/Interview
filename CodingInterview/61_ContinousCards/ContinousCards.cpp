@@ -34,3 +34,42 @@ bool IsContinuous(vector<int> numbers) {
 
 
 // 牛客网解法
+// 顺子满足的条件：max-min<5;
+//				除0外其他的数字都不能重复
+//				传入的数组放5个元素
+bool IsContinuous(vector<int> numbers) {
+	if (numbers.empty()) return 0;
+	int count[14] = { 0 };//记录每个元素出现的次数;以numbers中的元素作为下标(最大K,对应13)
+	int len = numbers.size();
+	int max = -1;
+	int min = 14;
+
+	for (int i = 0; i < len; ++i)
+	{
+		++count[numbers[i]];
+		if (numbers[i] == 0) {
+			continue;
+		}
+
+		if (count[numbers[i]] > 1) {
+			return false;
+		}
+
+		// 统计除了0以外的最大值,最小值
+		if (numbers[i] > max) {
+			max = numbers[i];
+		}
+
+		if (numbers[i] < min) {
+			min = numbers[i];
+		}
+
+	}
+
+	if (max - min < 5) {
+		return true;
+	}
+
+	return false;
+
+}
