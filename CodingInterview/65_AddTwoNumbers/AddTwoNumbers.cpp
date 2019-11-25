@@ -40,3 +40,38 @@ int sub(int a, int b)
 }
 
 
+// 位运算乘法
+int is_negative(int n)
+{
+	if (n >> 31)
+		return 1; // 负数
+	else
+		return 0; // 正数
+}
+
+int positive(int n)
+{
+	if (n >> 31)
+		return negative(n);
+	else
+		return n;
+}
+
+int multiply(int a, int b)
+{
+	bool be_negative = false;
+	if (is_negative(a) ^ is_negative(b))
+		be_negative = true;
+
+	unsigned int x = positive(a);
+	unsigned int y = positive(b);
+	int n = 0;
+	while (y | 0)
+	{
+		if (y & 1)
+			n = add(n, x);
+		x = x << 1;
+		y = y >> 1;
+	}
+	return be_negative ? negative(n) : n;
+}
