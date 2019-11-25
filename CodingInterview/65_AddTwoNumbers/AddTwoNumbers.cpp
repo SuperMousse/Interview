@@ -83,7 +83,10 @@ int divide(int a, int b)
 	//被除数不能为0
 	if (b == 0)
 		throw runtime_error("Divided can't be zero.");
-
+	
+	// INT_MIN二进制0x80000000
+	// -1二进制0xFFFFFFFF
+	// 转positive后INT_MIN变0, -1变2^32会产生错误
 	if (a == INT_MIN && b == -1) {
 		return INT_MAX;
 	}
