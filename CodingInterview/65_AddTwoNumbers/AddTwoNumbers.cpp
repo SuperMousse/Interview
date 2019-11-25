@@ -49,12 +49,13 @@ int is_negative(int n)
 		return 0; // 正数
 }
 
+
 int positive(int n)
 {
 	if (n >> 31)
-		return negative(n);
+		return negative(n); // y为负数取[-y]补
 	else
-		return n;
+		return n; // 正数不变
 }
 
 int multiply(int a, int b)
@@ -66,12 +67,14 @@ int multiply(int a, int b)
 	unsigned int x = positive(a);
 	unsigned int y = positive(b);
 	int n = 0;
-	while (y | 0)
+	while (y | 0) // 只要y中还有非零元素
 	{
-		if (y & 1)
+		if (y & 1) // 只有y的最末位为1时才会产生求和项
 			n = add(n, x);
 		x = x << 1;
 		y = y >> 1;
 	}
 	return be_negative ? negative(n) : n;
 }
+
+// 位运算除法
