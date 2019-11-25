@@ -78,3 +78,36 @@ int multiply(int a, int b)
 }
 
 // 位运算除法
+int divide(int a, int b)
+{
+	//被除数不能为0
+	if (b == 0)
+		throw runtime_error("Divided can't be zero.");
+
+	if (a == INT_MIN && b == -1) {
+		return INT_MAX;
+	}
+
+	bool be_negative = false;
+	if (is_negative(a) ^ is_negative(b))
+		be_negative = true;
+
+	unsigned int x = positive(a);
+	unsigned int y = positive(b);
+
+	int res = 0;
+	// 整数除法必须a>=b, 否则结果为0
+	while (a >= b)
+	{
+		long temp = b, m = 1;
+		while (temp << 1 <= a) { // 一次移动尽可能多的temp, 移动效率更高
+			temp <<= 1;
+			m <<= 1;
+		}
+		res = add(res, 1);
+		a = sub(a, b);
+	}
+
+
+	return be_negative? negative(res) : res;
+}
