@@ -67,7 +67,7 @@ int multiply(int a, int b)
 	unsigned int x = positive(a);
 	unsigned int y = positive(b);
 	int n = 0;
-	while (y | 0) // 只要y中还有非零元素
+	while (y | 0) // 只要y中还有非零元素 y!=0也可以
 	{
 		if (y & 1) // 只有y的最末位为1时才会产生求和项
 			n = add(n, x);
@@ -76,6 +76,17 @@ int multiply(int a, int b)
 	}
 	return be_negative ? negative(n) : n;
 }
+
+
+int MultiRecursion(int a, int b)
+{
+    static int res = 0;
+    b && MultiRecursion(a << 1, b >> 1);    //  递归的进行运算
+    (b & 1) && (res += a);                  //  短路
+
+    return res;
+}
+
 
 // 位运算除法
 int divide(int a, int b)
