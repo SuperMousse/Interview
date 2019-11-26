@@ -64,6 +64,25 @@ string delStr2CharFromStr1(string str1, string str2) {
 
 
 // 拓展二:
+string delRepeatChar(string str) {
+	if (str.empty()) {
+		return str;
+	}
+	int occurrence[256];
+	memset(occurrence, 0, sizeof(occurrence));
 
+	for (auto c : str) {
+		occurrence[c] += 1;
+	}
+
+	string result;
+	for (auto c : str) {
+		if (occurrence[c] == 1) {
+			result += c;
+		}
+	}
+
+	return result;
+}
 
 // 拓展三:
