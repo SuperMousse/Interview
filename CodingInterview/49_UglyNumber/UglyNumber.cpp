@@ -65,3 +65,30 @@ int Min(int number1, int number2, int number3) {
 	min = (min < number3) ? min : number3;
 	return min;
 }
+
+
+// 解法三: 牛客网解法, 与剑指offer解法的区别就在于对于position的递增策略上使用了if or while
+int GetUglyNumber_Solution(int index) {
+	if (index < 1) {
+		return 0;
+	}
+	vector<int> result(index, 0);
+	result[0] = 1;
+	int UglyIndex = 1;
+	int positionOf2 = 0, positionOf3 = 0, positionOf5 = 0;
+	for (UglyIndex = 1; UglyIndex < index; ++UglyIndex) {
+		result[UglyIndex] = min(result[positionOf2] * 2, min(result[positionOf3] * 3, result[positionOf5] * 5));
+		if (result[UglyIndex] == result[positionOf2] * 2) {
+			++positionOf2;
+		}
+		if (result[UglyIndex] == result[positionOf3] * 3) {
+			++positionOf3;
+		}
+		if (result[UglyIndex] == result[positionOf5] * 5) {
+			++positionOf5;
+		}
+		
+	}
+
+	return result[index - 1];
+}
