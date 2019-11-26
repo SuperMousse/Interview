@@ -1,4 +1,4 @@
-// 剑指offer解法
+// 解法一: 剑指offer解法
 class Solution
 {
 public:
@@ -46,4 +46,38 @@ private:
 	int index;
 };
 
-// 我自己的解法
+// 解法二: 牛客网解法
+// occurrence统计字符的词频, 若第一次出现, 则将其频次+1, 并入队列
+// 判断队首元素是否只出现了一次, 若出现多次则出队列
+
+class Solution {
+public:
+	Solution() {
+		memset(occurrence, 0, sizeof(occurrence));
+	}
+
+	//Insert one char from stringstream
+	void Insert(char ch)
+	{
+		++occurrence[ch]; // 字符频次+1
+		if (occurrence[ch] == 1) {
+			data.push(ch);// 若第一次出现则加入队列
+		}
+	}
+
+	//return the first appearence once char in current stringstream
+	char FirstAppearingOnce()
+	{
+		while (!data.empty() && occurrence[data.front()] >= 2) {
+			data.pop();
+		}
+		if (data.empty()) {
+			return '#';
+		}
+		return data.front();
+	}
+
+private:
+	queue<char> data;
+	int occurrence[256];
+};
