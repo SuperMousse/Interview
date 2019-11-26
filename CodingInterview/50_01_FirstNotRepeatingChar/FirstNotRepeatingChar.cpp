@@ -54,7 +54,7 @@ string delStr2CharFromStr1(string str1, string str2) {
 	string result;
 	for (auto c : str1) {
 		if (occurrence[c] == 0) {
-			result += c;
+			result += c; // 注意此处不应该使用to_string, to_string是将数字转字符串,此处会把ascii码转字符串
 		}
 	}
 
