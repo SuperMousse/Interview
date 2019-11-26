@@ -44,7 +44,8 @@ int GetUglyNumber_Solution(int index) {
 	while (nextUglyIndex < index) {
 		int min = Min(result[positionOf2] * 2, result[positionOf3] * 3, result[positionOf5] * 5);
 		result[nextUglyIndex] = min;
-
+		// positionOf2之前的每个丑数*2都会太小,之后的每个丑数*2都会太大
+		// 下次将会使用++positionOf2位置上的丑数*2进行更新
 		while (result[positionOf2] * 2 <= result[nextUglyIndex]) {
 			++positionOf2;
 		}
@@ -78,6 +79,8 @@ int GetUglyNumber_Solution(int index) {
 	int positionOf2 = 0, positionOf3 = 0, positionOf5 = 0;
 	for (UglyIndex = 1; UglyIndex < index; ++UglyIndex) {
 		result[UglyIndex] = min(result[positionOf2] * 2, min(result[positionOf3] * 3, result[positionOf5] * 5));
+		// positionOf2之前的每个丑数*2都会太小,之后的每个丑数*2都会太大
+		// 下次将会使用++positionOf2位置上的丑数*2进行更新
 		if (result[UglyIndex] == result[positionOf2] * 2) {
 			++positionOf2;
 		}
