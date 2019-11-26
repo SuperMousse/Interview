@@ -31,4 +31,37 @@ bool IsUgly(int number) {
 }
 
 
-// 解法二: 
+// 解法二: 剑指offer解法
+int GetUglyNumber_Solution(int index) {
+	if (index < 1) {
+		return 0;
+	}
+	vector<int> result(index, 0);
+	result[0] = 1;
+	int nextUglyIndex = 1;
+	int positionOf2 = 0, positionOf3 = 0, positionOf5 = 0;
+
+	while (nextUglyIndex < index) {
+		int min = Min(result[positionOf2] * 2, result[positionOf3] * 3, result[positionOf5] * 5);
+		result[nextUglyIndex] = min;
+
+		while (result[positionOf2] * 2 <= result[nextUglyIndex]) {
+			++positionOf2;
+		}
+		while (result[positionOf3] * 3 <= result[nextUglyIndex]) {
+			++positionOf3;
+		}
+		while (result[positionOf5] * 5 <= result[nextUglyIndex]) {
+			++positionOf5;
+		}
+		++nextUglyIndex;
+	}
+
+	return result[index - 1];
+}
+
+int Min(int number1, int number2, int number3) {
+	int min = (number1 < number2) ? number1 : number2;
+	min = (min < number3) ? min : number3;
+	return min;
+}
