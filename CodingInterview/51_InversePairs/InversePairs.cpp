@@ -1,6 +1,39 @@
 // 解法一: 使用栈存储指针, 从队尾开始比较
 // 时间复杂度O(m+n), 空间复杂度O(m+n)
+class Solution {
+public:
+	ListNode* FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2) {
+		if (pHead1 == nullptr || pHead2 == nullptr) {
+			return nullptr;
+		}
+		stack<ListNode*> stackList1;
+		stack<ListNode*> stackList2;
+		ListNode* pNode1 = pHead1;
+		ListNode* pNode2 = pHead2;
 
+		while (pNode1 != nullptr) {
+			stackList1.push(pNode1);
+			pNode1 = pNode1->next;
+		}
+		while (pNode2 != nullptr) {
+			stackList2.push(pNode2);
+			pNode2 = pNode2->next;
+		}
+
+		ListNode* pRes = nullptr;
+		while (!stackList1.empty() && !stackList2.empty()) {
+			if (stackList1.top() == stackList2.top()) {
+				pRes = stackList1.top();
+				stackList1.pop();
+				stackList2.pop();
+			}
+			else {
+				return pRes;
+			}
+		}
+		return pRes;
+	}
+};
 
 
 
