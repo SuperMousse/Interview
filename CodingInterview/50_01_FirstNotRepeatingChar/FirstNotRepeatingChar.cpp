@@ -35,3 +35,16 @@ int FirstNotRepeatingChar(string str) {
       }
       return -1;
   }
+
+
+
+// 50题拓展:
+
+// 拓展一:
+
+
+
+// 拓展二:
+
+
+// 拓展三:
