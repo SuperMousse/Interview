@@ -26,7 +26,7 @@ int FirstNotRepeatingChar(string str) {
 // 解法二: 不使用256的数组, 而是创建一个map
 // 优点: 可以处理超出256的字符限制
   int FirstNotRepeatingChar(string str) {
-      map<char, int> mp;
+      map<char, int> mp; // map底层红黑树， 时间复杂度O(logN), 使用unordered_map, 底层哈希, 时间复杂度O(1)
       for(int i = 0; i < str.size(); ++i)
           mp[str[i]]++;
       for(int i = 0; i < str.size(); ++i){
