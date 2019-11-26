@@ -86,3 +86,22 @@ string delRepeatChar(string str) {
 }
 
 // 拓展三:
+bool isAnagram(string str1, string str2) {
+	int occurrence[256];
+	memset(occurrence, 0, sizeof(occurrence));
+
+	for (auto c : str1) {
+		occurrence[c] += 1;
+	}
+
+	for (auto c : str2) {
+		occurrence[c] -= 1;
+	}
+
+	for (int i = 0; i < 256;  ++i) {
+		if (occurrence[i] != 0) {
+			return false;
+		}
+	}
+	return true;
+}
