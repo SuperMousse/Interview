@@ -41,6 +41,25 @@ int FirstNotRepeatingChar(string str) {
 // 50题拓展:
 
 // 拓展一:
+string delStr2CharFromStr1(string str1, string str2) {
+	if (str1.empty()) {
+		return str1;
+	}
+	unordered_map<char, int> occurrence;
+
+	for (auto c : str2) {
+		occurrence[c] += 1;
+	}
+
+	string result;
+	for (auto c : str1) {
+		if (occurrence[c] == 0) {
+			result += c;
+		}
+	}
+
+	return result;
+}
 
 
 
