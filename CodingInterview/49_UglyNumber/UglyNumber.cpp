@@ -80,6 +80,7 @@ int GetUglyNumber_Solution(int index) {
 	for (UglyIndex = 1; UglyIndex < index; ++UglyIndex) {
 		result[UglyIndex] = min(result[positionOf2] * 2, min(result[positionOf3] * 3, result[positionOf5] * 5));
 		// positionOf2之前的每个丑数*2都会太小,之后的每个丑数*2都会太大
+		// 本次使用了positionOf2上的丑数进行更新
 		// 下次将会使用++positionOf2位置上的丑数*2进行更新
 		if (result[UglyIndex] == result[positionOf2] * 2) {
 			++positionOf2;
