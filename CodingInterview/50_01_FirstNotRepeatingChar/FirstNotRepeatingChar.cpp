@@ -45,7 +45,7 @@ string delStr2CharFromStr1(string str1, string str2) {
 	if (str1.empty()) {
 		return str1;
 	}
-	unordered_map<char, int> occurrence;
+	unordered_map<char, int> occurrence; // 也可以使用256大小的数组, char最多只有256个
 
 	for (auto c : str2) {
 		occurrence[c] += 1;
