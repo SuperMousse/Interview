@@ -1,43 +1,59 @@
-// 解法一: 使用栈存储指针, 从队尾开始比较
-// 时间复杂度O(m+n), 空间复杂度O(m+n)
-class Solution {
-public:
-	ListNode* FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2) {
-		if (pHead1 == nullptr || pHead2 == nullptr) {
-			return nullptr;
-		}
-		stack<ListNode*> stackList1;
-		stack<ListNode*> stackList2;
-		ListNode* pNode1 = pHead1;
-		ListNode* pNode2 = pHead2;
+// 本题在输入data非常长的时候有可能会超出int的限制, 因为%(2^10+7)
+/*
+1.(a + b) % c = ( ( a % c ) + ( b % c ) ) % c
+2.(a * b) % c = ( ( a % c ) * ( b % c ) ) % c
+3.(a - b) % c = ( ( a % c ) - ( b % c ) ) % c
+4.(a / b) % c = ( ( a % c ) / ( b % c ) ) % c(不成立)
+*/
 
-		while (pNode1 != nullptr) {
-			stackList1.push(pNode1);
-			pNode1 = pNode1->next;
-		}
-		while (pNode2 != nullptr) {
-			stackList2.push(pNode2);
-			pNode2 = pNode2->next;
-		}
-
-		ListNode* pRes = nullptr;
-		while (!stackList1.empty() && !stackList2.empty()) {
-			if (stackList1.top() == stackList2.top()) {
-				pRes = stackList1.top();
-				stackList1.pop();
-				stackList2.pop();
-			}
-			else {
-				return pRes;
-			}
-		}
-		return pRes;
+int InversePairs(vector<int> data) {
+	if (data.empty()) {
+		return 0;
 	}
-};
 
+	int length = data.size();
+	vector<int> copy(data);
 
+	int count = InversePairsCore(data, copy, 0, length - 1); // 逆序对数目在data长度很长时有可能超出最大int的限制
 
-// 解法二: 两次遍历测量两个链表的长度, 然后长链表先走diff步
+	return count;
+}
+
+long long InversePairsCore(vector<int>& data, vector<int>& copy, int start, int end) {
+	if (start == end) {
+		copy[start] = data[start];
+		return 0;
+	}
+
+	int length = (end - start) / 2;
+
+	int left = InversePairsCore(copy, data, start, start + length);  
+	int right = InversePairsCore(copy, data, start + length + 1, end);
+
+	// i初始化为前半段最后一个数字的下标
+	int i = start + length;
+	// j初始化为后半段最后一个数字的下标
+	int j = end;
+	int indexCopy = end;
+	long long count = 0;
+	while (i >= start && j >= start + length + 1) {
+		if (data[i] > data[j]) {
+			copy[indexCopy--] = data[i--];
+			count += j - start - length;
+		}
+		else {
+			copy[indexCopy--] = data[j--];
+		}
+	}
+	for (; i >= start; --i) {
+		copy[indexCopy--] = data[i];
+	}
+	for (; j >= start + length + 1; --j) {
+		copy[indexCopy--] = data[j];
+	}
+
+	return (left + right + count)%1000000007; // 1000000007是最小的十位质数,模1000000007,可以保证值永远在int的范围内
+}
 class Solution {
 public:
 	ListNode* FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2) {
