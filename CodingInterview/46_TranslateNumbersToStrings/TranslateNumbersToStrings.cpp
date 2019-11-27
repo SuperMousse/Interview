@@ -48,4 +48,36 @@ int GetTranslationCountCount(const string& number) {
 
 
 
-// 拓展解法: 递归
+// 拓展解法: 递归， 时间复杂度O(2^n)
+
+int GetTranslationCount(int number) {
+	if (number <= 0) {
+		return 0;
+	}
+
+	string numberToString = to_string(number);
+	int length = numberToString.size();
+
+	return GetTranslatonCountCore(numberToString, 0, length - 1);
+}
+
+
+int GetTranslatonCountCore(const string& number, int begin, int end) {
+	if (number.empty() || begin < 0 || end > number.size() || begin > (end + 1)) {
+		return 0;
+	}
+
+	if (begin == (end + 1))
+		return 1;
+
+	vector<int> v{ 1,2 };
+	int first = 0;
+	int second = 0;
+
+	first = GetTranslatonCountCore(number, begin + 1, end); // f(n+1)
+	if (number[begin] == '1' || (number[begin] == '2' && number[begin + 1] <= '5')) // f(n+2)
+		second = GetTranslatonCountCore(number, begin + 2, end);
+
+	return first + second;
+	
+}
