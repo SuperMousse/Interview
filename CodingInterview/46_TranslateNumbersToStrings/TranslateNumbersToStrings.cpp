@@ -12,15 +12,16 @@ int GetTranslationCount(int number) {
 int GetTranslationCountCount(const string& number) {
 	int length = number.size();
 	int* counts = new int[length];
+	memset(counts, 0, sizeof(counts));
 	int count = 0;
 	
 	for (int i = length - 1; i >= 0; --i) {
 		count = 0;
 		if (i < length - 1) {
-			count = counts[i + 1];
+			count = counts[i + 1]; // f(i+1)
 		}
 		else {
-			count = 1;
+			count = 1; // 考虑单个字母本身
 		}
 
 		if (i < length - 1) {
@@ -28,11 +29,11 @@ int GetTranslationCountCount(const string& number) {
 			int digit2 = number[i + 1] - '0';
 			int converted = digit1 * 10 + digit2;
 			if (converted >= 10 && converted <= 25) {
-				if (i < length - 2) {
-					count += counts[i + 2];
+				if (i < length - 2) { 
+					count += counts[i + 2]; // 至少倒数第三位开始才包括f(i+2)
 				}
 				else {
-					count += 1;
+					count += 1; // 倒数第二位至多将最后两位的组合+1
 				}
 			}
 		}
@@ -44,6 +45,7 @@ int GetTranslationCountCount(const string& number) {
 
 	return count;
 }
+
 
 
 // 拓展解法: 递归
