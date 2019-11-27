@@ -24,14 +24,16 @@ int InversePairs(vector<int> data) {
 
 long long InversePairsCore(vector<int>& data, vector<int>& copy, int start, int end) {
 	if (start == end) {
-		copy[start] = data[start];
+		// copy[start] = data[start];
 		return 0;
 	}
 
 	int length = (end - start) / 2;
 
-	long long left = InversePairsCore(copy, data, start, start + length);  // 二分O(logN)
-	long long right = InversePairsCore(copy, data, start + length + 1, end);
+	long long left = InversePairsCore(copy, data, start, start + length);  // 二分O(logN), 递归时copy和data进行交替嵌套, 因为copy和data是交替局部有序的
+	                                                                       // 当最底层时, data=copy, 然后其中的一个变为了局部有序的, 返回上一层之后, 以局部有序
+	                                                                       // 的那一个当作模版, 对另外一个进行覆盖
+	long long right = InversePairsCore(copy, data, start + length + 1, end); // 获得左右二分的逆序对数目, 然后与当前的逆序对数进行求和
 
 	// i初始化为前半段最后一个数字的下标
 	int i = start + length;
@@ -42,12 +44,13 @@ long long InversePairsCore(vector<int>& data, vector<int>& copy, int start, int 
 	while (i >= start && j >= start + length + 1) {
 		if (data[i] > data[j]) {
 			copy[indexCopy--] = data[i--];
-			count += j - start - length;
+			count += j - start - length; // j-(start+length), 逆序对实际上考察的是j是后半部分中的第几个元素
 		}
 		else {
 			copy[indexCopy--] = data[j--];
 		}
 	}
+	// 处理未复制进copy中的元素
 	for (; i >= start; --i) {
 		copy[indexCopy--] = data[i];
 	}
