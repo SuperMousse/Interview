@@ -19,7 +19,7 @@ int InversePairs(vector<int> data) {
 	long long count = InversePairsCore(data, copy, 0, length - 1); // 逆序对数目在data长度很长时有可能超出最大int的限制
 	                                                         // 1000000007是最小的十位质数,模1000000007,可以保证值永远在int的范围内
 
-	return count % 1000000007;
+	return count % 1000000007; // 10^9+7
 }
 
 long long InversePairsCore(vector<int>& data, vector<int>& copy, int start, int end) {
