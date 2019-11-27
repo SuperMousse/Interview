@@ -24,7 +24,7 @@ int InversePairs(vector<int> data) {
 
 long long InversePairsCore(vector<int>& data, vector<int>& copy, int start, int end) {
 	if (start == end) {
-		// copy[start] = data[start];
+		copy[start] = data[start];  // 这句话似乎没啥用
 		return 0;
 	}
 
