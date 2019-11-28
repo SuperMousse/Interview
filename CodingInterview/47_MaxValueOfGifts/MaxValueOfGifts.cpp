@@ -47,7 +47,7 @@ int getMaxValue_solution2(vector<vector<int> > values) {
 			int up = 0;
 
 			if (i > 0) {
-				up = maxValues[j];
+				up = maxValues[j]; // 逐行扫描, 这就是当前行上面的一行元素
 			}
 			if (j > 0) {
 				left = maxValues[j - 1];
