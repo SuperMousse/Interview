@@ -62,3 +62,40 @@ int getMaxValue_solution2(vector<vector<int> > values) {
 
 
 // 解法三: 递归解法
+// 递归实际上是自下向上的选取最大值
+int getMaxValue_solution3_Core(vector<vector<int> >& values,
+	int row, int col, int rows, int cols);
+
+
+int getMaxValue_solution3(vector<vector<int> > values) {
+	if (values.empty()) {
+		return 0;
+	}
+	int rows = values.size();
+	int cols = values[0].size();
+
+	return getMaxValue_solution3_Core(values, 0, 0, rows, cols);
+	
+}
+
+int getMaxValue_solution3_Core(vector<vector<int> >& values, 
+	                           int row, int col, int rows, int cols) {
+	if (values.empty() || row < 0 || col < 0) {
+		return 0;
+	}
+
+	int result = 0;
+	int right = 0;
+	int down = 0;
+	if (row < (rows - 1)) {
+		down = getMaxValue_solution3_Core(values, row + 1, col, rows, cols);
+	}
+
+	if (col < (cols - 1)) {
+		right = getMaxValue_solution3_Core(values, row, col + 1, rows, cols);
+	}
+
+	result = max(down, right) + values[row][col];
+
+	return result;
+}
