@@ -37,5 +37,10 @@ TreeNode* GetLastCommonParent(TreeNode* pRoot, TreeNode* pNode1, TreeNode* pNode
 
 
 // 二、
-// 普通的树, 寻找两节点的最低公共祖先
+// 普通的树, 寻找两节点的最低公共祖先, 树含有指向父节点的指针
+// 转化为求两个链表的第一个共同节点
+
+
+// 三、
+// 普通的树, 寻找两节点的最低公共节点, 树不含有指向父节点的指针
 	
