@@ -25,3 +25,4 @@ int maxSubArray(vector<int>& nums) {
 
 
 // Divide and Conquer, 分治法
+// 时间复杂度O(NlogN)
