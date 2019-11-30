@@ -37,7 +37,7 @@ int maxSubArray(vector<int> & nums, int left, int right) {
 		return INT_MIN;
 	}
 	int middle = left + (right - left) / 2;
-	int middleLeft = 0;
+	int middleLeft = 0; // init to 0 because it will sum to nums[middle]
 	int middleRight = 0;
 	int leftMax = maxSubArray(nums, left, middle - 1);
 	int rightMax = maxSubArray(nums, middle + 1, right);
