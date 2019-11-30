@@ -22,3 +22,6 @@ int maxSubArray(vector<int>& nums) {
 
 	return maxSum;
 }
+
+
+// Divide and Conquer, 分治法
