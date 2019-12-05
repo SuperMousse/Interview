@@ -7,7 +7,7 @@ struct TreeNode {
 	}
 };
 
-
+// 深度优先
 int TreeDepth(TreeNode* pRoot)
 {
 	if (pRoot == nullptr) {
@@ -18,3 +18,32 @@ int TreeDepth(TreeNode* pRoot)
 
 	return (nLeft > nRight) ? (nLeft + 1) : (nRight + 1);
 }
+
+
+// 广度优先
+
+ int maxDepth(TreeNode* root)
+	 {
+		 if (root == nullptr)
+			 return 0;
+
+		 int res = 0;
+		 queue<TreeNode*> queueTreeNode;
+		 queueTreeNode.push(root);
+		 while (!queueTreeNode.empty())
+		 {
+			 ++res;
+			 for (int i = 0, n = queueTreeNode.size(); i < n; ++i)
+			 {
+				 TreeNode* pNode = queueTreeNode.front();
+				 queueTreeNode.pop();
+
+				 if (pNode->left != nullptr)
+					 queueTreeNode.push(pNode->left);
+				 if (pNode->right != nullptr)
+					 queueTreeNode.push(pNode->right);
+			 }
+		 }
+
+		 return res;
+	 }
