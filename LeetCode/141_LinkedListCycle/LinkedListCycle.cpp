@@ -58,3 +58,7 @@ bool hasCycle(ListNode* head) {
 		 }
 		 return true;
 	 }
+
+
+// 额外解法
+// 使用哈希表记录节点是否访问过, 若访问过则存在环
