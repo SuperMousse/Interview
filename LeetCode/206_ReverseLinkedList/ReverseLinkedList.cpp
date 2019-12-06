@@ -26,3 +26,14 @@ class Solution {
  };
 
 // 递归
+ListNode* reverseList(ListNode* head) {
+		 if (head == nullptr || head->next == nullptr) {
+			 return head;
+		 }
+		 ListNode* pReverseNode = reverseList(head->next);
+
+		 head->next->next = head;
+		 head->next = nullptr;
+
+		 return pReverseNode;
+	 }
