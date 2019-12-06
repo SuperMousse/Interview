@@ -53,7 +53,7 @@ int partition(vector<int>& nums, int begin, int end) {
 		while (nums[right] >= nums[base] && left < right) {
 			--right;
 		}
-		while (nums[left <= nums[base]] && left < right) {
+		while (nums[left] <= nums[base] && left < right) {
 			++left;
 		}
 		if (left == right) {
