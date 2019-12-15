@@ -1,3 +1,5 @@
+// 核心思想： f(n) = max(f(n-2)+currentValue, f(n-1)) 
+
 // 递归动态规划, 使用memory
  int rob(vector<int>& nums) {
    if (nums.empty()) {
