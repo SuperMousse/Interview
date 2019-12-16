@@ -77,8 +77,5 @@ int findUnsortedSubarray(vector<int>& nums) {
 				 i = right;
 			 }
 		 }
-
-		 cout << i << " " << j << endl;
-
 		 return (j - i + 1);
 	 }
