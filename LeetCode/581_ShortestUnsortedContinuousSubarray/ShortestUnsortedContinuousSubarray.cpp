@@ -53,3 +53,32 @@ int findUnsortedSubarray(vector<int>& nums) {
 		 // [left + 1, right - 1]闭区间为需要排序区间
 		 return (right - left - 1);
 	 }
+
+
+// 解法三: 双端扫描, 一次完成
+int findUnsortedSubarray(vector<int>& nums) {
+		 if (nums.empty()) {
+			 return 0;
+		 }
+		 int i = 0, j = -1;
+		 int min = INT_MAX;
+		 int max = INT_MIN;
+		 // 实际两次扫描进行了融合
+		 // j扫描最大索引, 使得其后都是递增顺序
+		 // i扫描最小索引, 使得其前都是递减顺序
+		 for (int left = 0, right = nums.size() - 1; right >= 0; ++left, --right) {
+			 max = max > nums[left] ? max : nums[left];
+			 if (nums[left] != max) {
+				 j = left;
+			 }
+
+			 min = min < nums[right] ? min : nums[right];
+			 if (nums[right] != min) {
+				 i = right;
+			 }
+		 }
+
+		 cout << i << " " << j << endl;
+
+		 return (j - i + 1);
+	 }
