@@ -17,9 +17,5 @@ int findUnsortedSubarray(vector<int>& nums) {
 		 return (right - left + 1);
 	 }
 
-// 解法二: 双端扫描, 时间复杂度O(N)
 
-
-
-
-// 解法三: 单端扫描, 时间复杂度O(N)
+// 解法二: 单端扫描, 时间复杂度O(N)
