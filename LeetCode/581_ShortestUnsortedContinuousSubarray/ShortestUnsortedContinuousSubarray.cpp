@@ -19,7 +19,7 @@ int findUnsortedSubarray(vector<int>& nums) {
 
 
 // 解法二: 双端扫描, 时间复杂度O(N)
-int findUnsortedSubarray(vector<int>& nums) {
+ int findUnsortedSubarray(vector<int>& nums) {
 		 if (nums.empty()) {
 			 return 0;
 		 }
@@ -36,7 +36,6 @@ int findUnsortedSubarray(vector<int>& nums) {
 		 while (nums[right] >= nums[right - 1]) {
 			 --right;
 		 }
-
 		 int max = INT_MIN;
 		 int min = INT_MAX;
 
@@ -44,7 +43,6 @@ int findUnsortedSubarray(vector<int>& nums) {
 			 max = max > nums[i] ? max : nums[i];
 			 min = min < nums[i] ? min : nums[i];
 		 }
-
 		 // nums[i - 1] <= min && max <= nums[j + 1], where min and max are the minimum and maximum values of subarray nums[i, j].
 		 while (left >= 0 && min < nums[left]) {
 			 --left;
