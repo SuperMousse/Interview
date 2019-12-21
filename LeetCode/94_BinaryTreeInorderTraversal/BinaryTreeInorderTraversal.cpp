@@ -24,3 +24,27 @@ vector<int> inorderTraversal(TreeNode* root) {
 
 
 // 非递归
+ class Solution {
+ public:
+	 vector<int> inorderTraversal(TreeNode* root) {
+		 vector<int> result;
+		 if (root == nullptr) {
+			 return result;
+		 }
+		 stack<TreeNode*> stackTreeNode;
+		 TreeNode* pNode = root;
+		 while (pNode != nullptr || !stackTreeNode.empty()) {
+			 while (pNode != nullptr) {
+				 stackTreeNode.push(pNode);
+				 pNode = pNode->left;
+			 }
+			 if (!stackTreeNode.empty()) {
+				 pNode = stackTreeNode.top();
+				 stackTreeNode.pop();
+				 result.push_back(pNode->val);
+				 pNode = pNode->right;
+			 }
+		 }
+		 return result;
+	 }
+ };
