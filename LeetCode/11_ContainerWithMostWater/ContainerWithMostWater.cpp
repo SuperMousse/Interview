@@ -1,4 +1,4 @@
-// 	 
+//  双指针
 int maxArea(vector<int>& height) {
 		 int maxArea = 0;
 		 int left = 0;
