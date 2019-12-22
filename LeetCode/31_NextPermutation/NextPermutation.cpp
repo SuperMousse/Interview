@@ -10,7 +10,7 @@
 		 // 如果存在比当前数字更大的数字, 由于i的右侧为一个递减数组, 所以比其大的下一个数字只能是将i换为其右侧中比它大一点的数字
 		 if (i >= 0) {
 			 int j = nums.size() - 1;
-			 while (j >= 0 && nums[j] <= nums[i]) {
+			 while (j > i && nums[j] <= nums[i]) {
 				 --j;
 			 }
 			 swap(nums[i], nums[j]);
