@@ -44,3 +44,22 @@
    }
 
 // findMinIndex的剑指offer解法
+ int findMinIndex(vector<int>& nums) {
+	 int start = 0;
+	 int end = nums.size() - 1;
+	 int middle = 0;
+	 while (nums[start] > nums[end]) {
+		 if ((end - start) == 1) {
+			 middle = end;
+			 break;
+		 }
+		 int middle = (start + end) / 2;
+		 if (nums[middle] > nums[end]) {
+			 start = middle;
+		 }
+		 else {
+			 end = middle;
+		 }
+	 }
+	 return middle;
+ }
