@@ -1,6 +1,8 @@
 //combination[4] = combination[4-1] + combination[4-2] + combination[4-3] 
-                 = combination[3] + combination[2] + combination[1].
+//               = combination[3] + combination[2] + combination[1].
 
+// 此题有重复计算, 使用回溯法不再是高效的解法
+// 应该使用动态规划才能高效利用重复的计算
 int combinationSum4(vector<int>& nums, int target) {
     if(nums.empty()){
         return 0;
