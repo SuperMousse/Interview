@@ -17,3 +17,6 @@ bool canJump(vector<int>& nums) {
 
     return true;
 }
+
+// 解法二: 贪心算法从后向前
+// 从后向前扫描, 每次保留最后一个当前能够跳到最后一个元素的位置
