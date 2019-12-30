@@ -11,10 +11,10 @@
       int right = length - 1;
       for (int i = 0; i <= right; ++i) {
           if(nums[i] == 0) {
-              swap(nums[i], nums[left++]);
+              swap(nums[i--], nums[left++]); // 注意需要i--，因为交换过去了新的元素之后需要重新考虑当前元素
           }
           else if(nums[i] == 2) {
-              swap(nums[i], nums[right--]);
+              swap(nums[i--], nums[right--]);
           }
           else {
               continue;
