@@ -108,43 +108,36 @@ vector<string> combination(string str) {
 
 
 // 解法二
-/**
-	*  n个元素选m个元素的组合问题的实现. 原理如下:
-	*  从后往前选取, 选定位置i后, 再在前i-1个里面选取m-1个.
-	*  如: 1, 2, 3, 4, 5 中选取3个元素.
-	*  1) 选取5后, 再在前4个里面选取2个, 而前4个里面选取2个又是一个子问题, 递归即可;
-	*  2) 如果不包含5, 直接选定4, 那么再在前3个里面选取2个, 而前三个里面选取2个又是一个子问题, 递归即可;
-	*  3) 如果也不包含4, 直接选取3, 那么再在前2个里面选取2个, 刚好只有两个.
-	*  纵向看, 1与2与3刚好是一个for循环, 初值为5, 终值为m.
-	*  横向看, 该问题为一个前i-1个中选m-1的递归.
-	*/
-
-
 vector<string> Combination(string str) {
-	vector<string> result;
-	if (str.empty()) {
-		return result;
-	}
+    vector<string> result;
+    if (str.empty()) {
+        return result;
+    }
 
-	for (int i = 1; i <= str.size(); ++i) {
-		char* substring = new char[str.size() + 1];
-		CombinationCore(str, result, substring, i, str.size(), 0); // 组合可以是1/2/.../n个字符的组合
-	}
+    string substring;
+    CombinationCore(str, result, substring, str.size(), 0);
 
-	sort(result.begin(), result.end());
-	return result;
+    sort(result.begin(), result.end());
+    
+    
+    for(auto i : result) {
+        for(auto j : i) {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+    
+    return result;
 }
 
-void CombinationCore(string str, vector<string>& result, char* substring, 
-	                 int choose_len, int choose_from_len, int begin) {
-	if (choose_len == 0) {
-		result.push_back(substring);
-	}
-	else {
-		for (int i = begin; i < choose_from_len; ++i) { // 从前向后依次选取
-			substring[choose_len - 1] = str[i]; // 选取一个后
-			CombinationCore(str, result, substring, choose_len - 1, choose_from_len - 1, begin + 1); // 在剩余的choose_from_len - 1里进行递归
-		}
-	}
-	return;
+void CombinationCore(string str, vector<string>& result, string substring,
+                     int length, int begin) {
+    result.push_back(substring);
+    
+    for (int i = begin; i < length; ++i) { // 从前向后依次选取
+        substring.push_back(str[i]);
+        CombinationCore(str, result, substring, length, i + 1);
+        substring.pop_back();
+    }
+    return;
 }
