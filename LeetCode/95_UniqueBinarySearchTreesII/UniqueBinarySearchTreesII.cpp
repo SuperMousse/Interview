@@ -5,6 +5,7 @@
      TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  };
 
+// 动态规划
 // 已有节点{1, 2}, 加入新节点3
 // 1. 新的节点作为根节点, newroot->left = oldroot
 // 2. 新节点不是根节点, 遍历整个树, 如果当前节点有右子树, old node->right = new node; new olde->left = right child
