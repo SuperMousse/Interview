@@ -42,6 +42,7 @@
                       // restore the sub tree
                       tempOld->right = tempRight;
                       tempOld = tempOld->right; // 二叉搜索树一直寻找右子树即可找到最大的元素
+                                                // 同理，二叉搜索树一直寻找左子树可以找到最小的元素
                   }
                   // reach the end of the tree, tempOld->right==nullptr
                   // clone oldRoot and restore
