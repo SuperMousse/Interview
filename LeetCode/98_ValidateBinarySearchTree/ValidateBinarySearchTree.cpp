@@ -20,3 +20,25 @@
   
   
   // 解法二：中序遍历+循环
+bool isValidBST(TreeNode* root) {
+	if (root == nullptr) {
+		return true;
+	}
+	TreeNode* pNode = root;
+	TreeNode* prev = nullptr;
+	stack<TreeNode*> stackTreeNode;
+	while (pNode != nullptr || !stackTreeNode.empty()) {
+		while (pNode != nullptr) {
+			stackTreeNode.push(pNode);
+			pNode = pNode->left;
+		}
+		pNode = stackTreeNode.top();
+		stackTreeNode.pop();
+		if (prev != nullptr && pNode->val <= prev->val) {
+			return false;
+		}
+		prev = pNode;
+		pNode = pNode->right;
+	}
+	return true;
+}
