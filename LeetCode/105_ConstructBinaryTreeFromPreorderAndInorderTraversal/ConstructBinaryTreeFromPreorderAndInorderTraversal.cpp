@@ -34,6 +34,8 @@
 		 if (leftLength > 0) {
 			 root->left = helper(preorder, inorder, beginPre + 1, leftEndPre, beginIn, rootInIndex - 1);
 		 }
+		 // endPre - beginPre为preorder中去掉根节点的元素个数
+		 // 只有leftLength < (endPre - beginPre)时才存在右子树，否则不存在右子树
 		 if (leftLength < (endPre - beginPre)) {
 			 root->right = helper(preorder, inorder, leftEndPre + 1, endPre, rootInIndex + 1, endIn);
 		 }
