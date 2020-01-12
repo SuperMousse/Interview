@@ -29,3 +29,35 @@ the maximum amount of money robbed if it is robbed.
  }
  
  // 解法二: 带记忆的动态规划(递归)
+ class Solution {
+ public:
+	 int rob(TreeNode* root) {
+		 if (root == nullptr) {
+			 return 0;
+		 }
+		 unordered_map<TreeNode*, int> hashTreeNode;
+		 int result = helper(root, hashTreeNode);
+		 return result;
+	 }
+
+	 int helper(TreeNode* root, unordered_map<TreeNode*, int>& hash) {
+		 if (root == nullptr) {
+			 return 0;
+		 }
+		 if (hash.count(root) != 0) {
+			 return hash[root];
+		 }
+		 int val = 0;
+		 if (root->left != nullptr) {
+			 val += helper(root->left->left, hash) + helper(root->left->right, hash);
+		 }
+		 if (root->right != nullptr) {
+			 val += helper(root->right->left, hash) + helper(root->right->right, hash);
+		 }
+		 int notUseRoot = root->val + val;
+		 int useRoot = helper(root->left, hash) + helper(root->right, hash);
+		 val = max(notUseRoot, useRoot);
+	     hash[root] = val;
+		 return val;
+	 }
+ };
