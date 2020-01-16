@@ -16,7 +16,7 @@
        if (matrix[i][j] == '1') {
          int left = j > 0 ? dp[i][j - 1] : 0;
          int up = i > 0 ? dp[i - 1][j] : 0;
-         int leftUp = (i > 0 & j > 0 ) ? dp[i - 1][j - 1] : 0;
+         int leftUp = (i > 0 && j > 0 ) ? dp[i - 1][j - 1] : 0;
          dp[i][j] = min(min(left, up), leftUp) + 1;
          maxEdge = max(maxEdge, dp[i][j]);
        }
