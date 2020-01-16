@@ -78,7 +78,7 @@ vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
 	if (input.empty() || k <= 0 || k > length) {
 		return result;
 	}
-	multiset<int, greater<int> > KSet; // greater表示内置类型从大到小排序
+	multiset<int, greater<int> > KSet; // greater表示内置类型从小到大排序
 	multiset<int, greater<int> >::iterator KSetIterator; // erase
 	for (int i = 0; i < length; ++i) {
 		if (KSet.size() < k) {
