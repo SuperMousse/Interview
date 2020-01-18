@@ -103,8 +103,8 @@ for i in [1, N]:
 若 V-\sum_{k=i}^{N}W_k > W_i, 则max结果为V-\sum_{k=i}^{N}W_k, 
                              a. 此时V-\sum_{k=i}^{N}W_k > W_i > 0, 表示背包总容量去除当前及后面的所有物品仍有剩余, 所以, 
                              背包的最大值一定可以达到, 即矩阵的右下角一定可达
-                             对于j >= V-\sum_{k=i}^{N}W_k, j-W_i >= V-\sum_{k=i+1}^{N}W_k
-                             f[j] = max(f[j], f[j-W_i]+V_i)
+                             b. 对于j >= V-\sum_{k=i}^{N}W_k, j-W_i >= V-\sum_{k=i+1}^{N}W_k
+                             因此f[j] = max(f[j], f[j-W_i]+V_i)此时只计算了V-\sum_{k=i+1}^{N}W_k后面的元素
                               
 i  name weight value | j: 1   2   3   4   5   6   7   
                           0   0   0   0   0   0   0  
