@@ -100,9 +100,11 @@ for i in [1, N]:
        (V-\sum<=C_i)          C_i      (V-\sum>C_i)
 
 若 \sum_{k=i}^{N}W_k <= W_i, 则max(W_i, V-\sum_{k=i}^{N}W_k)=W_i, 小于W_i由于背包容量不足不更新, 与未优化结果相同
-若 V-\sum_{k=i}^{N}W_k > W_i, 则max结果为V-\sum_{k=i}^{N}W_k, 此时小于C_i部分由于背包容量不足本来就不需要再进行更新了, 
+若 V-\sum_{k=i}^{N}W_k > W_i, 则max结果为V-\sum_{k=i}^{N}W_k, 
+                             a. 此时V-\sum_{k=i}^{N}W_k > W_i > 0, 表示背包总容量去除当前及后面的所有物品仍有剩余, 所以, 
+                             背包的最大值一定可以达到, 即矩阵的右下角一定可达
                              对于j >= V-\sum_{k=i}^{N}W_k, j-W_i >= V-\sum_{k=i+1}^{N}W_k
-                             所以f[j] = max(f[j], f[j-W_i]+V_i)
+                             f[j] = max(f[j], f[j-W_i]+V_i)
                               
 i  name weight value | j: 1   2   3   4   5   6   7   
                           0   0   0   0   0   0   0  
