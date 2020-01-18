@@ -102,14 +102,12 @@ for i in [1, N]:
 对于i = N时的右下角元素f[V], 有如下等式成立
 f[V] = max(f[V], f[V-W_N]+V_N), 需要使用f[V-W_N]元素
 对于i = N-1层的f[V-W_N], 有
-f[V-W_N] = max(f[V-W_N], f[V-W_N-W_N-1]+V_N),依次
+f[V-W_N] = max(f[V-W_N], f[V-W_N-W_N-1]+V_N),
+依次递推可知, 对于第i层实际上需要计算的可以到达网络右下角的元素应该为V - W_N - W_n-1 - ... - W_i
 
-若 \sum_{k=i}^{N}W_k <= W_i, 则max(W_i, V-\sum_{k=i}^{N}W_k)=W_i, 小于W_i由于背包容量不足不更新, 与未优化结果相同
-若 V-\sum_{k=i}^{N}W_k > W_i, 则max结果为V-\sum_{k=i}^{N}W_k, 
-                             a. 此时V-\sum_{k=i}^{N}W_k > W_i > 0, 表示背包总容量去除当前及后面的所有物品仍有剩余, 所以, 
-                             背包的最大值一定可以达到, 即矩阵的右下角一定可达
-                             b. 对于j >= V-\sum_{k=i}^{N}W_k, j-W_i >= V-\sum_{k=i+1}^{N}W_k
-                             因此f[j] = max(f[j], f[j-W_i]+V_i)此时只计算了V-\sum_{k=i+1}^{N}W_k后面的元素
+因此, 对于第i层, 小于W_i由于背包容量不足不更新, 小于V - W_N - W_n-1 - ... - W_i由于无法到达右下角不需要更新, 取二者Max即可
+
+
                               
 i  name weight value | j: 1   2   3   4   5   6   7   
                           0   0   0   0   0   0   0  
