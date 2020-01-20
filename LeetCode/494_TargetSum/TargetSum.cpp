@@ -43,3 +43,18 @@ int helper(vector<int>& nums, int S) {
 }
 
 // 一维dp
+int helper(vector<int>& nums, int S) {
+   int len = nums.size();
+   vector<int> dp(S + 1, 0);
+   dp[0] = 1;
+   for (int i = 1; i <= len; ++i) {
+       for (int j = S; j >= 0; --j) {
+           if(j >= nums[i - 1]) {
+               dp[j] = dp[j] + dp[j - nums[i - 1]];
+           }
+       }
+   }
+
+   return dp[S];
+
+}
