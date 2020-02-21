@@ -19,7 +19,7 @@ int partition(vector<int>& nums, int begin, int end) {
 }
 
 
-vector<int> quickSort(vector<int>& nums, int start, int end) {
+void quickSort(vector<int>& nums, int start, int end) {
     if(!nums.empty() && start <= end) {
         int index = partition(nums, start, end);
         quickSort(nums, start, index - 1);
