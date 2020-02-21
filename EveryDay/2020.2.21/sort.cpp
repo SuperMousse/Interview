@@ -33,3 +33,41 @@ void quickSort(vector<int>& nums, int start, int end) {
 
 
 // 归并排序
+// 注意, 首先要把数组分成两部分, 然后再把两部分当做有序数组来进行合并
+void merge(vector<int>& nums, int start, int middle, int end) {
+    vector<int> temp(end - start + 1, -1); // 临时存储
+    int i = start; // 左序列指针
+    int j = middle + 1; // 右序列指针
+    int t = 0; // 临时数组指针
+    while (i <= middle && j <= end) {
+        if(nums[i] <= nums[j]) {
+            temp[t++] = nums[i++];
+        }
+        else{
+            temp[t++] = nums[j++];
+        }
+    }
+    // 拷贝左侧数组剩余元素
+    while (i <= middle) {
+        temp[t++] = nums[i++];
+    }
+    while (j <= end) {
+        temp[t++] = nums[j++];
+    }
+    // 拷贝temp到nums范围内
+    t = 0;
+    while (start <= end) {
+        nums[start++] = temp[t++];
+    }
+}
+
+// divide and conquer
+void mergeSort(vector<int>& nums, int start, int end) {
+    if (!nums.empty() && start < end) {
+        int middle = (start + end) / 2;
+        mergeSort(nums, start, middle);
+        mergeSort(nums, middle + 1, end);
+        merge(nums, start, middle, end);
+    }
+    return;
+}
