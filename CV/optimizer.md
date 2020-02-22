@@ -1,4 +1,4 @@
-# 1. SGD+momentum
+1. SGD+momentum
 
 
 # 2. Nestrov
