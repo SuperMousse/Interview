@@ -57,7 +57,7 @@
         output = output.reshape(self.output_shape() + (batch_size, ))
         # Redistribute axises so that batch size comes first
         return output.transpose(3,0,1,2)
-
+``
 def image_to_column(images, filter_shape, stride, output_shape='same'):
     filter_height, filter_width = filter_shape
 
