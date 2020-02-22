@@ -4,7 +4,7 @@
 2. Nestrov
 
 
-3 Adagrad
+3. Adagrad
 
 
 4. RMSProp
