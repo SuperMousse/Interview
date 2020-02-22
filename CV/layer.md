@@ -5,9 +5,9 @@
 3. lstm
 
 4. cnn
-"""
-class Conv2D(Layer):
-    "A 2D Convolution Layer.
+
+`class Conv2D(Layer):
+    """A 2D Convolution Layer.
     Parameters:
     -----------
     n_filters: int
@@ -23,7 +23,7 @@ class Conv2D(Layer):
         matches the input height and width. For 'valid' no padding is added.
     stride: int
         The stride length of the filters during the convolution over the input.
-    "
+    """
     def __init__(self, n_filters, filter_shape, input_shape=None, padding='same', stride=1):
         self.n_filters = n_filters
         self.filter_shape = filter_shape
@@ -76,5 +76,5 @@ def image_to_column(images, filter_shape, stride, output_shape='same'):
     # Reshape content into column shape
     cols = cols.transpose(1, 2, 0).reshape(filter_height * filter_width * channels, -1)
     return cols
-"""
+`
 5. batchnorm/layernorm/instance norm/group norm
