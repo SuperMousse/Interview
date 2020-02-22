@@ -5,8 +5,8 @@
 3. lstm
 
 4. cnn
-
-`class Conv2D(Layer):
+```
+class Conv2D(Layer):
     """A 2D Convolution Layer.
     Parameters:
     -----------
@@ -57,7 +57,7 @@
         output = output.reshape(self.output_shape() + (batch_size, ))
         # Redistribute axises so that batch size comes first
         return output.transpose(3,0,1,2)
-``
+
 def image_to_column(images, filter_shape, stride, output_shape='same'):
     filter_height, filter_width = filter_shape
 
@@ -76,5 +76,5 @@ def image_to_column(images, filter_shape, stride, output_shape='same'):
     # Reshape content into column shape
     cols = cols.transpose(1, 2, 0).reshape(filter_height * filter_width * channels, -1)
     return cols
-`
+```
 5. batchnorm/layernorm/instance norm/group norm
