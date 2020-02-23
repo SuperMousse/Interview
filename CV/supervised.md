@@ -1,7 +1,7 @@
 1. k nearest neighbours
 
 2. principal component analysis 
-
+函数 ${f(x)=a_nx^n+a_{n-1}x^{n-1}+a_{n-2}x^{n-2}}+\cdots$
 输入：n维样本集$X={x_1, x_2, ..., x_n}$，要降维到的维数$n_{'}$.
 输出：降维后的样本集Y
 
