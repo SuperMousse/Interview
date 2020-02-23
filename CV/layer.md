@@ -80,7 +80,9 @@ class Conv2d(object):
 >>> c.forward(np.random.rand(2, 3, 5, 4)).shape
 >>> output: (2, 4, 3, 2)
 
-# 对于输入(5, 4)大小的图片, 卷积核(3, 3), 输出feature map大小为(3, 2), img_to_col的索引为
+# 对于输入(5, 4)大小的图片, 卷积核(3, 3), 输出feature map大小为(3, 2), img_to_col的索引为(channel, 27, 6),
+# 27为发生计算的维度, 6为移动卷积核的次数, channel为输入的图片channel
+# 这样就把所有的计算变成了一个矩阵
 000  001  010  011  020  021  
 
 001  002  011  012  021  022  
