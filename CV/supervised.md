@@ -2,7 +2,7 @@
 
 2. principal component analysis 
 X=\{x_1, x_2, ..., x_n\}
-输入：n维样本集![](http://latex.codecogs.com/gif.latex?\\X)，要降维到的维数$n_{'}$.
+输入：n维样本集![](http://latex.codecogs.com/gif.latex?\\X=\{\})，要降维到的维数$n_{'}$.
 输出：降维后的样本集Y
 
 a.对所有的样本进行中心化
