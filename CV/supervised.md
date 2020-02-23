@@ -1,6 +1,6 @@
 1. k nearest neighbours
 
-2. principal component analysis 
+2. principal component analysis  
    用处: 高维数据可视化(投影到二维或者三维);  
         作为数据预处理方法用在图像检索等问题中;  
         人脸识别特征脸(人脸数据集分解为不同的特征向量, 排列后就是特征脸, 每幅图可以看成特征脸的线性组合)
@@ -13,3 +13,5 @@
     c.求出协方差矩阵的特征值及对应的特征向量  
     d.将特征向量按对应特征值大小从上到下按行排列成矩阵，取前k行组成矩阵P  
     e.Y=PX即为降维到k维后的数据  
+
+3. linear discriminant analysis
