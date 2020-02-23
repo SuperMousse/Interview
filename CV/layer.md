@@ -6,120 +6,68 @@
 
 4. cnn
 ```
-class Conv2D(Layer):
-    """A 2D Convolution Layer.
-    Parameters:
-    -----------
-    n_filters: int
-        The number of filters that will convolve over the input matrix. The number of channels
-        of the output shape.
-    filter_shape: tuple
-        A tuple (filter_height, filter_width).
-    input_shape: tuple
-        The shape of the expected input of the layer. (batch_size, channels, height, width)
-        Only needs to be specified for first layer in the network.
-    padding: string
-        Either 'same' or 'valid'. 'same' results in padding being added so that the output height and width
-        matches the input height and width. For 'valid' no padding is added.
-    stride: int
-        The stride length of the filters during the convolution over the input.
-    """
-    def __init__(self, n_filters, filter_shape, input_shape=None, padding='same', stride=1):
-        self.n_filters = n_filters
-        self.filter_shape = filter_shape
+class Conv2d(object):
+    def __init__(self, in_channel, out_channel, kernel_size, padding=0, stride=1):
+        self.in_channel = in_channel
+        self.out_channel = out_channel
+        self.kernel_size = kernel_size
+        self.kernel_height, self.kernel_width = kernel_size
         self.padding = padding
         self.stride = stride
-        self.input_shape = input_shape
-        self.trainable = True
-
-    def initialize(self, optimizer):
-        # Initialize the weights
-        filter_height, filter_width = self.filter_shape
-        channels = self.input_shape[0]
-        limit = 1 / math.sqrt(np.prod(self.filter_shape))
-        self.W  = np.random.uniform(-limit, limit, size=(self.n_filters, channels, filter_height, filter_width))
-        self.w0 = np.zeros((self.n_filters, 1))
-        # Weight optimizers
-        self.W_opt  = copy.copy(optimizer)
-        self.w0_opt = copy.copy(optimizer)
-
-    def forward_pass(self, X, training=True):
-        batch_size, channels, height, width = X.shape
-        self.layer_input = X
+        self.reset_params()
+    
+    def reset_params(self):
+        self.W = np.random.rand(self.out_channel, self.in_channel, self.kernel_height, self.kernel_width)
+        self.b = np.zeros((self.out_channel, 1))
+        
+    def forward(self, X):
+        B, C, H, W = X.shape
+        self.output_height = int(H + 2 * self.padding - self.kernel_height) // self.stride + 1
+        self.output_width = int(W + 2 * self.padding - self.kernel_width) // self.stride + 1
         # Turn image shape into column shape
         # (enables dot product between input and weights)
-        self.X_col = image_to_column(X, self.filter_shape, stride=self.stride, output_shape=self.padding)
-        # Turn weights into column shape
-        self.W_col = self.W.reshape((self.n_filters, -1))
-        # Calculate output
-        output = self.W_col.dot(self.X_col) + self.w0
-        # Reshape into (n_filters, out_height, out_width, batch_size)
-        output = output.reshape(self.output_shape() + (batch_size, ))
-        # Redistribute axises so that batch size comes first
-        return output.transpose(3,0,1,2)
+        X_col = self.image_to_column(X, 
+                                     self.kernel_size, 
+                                     stride=self.stride, 
+                                     padding=self.padding) # [h*w*in_channel, output_height*output_width*B]
+        W_col = self.W.reshape((self.out_channel, -1)) # [out_channnel, in_channel*h*w]
 
-def image_to_column(images, filter_shape, stride, output_shape='same'):
-    filter_height, filter_width = filter_shape
-
-    pad_h, pad_w = determine_padding(filter_shape, output_shape)
-
-    # Add padding to the image
-    images_padded = np.pad(images, ((0, 0), (0, 0), pad_h, pad_w), mode='constant')
-
-    # Calculate the indices where the dot products are to be applied between weights
-    # and the image
-    k, i, j = get_im2col_indices(images.shape, filter_shape, (pad_h, pad_w), stride)
-
-    # Get content from image at those indices
-    cols = images_padded[:, k, i, j]
-    channels = images.shape[1]
-    # Reshape content into column shape
-    cols = cols.transpose(1, 2, 0).reshape(filter_height * filter_width * channels, -1)
-    return cols
+        output = W_col.dot(X_col) + self.b # [out_channel, output_height*output_width*B] 
+        output = output.reshape(self.out_channel, self.output_height, self.output_width, B)
+        output = output.transpose(3, 0, 1, 2) 
+        return output
     
-# Method which calculates the padding based on the specified output shape and the
-# shape of the filters
-def determine_padding(filter_shape, output_shape="same"):
-
-    # No padding
-    if output_shape == "valid":
-        return (0, 0), (0, 0)
-    # Pad so that the output shape is the same as input shape (given that stride=1)
-    elif output_shape == "same":
-        filter_height, filter_width = filter_shape
-
-        # Derived from:
-        # output_height = (height + pad_h - filter_height) / stride + 1
-        # In this case output_height = height and stride = 1. This gives the
-        # expression for the padding below.
-        pad_h1 = int(math.floor((filter_height - 1)/2))
-        pad_h2 = int(math.ceil((filter_height - 1)/2))
-        pad_w1 = int(math.floor((filter_width - 1)/2))
-        pad_w2 = int(math.ceil((filter_width - 1)/2))
-
-        return (pad_h1, pad_h2), (pad_w1, pad_w2)
-
-
-# Reference: CS231n Stanford
-def get_im2col_indices(images_shape, filter_shape, padding, stride=1):
-    # First figure out what the size of the output should be
-    batch_size, channels, height, width = images_shape
-    filter_height, filter_width = filter_shape
-    pad_h, pad_w = padding
-    out_height = int((height + np.sum(pad_h) - filter_height) / stride + 1)
-    out_width = int((width + np.sum(pad_w) - filter_width) / stride + 1)
-
-    i0 = np.repeat(np.arange(filter_height), filter_width)
-    i0 = np.tile(i0, channels)
-    i1 = stride * np.repeat(np.arange(out_height), out_width)
-    j0 = np.tile(np.arange(filter_width), filter_height * channels)
-    j1 = stride * np.tile(np.arange(out_width), out_height)
-    i = i0.reshape(-1, 1) + i1.reshape(1, -1)
-    j = j0.reshape(-1, 1) + j1.reshape(1, -1)
-
-    k = np.repeat(np.arange(channels), filter_height * filter_width).reshape(-1, 1)
-
-    return (k, i, j)    
+    def image_to_column(self, images, kernel_size, stride, padding):
+        images_padded = np.pad(images, ((0, 0), (0, 0), (padding, padding), (padding, padding)), mode='constant')
+        # Calculate the indices where the dot products are to be applied between weights
+        # and the image
+        k, i, j = self.get_im2col_indices(images.shape, 
+                                          kernel_size, 
+                                          stride)
+        # cols = [B, kernel_height*kernel_width*in_channel, outshape_height*outshape_width]
+        cols = images_padded[:, k, i, j] 
+        # Reshape content into column shape
+        cols = cols.transpose(1, 2, 0).reshape(self.kernel_height * self.kernel_width * self.in_channel, -1)
+        return cols
+    
+    def get_im2col_indices(self, images_shape, kernel_size, stride):
+        kernel_height, kernel_width = kernel_size
+        # i是单个channel[kernel_height, kernel_width]的行索引, 每个数字重复kernel_width次, 循环
+        i0 = np.repeat(np.arange(kernel_height), kernel_width)
+        # i是行索引, 拷贝channel次, 对应不同的输入channel
+        i0 = np.tile(i0, self.in_channel)
+        # i1为卷积核移动时的偏置, i0+偏置=所有移动位置上的索引
+        # i1表示行号每移动output_width次才变更一次, 因此[0, 0, 1, 1, 2, 2]表示输出output_height*output_width大小
+        # feature map的行标变化
+        i1 = stride * np.repeat(np.arange(self.output_height), self.output_width)
+        # j是[kernel_height, kernel_width]的列索引, 每个数字重复1次, 循环
+        j0 = np.tile(np.arange(kernel_width), kernel_height * self.in_channel)
+        # j1为偏置, 列表每移动output_height次才变更一次
+        j1 = stride * np.tile(np.arange(self.output_width), self.output_height)
+        i = i0.reshape(-1, 1) + i1.reshape(1, -1)
+        j = j0.reshape(-1, 1) + j1.reshape(1, -1)
+        # k是channel的索引, 每一个数字重复kernel_height * kernel_width次, 循环[0,0,...0, 1, 1, ...1]
+        k = np.repeat(np.arange(self.in_channel), kernel_height * kernel_width).reshape(-1, 1)
     
 ```
 5. batchnorm/layernorm/instance norm/group norm
