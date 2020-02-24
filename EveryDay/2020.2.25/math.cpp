@@ -1,3 +1,8 @@
-//     Write an Efficient Method to Check if a Number is Multiple of n
+// 判断任意一个数字m是否是n的倍数
 
-// 方法一: 求余数
+// 方法一: 求余数, 但无法适应大数
+
+
+// 方法二: 将m奇数位和偶数位相减, 判断得到的结果是否是n的倍数, 是的话就是n的倍数
+// 对于任意一个数字ABCD
+// 
