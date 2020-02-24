@@ -1,0 +1,46 @@
+// 堆是具有以下性质的完全二叉树：
+// 每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆；或者每个结点的值都小于或等于其左右孩子结点的值，称为小顶堆
+// 数组 0   1  2  3  4  5  6  7  8
+//     50 45 40 20 25 35 30 10 15
+// 上面就是一个大顶堆, 满足arr[i] >= arr[2i+1] && arr[i] >= arr[2i+2] (小顶堆<=)
+// 数字从小到大排列时需要构造最大堆, 然后将最大堆的元素从堆顶放至堆尾
+
+void heapSort(vector<int>& nums) {
+    if (nums.empty()) {
+        return;
+    }
+    int length = nums.size();
+    // 构造初始最大堆
+    for (int i = length/2 - 1; i >= 0; --i) {
+        // 从第一个非叶子节点开始, 从下至上, 从左至右调整结构
+        adjustHeap(nums, i, length);
+    }
+    
+    // 将堆顶元素放至末尾, 然后重新调整堆结构
+    for (int j = length - 1; j > 0; --j) {
+        swap(nums[0], nums[j]);
+        adjustHeap(nums, 0, j);
+    }
+    return;
+}
+
+// 调整堆结构, 只限于调整
+void adjustHeap(vector<int>& nums, int i, int length) {
+    int temp = nums[i]; // 取出当前元素i
+    // 从i结点的左子结点开始，也就是2i+1处开始, k = 2k+1是为了防止交换后子节点混乱的情况
+    // 一直循环到子节点都满足要求
+    for(int k = 2*i+1; k < length; k = k*2+1) {
+        if((k+1) < length && nums[k] < nums[k+1]) {//如果左子结点小于右子结点，k指向右子结点
+            ++k;
+        }
+        if(nums[k] > temp) {//如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
+            nums[i] = nums[k];
+            i = k;
+        }
+        else {
+            break;
+        }
+    }
+    nums[i] = temp;//将temp值放到最终的位置
+    return;
+}
