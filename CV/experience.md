@@ -49,4 +49,8 @@ c. 对区域进行分类：对从CNN output出来的特征向量送进每一类�
 d. 修正：对CNN output的特征向量（这个特征向量和第4步中拿去喂给SVM的是一个向量）做回归（左上角右下角的四个坐标），修正region proposal的位置; proposal和ground truth的IOU>0.6时认为他们很接近, 这个时候proposal到ground truth的边界框变换可以认为是近似线性问题, 否则两个相距很远的边界框学习是一种非线性问题, Y=WX就是特征X的线性变换, Y为四维变量, 使用L1或者smooth L1进行训练
 
 ##### (2) Fast R-CNN  
+a. selective search生成候选区域
+b. CNN抽特征(CNN全部3*3卷积还有padding, 卷积不会使得feature变小, 但是pooling的stride为2, 所以最后feature map会变成原来的1/16), 并使用候选区域进行ROI pooling; ROI pooling输入为proposal和feature map, 按照proposal取出feature map拼接起来, 然后2d pooling成相同channel维度
+c. 使用fc layer进行softmax分类(取代了SVM)以及边界框回归
+
 ##### (3) Faster R-CNN
