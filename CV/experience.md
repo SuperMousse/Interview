@@ -59,5 +59,5 @@ b. RPN提出proposal, 双支路: positive/negative anchor支路, 边界框回归
 anchor分类支路: 输入featuremap (B, C, 1/16 H, 1/16 W), 做1*1卷积变为(B, 18, 1/16 H, 1/16 W), 18对应每个点上有9个anchor, resize到  (B * 1/16 H * 1/16 W, 2)判断positve/negative, positive的参与后续使用  
 边界框回归支路: 输入featuremap (B, C, 1/16 H, 1/16 W), 做1*1卷积变为(B, 36, 1/16 H, 1/16 W), 36对应每个点上9个anchor的4的位置变换因子, 左右平移, 宽高缩放  
 两支路融合每个点上9个anchor考虑是否positive和变换因子, 生成proposal
-c. 利用RPN提出的proposal进行ROI pooling
-d. proposal feature map分类以及边界框回归
+c. 利用RPN提出的proposal进行ROI pooling  
+d. proposal feature map分类以及边界框回归, 分类将proposal和ground truth重叠大于0.7的认为是positive, 小于0.3的认为是negative, 这之间的不参与BP计算, 边界框回归使用smooth L1 loss
