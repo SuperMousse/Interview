@@ -50,14 +50,14 @@ d. 修正：对CNN output的特征向量（这个特征向量和第4步中拿去
 
 ##### (2) Fast R-CNN：ROI pooling+FC取代SVM
 a. selective search生成候选区域  
-b. CNN抽特征(CNN全部3*3卷积还有padding, 卷积不会使得feature变小, 但是pooling的stride为2, 所以最后feature map会变成原来的1/16), 并使用候选区域进行ROI pooling; ROI pooling输入为proposal和feature map, 按照proposal取出feature map拼接起来(使用scale参数将原始的H、W映射为1/16H、1/16W), 然后2d pooling成相同channel, h, w 
+b. CNN抽特征(CNN全部3 * 3卷积还有padding, 卷积不会使得feature变小, 但是pooling的stride为2, 所以最后feature map会变成原来的1/16), 并使用候选区域进行ROI pooling; ROI pooling输入为proposal和feature map, 按照proposal取出feature map拼接起来(使用scale参数将原始的H、W映射为1/16H、1/16W), 然后2d pooling成相同channel, h, w 
 c. 使用fc layer进行softmax分类(取代了SVM)以及边界框回归  
 
 ##### (3) Faster R-CNN: 使用RPN(Region Proposal Network)取代了Selective Search  
 a. CNN抽特征, 3 * 3卷积feature map不变小, pooling stride为2, 最后feature map变为1/16  
 b. RPN提出proposal, 双支路: positive/negative anchor支路, 边界框回归支路  
-anchor分类支路: 输入featuremap (B, C, 1/16 H, 1/16 W), 做1*1卷积变为(B, 18, 1/16 H, 1/16 W), 18对应每个点上有9个anchor, resize到  (B * 1/16 H * 1/16 W, 2)判断positve/negative, positive的参与后续使用  
-边界框回归支路: 输入featuremap (B, C, 1/16 H, 1/16 W), 做1*1卷积变为(B, 36, 1/16 H, 1/16 W), 36对应每个点上9个anchor的4的位置变换因子, 左右平移, 宽高缩放  
+anchor分类支路: 输入featuremap (B, C, 1/16 H, 1/16 W), 做1 * 1卷积变为(B, 18, 1/16 H, 1/16 W), 18对应每个点上有9个anchor, resize到  (B * 1/16 H * 1/16 W, 2)判断positve/negative, positive的参与后续使用  
+边界框回归支路: 输入featuremap (B, C, 1/16 H, 1/16 W), 做1 * 1卷积变为(B, 36, 1/16 H, 1/16 W), 36对应每个点上9个anchor的4的位置变换因子, 左右平移, 宽高缩放  
 两支路融合每个点上9个anchor考虑是否positive和变换因子, 生成proposal
 c. 利用RPN提出的proposal进行ROI pooling  
 d. proposal feature map分类以及边界框回归, 分类将proposal和ground truth重叠大于0.7的认为是positive, 小于0.3的认为是negative, 这之间的不参与BP计算, 边界框回归使用smooth L1 loss
