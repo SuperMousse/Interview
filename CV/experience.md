@@ -48,9 +48,13 @@ b. 将region proposal resize为统一大小，使用CNN对每个候region propos
 c. 对区域进行分类：对从CNN output出来的特征向量送进每一类的SVM分类, 如果我有十个类别，那么每个region proposal要跑10个SVM，得到类别。这里为什么要用SVM而不是softmax，有一种说法是为了解决样本不均衡的问题，另外是早期神经网络还不如现在这样发达，当时SVM还是比较领先的分类器  
 d. 修正：对CNN output的特征向量（这个特征向量和第4步中拿去喂给SVM的是一个向量）做回归（左上角右下角的四个坐标），修正region proposal的位置; proposal和ground truth的IOU>0.6时认为他们很接近, 这个时候proposal到ground truth的边界框变换可以认为是近似线性问题, 否则两个相距很远的边界框学习是一种非线性问题, Y=WX就是特征X的线性变换, Y为四维变量, 使用L1或者smooth L1进行训练
 
-##### (2) Fast R-CNN  
+##### (2) Fast R-CNN：ROI pooling+FC取代SVM
 a. selective search生成候选区域  
 b. CNN抽特征(CNN全部3*3卷积还有padding, 卷积不会使得feature变小, 但是pooling的stride为2, 所以最后feature map会变成原来的1/16), 并使用候选区域进行ROI pooling; ROI pooling输入为proposal和feature map, 按照proposal取出feature map拼接起来, 然后2d pooling成相同channel维度  
 c. 使用fc layer进行softmax分类(取代了SVM)以及边界框回归  
 
-##### (3) Faster R-CNN
+##### (3) Faster R-CNN: 使用RPN(Region Proposal Network)取代了Selective Search  
+a. CNN抽特征, 3*3卷积feature map不变小, pooling stride为2, 最后feature map变为1/16
+b. RPN提出proposal
+c. 利用RPN提出的proposal进行ROI pooling
+d. proposal feature map分类以及边界框回归
