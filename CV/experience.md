@@ -46,7 +46,7 @@ f(z) = \sum{w_i * x_i + b}
 a. 利用selective search对图像生成1K~2K的候选区域（region proposal)  
 b. 将region proposal resize为统一大小，使用CNN对每个候region proposal提取特征  
 c. 对区域进行分类：对从CNN output出来的特征向量送进每一类的SVM分类, 如果我有十个类别，那么每个region proposal要跑10个SVM，得到类别。这里为什么要用SVM而不是softmax，有一种说法是为了解决样本不均衡的问题，另外是早期神经网络还不如现在这样发达，当时SVM还是比较领先的分类器  
-d. 修正：对CNN output的特征向量（这个特征向量和第4步中拿去喂给SVM的是一个向量）做回归（左上角右下角的四个坐标），修正region proposal的位置  
+d. 修正：对CNN output的特征向量（这个特征向量和第4步中拿去喂给SVM的是一个向量）做回归（左上角右下角的四个坐标），修正region proposal的位置; proposal和ground truth的IOU>0.6时认为他们很接近, 这个时候proposal到ground truth的边界框变换可以认为是近似线性问题, 否则两个相距很远的边界框学习是一种非线性问题, Y=WX就是特征X的线性变换, Y为四维变量, 使用L1或者smooth L1进行训练
 
 ##### (2) Fast R-CNN  
 ##### (3) Faster R-CNN
