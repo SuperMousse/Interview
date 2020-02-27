@@ -24,3 +24,10 @@ int maxProduct(vector<int>& nums) {
     return maxRes;
 }
 
+// 找零钱
+// Input: coins = [1, 2, 5], amount = 11
+// Output: 3 
+// Explanation: 11 = 5 + 5 + 1
+
+
+
