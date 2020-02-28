@@ -75,3 +75,5 @@ a. 可能存在脏数据，使得求log的时候，有0出现。
 b. 梯度爆炸：调小学习率；使用数据归一化方法（例如，减均值，除方差，或者加入normalizaiton例如BN，l2 normalizaiton）；更该参数初始化方法；减小batchsize；加入gradient_clipping；
 
 ##### (3) 为什么交叉熵可以作为损失函数？
+我们希望模型学到的分布q和训练数据的分布p相同，即希望最小化KL散度KL(p,q)=\sum{p log(p/q)} = \sum{plogp - plogq} = -数据分布的熵 + 交叉熵  
+因此最小化KL散度等价于最小化p q的交叉熵
