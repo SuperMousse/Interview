@@ -61,3 +61,11 @@ anchor分类支路: 输入featuremap (B, C, 1/16 H, 1/16 W), 做1 * 1卷积变�
 两支路融合每个点上9个anchor考虑是否positive和位置变换因子, 生成proposal
 c. 利用RPN提出的proposal进行ROI pooling  
 d. proposal feature map分类以及边界框回归, 分类将proposal和ground truth重叠大于0.7的认为是positive, 小于0.3的认为是negative, 这之间的不参与BP计算, 边界框回归使用smooth L1 loss
+
+
+#### https://zhuanlan.zhihu.com/p/56813157
+##### (1) 线性回归和逻辑回归的区别和联系？  
+a. 线性回归用于回归问题，逻辑回归用于分类问题。    
+b. 逻辑回归一般使用sigmoid激活函数。    
+c. 线性回归可以使用最小二乘法或者梯度下降法作为参数估计方法，逻辑回归可以使用极大似然估计或者梯度下降法作为参数估计方法。    
+d. 线性回归要去自变量和因变量之间存在线性关系；线性回归要求误差服从正态分布。    
