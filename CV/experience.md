@@ -63,7 +63,7 @@ c. 利用RPN提出的proposal进行ROI pooling
 d. proposal feature map分类以及边界框回归, 分类将proposal和ground truth重叠大于0.7的认为是positive, 小于0.3的认为是negative, 这之间的不参与BP计算, 边界框回归使用smooth L1 loss
 
 
-#### https://zhuanlan.zhihu.com/p/56813157
+#### 3. https://zhuanlan.zhihu.com/p/56813157
 ##### (1) 线性回归和逻辑回归的区别和联系？  
 a. 线性回归用于回归问题，逻辑回归用于分类问题。    
 b. 逻辑回归一般使用sigmoid激活函数。    
