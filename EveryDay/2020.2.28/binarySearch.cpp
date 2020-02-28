@@ -45,3 +45,6 @@ int findPeakElement(vector<int>& nums) {
 }
 
 // 找到最接近的k个元素
+// 方法一: 二分查找搜单个数值, 然后左右扩张
+
+// 方法二: 区间二分查找
