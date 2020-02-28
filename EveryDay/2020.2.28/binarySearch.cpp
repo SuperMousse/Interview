@@ -48,3 +48,34 @@ int findPeakElement(vector<int>& nums) {
 // 方法一: 二分查找搜单个数值, 然后左右扩张
 
 // 方法二: 区间二分查找
+// 时间复杂度: O(log(N-K) + K)
+// 目标数组: arr[i] ~ arr[i + k -1]
+// 搜索目标为i, 因此i的范围为0 ~ n-k, n-k是为了使用后k个元素的情况
+// 对于middle-1, middle, ..., middle+k-1, middle+k
+// 如果x - arr[middle] > arr[middle + k] - x,说明数组偏左, 需要往右一点
+// 0, 1, 2, 3,          4,       5,  6
+// middle, ... middle+k-1, middle+k
+// 若x为3, 那么3-0>5-3, 说明目标值左侧的数字多于右侧的数字, 需要向右
+// left, right, middle最后会收敛于i, 只不过middle后面还带着一个区间
+
+// 二分查找边界条件总结:
+// 如果想要使得目标尽可能靠左: 条件非常明确的时候才把左边界右移(+1), 否则右边界缓慢左移
+// 如果想要使得目标尽可能靠右: 条件非常明确的时候把右边界左移(-1), 否则左边界缓慢右移
+// 本题希望区间靠左, 选择第一种
+vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+    if (arr.empty() || k < 1) {
+        return vector<int>();
+    }
+    int left = 0;
+    int right = arr.size() - k;
+    while (left < right) {
+        int middle = (left + right) / 2;
+        if (x - arr[middle] > arr[middle + k] - x) {
+            left = middle + 1;
+        }
+        else {
+            right = middle;
+        }
+    }
+    return vector<int>(arr.begin() + left, arr.begin() + left + k);
+}
