@@ -33,3 +33,26 @@ vector<int> singleNumbers(vector<int>& nums) {
 
 
 // 在一个数组 nums 中除一个数字只出现一次之外，其他数字都出现了三次。请找出那个只出现一次的数字。
+int singleNumber(vector<int>& nums) {
+    if (nums.empty()) {
+        throw runtime_error("sth wrong");
+    }
+    int bits[32] = {0};
+    for (int i = 0; i < 32; ++i) {
+        int count = 0;
+        for(auto n : nums) {
+            if(((n >> i) & 0x1 == 1)) {
+                ++count;
+            }
+        }
+        bits[31 - i] = count;
+    }
+    int result = 0;
+    for (int i = 0; i < 32; ++i) {
+        if((bits[i] % 3) == 1) {
+            result += 1;
+        }
+        result << 1;
+    }
+    return result;
+}
