@@ -49,10 +49,10 @@ int singleNumber(vector<int>& nums) {
     }
     int result = 0;
     for (int i = 0; i < 32; ++i) {
+        result << 1; // 移除掉最开始的符号位
         if((bits[i] % 3) == 1) {
             result += 1;
         }
-        result << 1;
     }
     return result;
 }
