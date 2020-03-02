@@ -40,3 +40,33 @@ public:
 private:
     unordered_map<Node*, Node*> copiedGraph;
 };
+
+// BFS
+class Solution {
+public:
+    Node* cloneGraph(Node* node) {
+        if (node == nullptr) {
+            return nullptr;
+        }
+        Node* copiedHead = new Node(node->val);
+        copiedGraph[node] = copiedHead;
+        queue<Node*> queueNode;
+        queueNode.push(node);
+        while (!queueNode.empty()) {
+            Node* pNode = queueNode.front();
+            queueNode.pop();
+            for (auto neighbour : pNode->neighbors) {
+                if (copiedGraph.count(neighbour) == 0) {
+                    copiedGraph[neighbour] = new Node(neighbour->val);
+                    queueNode.push(neighbour);
+                }
+                copiedGraph[pNode]->neighbors.push_back(copiedGraph[neighbour]);
+            }
+        }
+        return copiedHead;
+    }
+private:
+    unordered_map<Node*, Node*> copiedGraph;
+};
+
+// 课程表
