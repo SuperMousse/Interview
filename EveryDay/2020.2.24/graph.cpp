@@ -1,4 +1,5 @@
 // 图节点拷贝
+// DFS或者BFS都能解决问题, 但是需要hash map来避免节点的重复拷贝
 // Definition for a Node.
 class Node {
 public:
