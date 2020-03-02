@@ -5,6 +5,8 @@
 // 上面就是一个大顶堆, 满足arr[i] >= arr[2i+1] && arr[i] >= arr[2i+2] (小顶堆<=)
 // 数字从小到大排列时需要构造最大堆, 然后将最大堆的元素从堆顶放至堆尾
 
+// 时间复杂度, 初始化建堆时间复杂度O(N), 堆调整时间复杂度O(logN)
+
 void heapSort(vector<int>& nums) {
     if (nums.empty()) {
         return;
