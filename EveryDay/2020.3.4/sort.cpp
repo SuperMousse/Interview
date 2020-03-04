@@ -1,5 +1,31 @@
 // 计数排序, 时间复杂度O(N+K)， 空间复杂度O(N+K)
-
+// 统计每个数字的频次, 然后依次写入新数组
+vector<int> countSort(vector<int> nums) {
+    if (nums.size() < 1) {
+        return vector<int>();
+    }
+    int maxValue = nums[0];
+    int minValue = nums[0];
+    for(auto n : nums) {
+        maxValue = n > maxValue ? n : maxValue;
+        minValue = n < minValue ? n : minValue;
+    }
+    vector<int> count(maxValue - minValue + 1);
+    vector<int> result(nums.size());
+    // 计数
+    for (int i = 0; i < nums.size(); ++i) {
+        count[nums[i] - minValue]++;
+    }
+    // 填充
+    int sortedIndex = 0;
+    for (int i = 0; i < count.size(); ++i) {
+        while(count[i] > 0) {
+            result[sortedIndex++] = minValue + i;
+            count[i] -= 1;
+        }
+    }
+    return result;
+}
 
 // Minimum adjacent swaps to move maximum and minimum to corners
 // Given N number of elements, find the minimum number of swaps 
