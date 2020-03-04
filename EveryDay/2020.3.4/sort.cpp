@@ -1,4 +1,4 @@
-// 计数排序
+// 计数排序, 时间复杂度O(N+K)， 空间复杂度O(N+K)
 
 
 // Minimum adjacent swaps to move maximum and minimum to corners
