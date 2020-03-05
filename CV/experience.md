@@ -141,17 +141,14 @@ x = x0 - f'(x0) / f''(x0)
 
 ##### (13) 目标检测里的hard negative mining做法？
 a. Faster RCNN选择与gt_box的IoU大于0.7和小于0.3的proposal分别作为正负样本来训练RPN，但是选择大于0.5和大于0.2且小于0.5的roi分别作为正负样本来训练Fast是一种hard example mining的做法
-b. focal loss
-c. OHEM???
-
-a. Focal Loss？
+b. Focal Loss？
 L_cross = - \sum(ylogy^ + (1-y)log(1-y^))  
 L_focal = -α(1-y^)^{γ}logy^             y = 1  
           -(1-α)(y^){γ}log(1-y^)        y = 0  
 α=0.25, γ=2,  α为平衡因子，用来平衡正负样本本身的比例不均衡  
 y^){γ}的作用就是当y^越接近y, 那么他在loss中的比例就应该越小, 从而重点学习那些学的不好的样本  
 
-b. OHEM
+c. OHEM
 
 ##### (14) resnet和densenet为什么可以这么深？
 a. 层叠过多的卷积层会出现梯度消失(模型退化), BN通过规范化输入数据改变数据分布，在前传过程中消除梯度弥散
@@ -241,9 +238,24 @@ a. 不同尺度的feature map上生成proposal和multi-scale training 和multi-s
 ##### (18) GAN的目标函数及其和交叉熵的区别？CycleGAN原理简介？其他GAN?
 
 图像融合泊松blending原理？
+PCA白化和ZCA白化（Zero-phase Component Analysis Whitening）白化的区别？
 
+cross entropy，logistic loss 和 KL-divergence的关系和区别？
 
+为什么GAN的generator比discriminator更难训练？
 
 ##### 风格迁移中的Gram矩阵?
 
 ##### np实现CNN？实现maxPooling?
+
+改进的softmax损失函数有哪些？
+label smoothing 和 mixup如何实现？
+如何计算CNN所需要的计算力（FLOPs）和参数量（Parameters）？
+
+relu为什么可以防止梯度消失？为什么正则化可以防止过拟合？
+
+EM（Expectation Maximization，最大期望算法）
+
+DBCAN（Density-Based Spatial Clustering of Applications with Noise，具有噪声的基于密度的聚类方法）
+
+SENet? Non-local?
