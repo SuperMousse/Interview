@@ -137,8 +137,8 @@ x = x0 - f'(x0) / f''(x0)
 
 ##### (13) 介绍一下Focal Loss？
 L_cross = - \sum(ylogy^ + (1-y)log(1-y^))  
-L_focal = -α(1-y^)^{γ}logy^      y = 1  
-          -(1-α)(y^){γ}log(1-y^) y = 0  
+L_focal = -α(1-y^)^{γ}logy^             y = 1  
+          -(1-α)(y^){γ}log(1-y^)        y = 0  
 α=0.25, γ=2  
 
 ##### (14) resnet和densenet为什么可以这么深？
