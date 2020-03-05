@@ -137,7 +137,9 @@ x = x0 - f'(x0) / f''(x0)
 
 ##### (13) 介绍一下Focal Loss？
 L_cross = - \sum(ylogy^ + (1-y)log(1-y^))
-L_focal = 
+L_focal = -α(1-y^)^{γ}logy^      y = 1
+          -(1-α)(y^){γ}log(1-y^) y = 0
+α=0.25, γ=2
 
 ##### (14) resnet和densenet为什么可以这么深？
 层叠过多的卷积层会出现梯度消失(模型退化), BN通过规范化输入数据改变数据分布，在前传过程中消除梯度弥散，而resnet的短路连接/shortcuts/skip connection则能在反向传播过程中更好地把梯度传到更浅的层次中。而DenseNet更为极端，它的skip connection不仅仅只连接上下层，直接实现了跨层连接，
