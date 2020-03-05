@@ -94,7 +94,7 @@ Map和Hash_Map的区别是Hash_Map使用了Hash算法来加快查找过程，但
 set为什么不包含重复的元素？ 因为set在添加元素的时候，实际中调用的是map的方法，而因为map中的key是不允许重复的，所以set中的元素不能重复。  
 
 ##### (7) LDA(Linear Discriminant Analysis，线性判别分析)和PCA的区别？
-见supervised
+见supervised.md
 
 
 ##### (8) ROC和AUC指标理解以及如何画ROC曲线？
@@ -111,4 +111,17 @@ ROC只有大于y=x的直线才是有意义的, 否则应该反向预测; ROC中�
 
 ##### (10) KMeans与KNN的区别？  
 K-Means是无监督学习的聚类算法，没有类别输出, 只有判别为哪个聚类中心；而KNN是监督学习的分类算法，有对应的类别输出  
-KNN基本不需要训练，对测试集里面的点，只需要找到在训练集中最近的k个点，用这最近的k个点的类别来决定测试点的类别。而K-Means则有明显的训练过程，找到k个类别的最佳质心，从而决定样本的簇类别。  
+KNN基本不需要训练，需要保存所有类别。而K-Means则有明显的训练过程，找到k个类别的最佳质心，从而决定样本的簇类别。  
+
+##### (11) 梯度下降法和牛顿法区别？  
+
+##### (12) SGD/AdaDelta/Adam优化方法的区别？  
+见optimizer.md, https://www.cnblogs.com/guoyaohua/p/8542554.html
+
+##### (13) 介绍一下Focal Loss？
+
+##### (14) resnet和densenet为什么可以这么深？
+层叠过多的卷积层会出现梯度消失(模型退化), BN通过规范化输入数据改变数据分布，在前传过程中消除梯度弥散，而resnet的短路连接/shortcuts/skip connection则能在反向传播过程中更好地把梯度传到更浅的层次中。而DenseNet更为极端，它的skip connection不仅仅只连接上下层，直接实现了跨层连接，
+每一层获得的梯度都是来自前面几层的梯度加成。
+
+##### (15) 
