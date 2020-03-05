@@ -135,12 +135,16 @@ x = x0 - f'(x0) / f''(x0)
 ##### (12) SGD/AdaDelta/Adam优化方法的区别？  
 见optimizer.md, https://www.cnblogs.com/guoyaohua/p/8542554.html
 
-##### (13) 介绍一下Focal Loss？
+##### (13) 目标检测里的hard negative mining做法？
+
+a. Focal Loss？
 L_cross = - \sum(ylogy^ + (1-y)log(1-y^))  
 L_focal = -α(1-y^)^{γ}logy^             y = 1  
           -(1-α)(y^){γ}log(1-y^)        y = 0  
 α=0.25, γ=2,  α为平衡因子，用来平衡正负样本本身的比例不均衡  
 y^){γ}的作用就是当y^越接近y, 那么他在loss中的比例就应该越小, 从而重点学习那些学的不好的样本  
+
+b. OHEM
 
 ##### (14) resnet和densenet为什么可以这么深？
 a. 层叠过多的卷积层会出现梯度消失(模型退化), BN通过规范化输入数据改变数据分布，在前传过程中消除梯度弥散
