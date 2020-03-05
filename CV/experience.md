@@ -178,7 +178,11 @@ BatchNorm(N): 参数数目： 2N +2N (mean + var + weight + bias)
 Embedding(N,W): 参数数目： N × W, 没有bias
 
 
-##### 
+##### (19) 深度学习上采样计数
+a. unpooling 补0  
+b. upsample 补相同的数字  
+c. 双线性插值  
+d. 反卷积/转置卷积: 可以恢复feature map尺寸用在FCN中
 
 #####
 
@@ -188,4 +192,6 @@ CP: 把测试样本的预测结果都保存下来, 分别计算每个类别的Pr
 OR: 统计所有类别的Precision 
 
 
-#### 风格迁移中的Gram矩阵?
+##### 风格迁移中的Gram矩阵?
+
+##### np实现CNN？实现maxPooling?
