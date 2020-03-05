@@ -51,7 +51,7 @@ d. 修正：对CNN output的特征向量（这个特征向量和第4步中拿去
 ##### (2) Fast R-CNN：ROI pooling+FC取代SVM
 a. selective search生成候选区域  
 b. CNN抽特征(CNN全部3 * 3卷积还有padding, 卷积不会使得feature变小, 但是pooling的stride为2, 所以最后feature map会变成原来的1/16), 并使用候选区域进行ROI pooling; ROI pooling输入为proposal和feature map, 按照proposal取出feature map拼接起来(使用scale参数将原始的H、W映射为1/16H、1/16W), 然后2d pooling成相同channel, h, w 
-c. 使用fc layer进行softmax分类(取代了SVM)以及边界框回归  
+c. 使用fc layer进行softmax分类(取代了SVM)以及边界框回归, fc层还用了svd减少参数量
 
 ##### (3) Faster R-CNN: 使用RPN(Region Proposal Network)取代了Selective Search  
 a. CNN抽特征, 3 * 3卷积feature map不变小, pooling stride为2, 最后feature map变为1/16  
@@ -218,6 +218,8 @@ mIoU(Mean Intersection over Union, 平均交并比): 分别对每个类计算（
 ##### (26) 目标检测中如何解决目标尺度不一致的问题？
 a. 不同尺度的feature map上生成proposal和multi-scale training 和multi-scale testing
 ###### b. 另外见: https://zhuanlan.zhihu.com/p/50621694
+
+##### (27) SVD
 
 ##### 数据中有噪声如何处理？
 
