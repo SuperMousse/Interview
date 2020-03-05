@@ -182,7 +182,7 @@ Embedding(N,W): 参数数目： N × W, 没有bias
 a. unpooling 补0  
 b. upsample 补相同的数字  
 c. 双线性插值  
-d. 反卷积/转置卷积: 可以恢复feature map尺寸用在FCN中
+d. 反卷积/转置卷积: 可以恢复feature map尺寸用在FCN中, padding+卷积从而使得feature map变大
 
 #####
 
