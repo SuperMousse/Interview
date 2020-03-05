@@ -167,7 +167,8 @@ GoogleNet: Inception模块->将1x1，3x3，5x5的conv和3x3的pooling，stack在
 两个3*3的conv代替模块中的5*5，降低了参数量的同时，加速计算  
 7*7的卷积变成了1*7和7*1的两层串联，3*3的也一样，变成了1*3和3*1，这样加速了计算，还增加了网络的非线性，减小过拟合的概率  
 
-##### (17) GAN的目标函数及其和交叉熵的区别？
+##### (17) Inception-ResNet-V2和ResneXt模型的优势及对比？
+
 
 
 ##### (18) GPU显存占用量计算？
@@ -184,17 +185,18 @@ b. upsample 补相同的数字
 c. 双线性插值  
 d. 反卷积/转置卷积: 可以恢复feature map尺寸用在FCN中, padding+卷积从而使得feature map变大
 
-##### (20) BN, LN(Layer Norm), IN(Instance Norm),GN (Group Normalization)和WS (Weight Standarization)的区别？
+##### (20) BN, LN(Layer Norm), IN(Instance Norm),GN (Group Normalization)区别?
 a. BN是取不同样本的同一通道做归一化；[NHW]  
 b. LN是取同一样本的不同通道做归一化；[CHW]: RNN作用明显, 还用在Bert里面
 c. IN是取同一样本的同一通道做归一化；[HW]: 风格迁移用的多, 因为图片生成的结果主要依赖于某个图像实例
 d. GN是取同一样本的部分通道做归一化；
-e. WS(Weight Standarization)：通过重写深度学习网络的权重W的方式来加速深度学习网络参数收敛。对每个neuron的weight vector进行权重g与方向v的分解，在BP过程中分别对g与v进行更新从而加速了收敛的速度。
 
 ##### multi-label classification的方法以及评价指标？
 mAP：按照score排序，在每一个recall计算precision，然后求平均值
 CP: 把测试样本的预测结果都保存下来, 分别计算每个类别的Precison再平均80个类别
 OR: 统计所有类别的Precision 
+
+##### (18) GAN的目标函数及其和交叉熵的区别？
 
 
 ##### 风格迁移中的Gram矩阵?
