@@ -14,5 +14,5 @@
     d.将特征向量按对应特征值大小从上到下按行排列成矩阵，取前k行组成矩阵P  
     e.Y=PX即为降维到k维后的数据  
 
-3. linear discriminant analysis: 不同于PCA, 是监督学习方法  
+3. linear discriminant analysis: 不同于PCA, 是监督学习方法, 又叫Fisher线性判别
    核心: 将所有的数据投影到一个高维直线上, 使得投影后类内方差最小，类间方差最大
