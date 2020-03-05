@@ -151,3 +151,9 @@ c. 而DenseNet更为极端，它的skip connection不仅仅只连接上下层，
 a. ResNet连接方式可能会阻碍信息的流动，但是DenseNet每层的输出都和最终的输出直接相连，梯度可以直接从末端流到之前的所有的层。
 b. DensetNet连接有正则化的作用，可以减少过拟合。
 c. DenseNet直接concat不同层的特征图，而不是像ResNet一样element-wise sum，这样每一层增加很少的k个Feature maps就可以使得feature map快速增长。(k称为增长系数)，这称之为“特征重用”，减小参数量和计算量。
+
+##### (16) 常用CNN分类网络简介？
+VGG  
+GoogleNet  
+
+##### (17) GAN的目标函数及其和交叉熵的区别？
