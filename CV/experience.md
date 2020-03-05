@@ -94,3 +94,7 @@ Map和Hash_Map的区别是Hash_Map使用了Hash算法来加快查找过程，但
 set为什么不包含重复的元素？ 因为set在添加元素的时候，实际中调用的是map的方法，而因为map中的key是不允许重复的，所以set中的元素不能重复。  
 
 ##### (7) LDA(Linear Discriminant Analysis，线性判别分析)和PCA的区别？
+见supervised
+
+
+##### (8) ROC和AUC指标理解以及如何画ROC曲线？
