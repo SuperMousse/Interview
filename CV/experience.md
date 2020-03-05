@@ -165,3 +165,6 @@ Linear(M->N): 参数数目：M×N + N (weight + bias)
 Conv2d(Cin, Cout, K): 参数数目：Cin × Cout × K × K + Cout
 BatchNorm(N): 参数数目： 2N +2N (mean + var + weight + bias)
 Embedding(N,W): 参数数目： N × W, 没有bias
+
+
+##### 
