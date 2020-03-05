@@ -147,6 +147,8 @@ L_focal = -α(1-y^)^{γ}logy^             y = 1
 y^){γ}的作用就是当y^越接近y, 那么他在loss中的比例就应该越小, 从而重点学习那些学的不好的样本  
 
 c. OHEM: Online Hard Example Mining  
+在Faster RCNN中计算RoIs的时候，我们对每个RoI的loss从大到小排序，选择前N个RoIs样本反向传播  
+但是位置相近的ROI在map中可能对应的是同一个位置，loss值是相近的，所以如果直接按照loss对roi进行排序的话，选出来的很可能是靠的很近的一些rois，所以针对这个问题，提出的解决方法是：对hard做nms，然后再选择B/N个ROI反向传播，这里nms选择的IoU=0.7  
 
 
 ##### (14) resnet和densenet为什么可以这么深？
