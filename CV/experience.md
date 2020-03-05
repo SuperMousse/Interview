@@ -143,7 +143,11 @@ L_focal = -α(1-y^)^{γ}logy^             y = 1
 y^){γ}的作用就是当y^越接近y, 那么他在loss中的比例就应该越小, 从而重点学习那些学的不好的样本  
 
 ##### (14) resnet和densenet为什么可以这么深？
-层叠过多的卷积层会出现梯度消失(模型退化), BN通过规范化输入数据改变数据分布，在前传过程中消除梯度弥散，而resnet的短路连接/shortcuts/skip connection则能在反向传播过程中更好地把梯度传到更浅的层次中。而DenseNet更为极端，它的skip connection不仅仅只连接上下层，直接实现了跨层连接，
-每一层获得的梯度都是来自前面几层的梯度加成。
+a. 层叠过多的卷积层会出现梯度消失(模型退化), BN通过规范化输入数据改变数据分布，在前传过程中消除梯度弥散
+b. resnet的短路连接/shortcuts/skip connection则能在反向传播过程中更好地把梯度传到更浅的层次中。
+c. 而DenseNet更为极端，它的skip connection不仅仅只连接上下层，直接实现了跨层连接，每一层获得的梯度都是来自前面几层的梯度加成。
 
-##### (15) 
+##### (15) densnet效果为什么比resnet效果好？
+a. ResNet连接方式可能会阻碍信息的流动，但是DenseNet每层的输出都和最终的输出直接相连，梯度可以直接从末端流到之前的所有的层。
+b. DensetNet连接有正则化的作用，可以减少过拟合。
+c. DenseNet直接concat不同层的特征图，而不是像ResNet一样element-wise sum，这样每一层增加很少的k个Feature maps就可以使得feature map快速增长。(k称为增长系数)，这称之为“特征重用”，减小参数量和计算量。
