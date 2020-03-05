@@ -183,7 +183,8 @@ b. upsample 补相同的数字
 c. 双线性插值  
 d. 反卷积/转置卷积: 可以恢复feature map尺寸用在FCN中, padding+卷积从而使得feature map变大
 e. pixel shuffle: 主流应用超分辨率重建, GAN  
-先通过卷积获得r^2个通道的特征图（特征图的大小和低分辨率图片的大小一致），然后经过周期筛选（Periodic Shuffing）得到高分辨率的图像。即将shape为(1, r^2C, H, W)的tensor reshape为(1, c, rH, rW) 
+先通过卷积获得r^2个通道的特征图（特征图的大小和低分辨率图片的大小一致），然后经过周期筛选（Periodic Shuffing）得到高分辨率的图像。即将shape为(1, r^2C, H, W)的tensor reshape为(1, c, rH, rW), r为放大因子  
+周期性筛选: 假如有9个channel, 那么将每个channel的最左上角的元素拼成一个3*3的格子, 然后其他依次类推(类似于3*3卷积变成1个像素的反操作)
 
 ##### (20) BN, LN(Layer Norm), IN(Instance Norm),GN (Group Normalization)区别?  
 a. BN是取不同样本的同一通道做归一化；[NHW]    
