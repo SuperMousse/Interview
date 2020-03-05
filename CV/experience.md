@@ -177,5 +177,5 @@ Embedding(N,W): 参数数目： N × W, 没有bias
 
 ##### multi-label classification的方法以及评价指标？
 mAP：按照score排序，在每一个recall计算precision，然后求平均值
-CP: 算每个类别的Precison再平均80个类别
+CP: 把测试样本的预测结果都保存下来, 分别计算每个类别的Precison再平均80个类别
 OR: 统计所有类别的Precision 
