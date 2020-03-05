@@ -179,12 +179,12 @@ BatchNorm(N): 参数数目： 2N +2N (mean + var + weight + bias)
 Embedding(N,W): 参数数目： N × W, 没有bias
 
 
-##### (19) 深度学习上采样计数
+##### (19) 深度学习上采样技术
 a. unpooling 补0  
 b. upsample 补相同的数字  
 c. 双线性插值  
 d. 反卷积/转置卷积: 可以恢复feature map尺寸用在FCN中, padding+卷积从而使得feature map变大
-##### e. pixel shuffle???
+e. pixel shuffle: 主流应用超分辨率重建, GAN
 
 ##### (20) BN, LN(Layer Norm), IN(Instance Norm),GN (Group Normalization)区别?  
 a. BN是取不同样本的同一通道做归一化；[NHW]    
