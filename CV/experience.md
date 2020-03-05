@@ -157,3 +157,11 @@ VGG
 GoogleNet  
 
 ##### (17) GAN的目标函数及其和交叉熵的区别？
+
+
+##### (18) GPU显存占用量计算？
+显存占用 = 模型显存占用 + batch_size × 每个样本的显存占用  
+Linear(M->N): 参数数目：M×N + N (weight + bias)
+Conv2d(Cin, Cout, K): 参数数目：Cin × Cout × K × K + Cout
+BatchNorm(N): 参数数目： 2N +2N (mean + var + weight + bias)
+Embedding(N,W): 参数数目： N × W, 没有bias
