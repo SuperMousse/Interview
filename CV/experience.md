@@ -203,7 +203,15 @@ OR: 统计所有类别的Precision
 l_k = l_{k-1} + [(f_k - 1) * s1 * s2 * ... s_{k-1}]
 l_k为第k层感受野, f_k为第k层filter尺寸, s_i为第i层stride, 空洞卷积相当于卷积核dialate, 按照dialate后的filter大小计算
 
+##### 数据中有噪声如何处理？
+
+##### 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？
+
+随机森林(Random Forest)的构建流程？
+
 ##### (24) 语义分割网络FCN、UNet、ENet的特点？
+
+##### (25) 轻量化网络MobileNet and ShuffleNet?
 
 ##### (24) SIFT、HOG、Canny算子的原理？
 
