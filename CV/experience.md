@@ -140,6 +140,9 @@ x = x0 - f'(x0) / f''(x0)
 见optimizer.md, https://www.cnblogs.com/guoyaohua/p/8542554.html
 
 ##### (13) 目标检测里的hard negative mining做法？
+a. Faster RCNN选择与gt_box的IoU大于0.7和小于0.3的proposal分别作为正负样本来训练RPN，但是选择大于0.5和大于0.2且小于0.5的roi分别作为正负样本来训练Fast是一种hard example mining的做法
+b. focal loss
+c. OHEM???
 
 a. Focal Loss？
 L_cross = - \sum(ylogy^ + (1-y)log(1-y^))  
@@ -184,6 +187,7 @@ a. unpooling 补0
 b. upsample 补相同的数字  
 c. 双线性插值  
 d. 反卷积/转置卷积: 可以恢复feature map尺寸用在FCN中, padding+卷积从而使得feature map变大
+##### e. pixel shuffle???
 
 ##### (20) BN, LN(Layer Norm), IN(Instance Norm),GN (Group Normalization)区别?  
 a. BN是取不同样本的同一通道做归一化；[NHW]    
@@ -203,11 +207,30 @@ OR: 统计所有类别的Precision
 l_k = l_{k-1} + [(f_k - 1) * s1 * s2 * ... s_{k-1}]
 l_k为第k层感受野, f_k为第k层filter尺寸, s_i为第i层stride, 空洞卷积相当于卷积核dialate, 按照dialate后的filter大小计算
 
+##### (24) 语义分割模型的评价指标PA,mPA,mIoU？
+PA: pixel accuracy, 分对的像素总量除以像素总数
+mPA: mean pixel accuracy, 先对每个类计算PA，然后再对所有类的PA求平均
+mIoU(Mean Intersection over Union, 平均交并比): 分别对每个类计算（真实标签和预测结果的交并比）IOU，然后再对所有类别的IOU求均值
+
+##### (25) 均值滤波；中值滤波；高斯滤波去噪声？
+噪声分类：椒盐噪声(幅值基本相同，但出现位置随机);高斯噪声(幅值大小符合某一分布)  
+均值滤波：对于当前处理的像素，选择其周围像素(模板)的均值来代替当前像素值
+中值滤波：周围像素由小到大排序之后，选择中值来代替原像素
+高斯滤波：用一个模板（或者称为卷积，掩膜）扫描图像中的每一个像素，用模板确定邻域内的像素的加权平均(核函数高斯函数)值替代中心像素值  
+
+##### (26) 目标检测中如何解决目标尺度不一致的问题？
+a. 不同尺度的feature map上生成proposal和multi-scale training 和multi-scale testing
+###### b. 另外见: https://zhuanlan.zhihu.com/p/50621694
+
 ##### 数据中有噪声如何处理？
+
+随机森林，gbdt，xgboost区别？
 
 ##### 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？
 
 随机森林(Random Forest)的构建流程？
+
+决策树算法ID3, C4.5; CART简述？
 
 ##### (24) 语义分割网络FCN、UNet、ENet的特点？
 
@@ -215,7 +238,10 @@ l_k为第k层感受野, f_k为第k层filter尺寸, s_i为第i层stride, 空洞�
 
 ##### (24) SIFT、HOG、Canny算子的原理？
 
-##### (18) GAN的目标函数及其和交叉熵的区别？
+##### (18) GAN的目标函数及其和交叉熵的区别？CycleGAN原理简介？其他GAN?
+
+图像融合泊松blending原理？
+
 
 
 ##### 风格迁移中的Gram矩阵?
