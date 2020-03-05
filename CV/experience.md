@@ -200,6 +200,8 @@ OR: 统计所有类别的Precision
 用结构元素B扫描图像A，腐蚀和膨胀分别是与图像做“与”，“或”运算  
 
 ##### (23) CNN感受野计算？
+l_k = l_{k-1} + [(f_k - 1) * s1 * s2 * ... s_{k-1}]
+l_k为第k层感受野, f_k为第k层filter尺寸, s_i为第i层stride, 空洞卷积相当于卷积核dialate, 按照dialate后的filter大小计算
 
 ##### (24) SIFT、HOG、Canny算子的原理？
 
