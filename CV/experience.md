@@ -87,8 +87,6 @@ b. 后端压缩: 会大程度上改变原始网络结构的压缩技术
 低秩近似(对于复杂网络，权重矩阵往往非常大，非常消耗存储和计算资源。低秩近似就是用若干个低秩矩阵组合重构大的权重矩阵，以此降低存储和计算资源消耗), 未加限制的剪枝(非结构化剪枝和结构化剪枝。非结构化剪枝是对神经网络中权重较小的权重或者权重矩阵进行剔除，然后对整个神经网络进行微调；结构化剪枝是在网络优化目标中加入权重稀疏正则项，使部分权重在训练时趋于0), 参数量化, 二值网络
 c. 优化加速: FFT计算Conv2d
 
-##### (5) YOLO系列
-
 ##### (6) C++中的List, Vector, Map, Set区别？
 List封装了链表,Vector封装了数组, list和vector的最主要的区别在于vector使用连续内存存储，支持[]运算符（下标运算符），而List是以链表形式实现的，不支持[]。  
 Map,Set介绍: 它们属于标准关联容器，都是由红黑树实现，他的插入删除效率比其他序列容器高是因为不需要做内存拷贝和内存移动，而直接替换指向节点的指针即可。  
@@ -217,9 +215,17 @@ mIoU(Mean Intersection over Union, 平均交并比): 分别对每个类计算（
 
 ##### (26) 目标检测中如何解决目标尺度不一致的问题？
 a. 不同尺度的feature map上生成proposal和multi-scale training 和multi-scale testing
-###### b. 另外见: https://zhuanlan.zhihu.com/p/50621694
+另外见: https://zhuanlan.zhihu.com/p/50621694
 
-##### (27) SVD
+##### (27) SENet? Non-local?
+
+##### (27) SVD?
+X = U∑V^T, U^{T}U=I, V^{T}V=I  
+A^{T}A的特征向量拼成V, AA^{T}的特征向量拼成U, 奇异值=sqrt(特征值), 通过特征值/向量阶段可以实现降维目的  
+X = U∑V^T  
+X^T = V^{T}∑U  
+X^{T}X = V(∑^2)V^{T}  
+V^{T}X^{T}XV = ∑^2, 所以V是X^{T}X的特征向量矩阵, 且其特征值为∑^2对角线上元素  
 
 ##### 数据中有噪声如何处理？
 
@@ -246,6 +252,8 @@ cross entropy，logistic loss 和 KL-divergence的关系和区别？
 
 为什么GAN的generator比discriminator更难训练？
 
+##### (5) YOLO系列
+
 ##### 风格迁移中的Gram矩阵?
 
 ##### np实现CNN？实现maxPooling?
@@ -260,7 +268,6 @@ EM（Expectation Maximization，最大期望算法）
 
 DBCAN（Density-Based Spatial Clustering of Applications with Noise，具有噪声的基于密度的聚类方法）
 
-SENet? Non-local?
 
 介绍C++的虚函数
 析构函数一定要是虚函数吗
