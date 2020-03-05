@@ -259,3 +259,6 @@ EM（Expectation Maximization，最大期望算法）
 DBCAN（Density-Based Spatial Clustering of Applications with Noise，具有噪声的基于密度的聚类方法）
 
 SENet? Non-local?
+
+介绍C++的虚函数
+析构函数一定要是虚函数吗
