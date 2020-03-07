@@ -240,9 +240,18 @@ a. DBA, QA(database augmentaton, query expansion)
 
 随机森林，gbdt，xgboost区别？
 
+##### 决策树
+ID3: 信息熵最大: 划分后节点的信息熵 - 划分前节点的信息熵  
+C4.5: 信息增益率最大  
+CART: 基尼系数  
+
+bagging: 从数据集中有放回采样多次(36.5没采样到), 训练多个决策树, 然后vote  
+
+随机森林: 以决策树为基学习器+bagging+随机特征选择: 随机选择样本(放回抽样, 行抽样); 构建决策树(CART树); 随机选择特征(列抽样); 随机森林投票(平均)
+
 ##### 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？
 
-随机森林(Random Forest)的构建流程？
+##### 随机森林(Random Forest)的构建流程？
 
 决策树算法ID3, C4.5; CART简述？
 
