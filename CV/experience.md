@@ -232,6 +232,9 @@ X^T = V^{T}∑U
 X^{T}X = V(∑^2)V^{T}  
 V^{T}X^{T}XV = ∑^2, 所以V是X^{T}X的特征向量矩阵, 且其特征值为∑^2对角线上元素  
 
+##### (28) 图像检索常见Trick
+a. DBA, QA(database augmentaton, query expansion)
+
 ##### 数据中有噪声如何处理？
 
 随机森林，gbdt，xgboost区别？
