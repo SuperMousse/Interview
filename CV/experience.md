@@ -236,6 +236,10 @@ V^{T}X^{T}XV = ∑^2, 所以V是X^{T}X的特征向量矩阵, 且其特征值为�
 ##### (28) 图像检索常见Trick
 a. DBA, QA(database augmentaton, query expansion)
 
+b. diffsuion?
+
+c. ANN?
+
 ##### 数据中有噪声如何处理？
 
 随机森林，gbdt，xgboost区别？
