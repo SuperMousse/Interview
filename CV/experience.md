@@ -240,6 +240,9 @@ b. diffsuion?
 
 c. ANN? 局部敏感哈希, KD tree, NSG?
 
+
+##### (28) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
+
 ##### (28) 布隆过滤?
 
 ##### (29) 海量数据前k大
