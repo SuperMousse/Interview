@@ -240,6 +240,8 @@ b. diffsuion?
 
 c. ANN? 局部敏感哈希, KD tree, NSG?
 
+##### (28) 布隆过滤?
+
 ##### 数据中有噪声如何处理？
 
 随机森林，gbdt，xgboost区别？
