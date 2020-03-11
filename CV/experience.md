@@ -238,7 +238,7 @@ a. DBA, QA(database augmentaton, query expansion)
 
 b. diffsuion?
 
-c. ANN?
+c. ANN? 局部敏感哈希, KD tree, NSG?
 
 ##### 数据中有噪声如何处理？
 
