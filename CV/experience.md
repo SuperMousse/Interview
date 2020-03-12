@@ -241,6 +241,9 @@ b. diffsuion?
 c. ANN? 局部敏感哈希, KD tree, NSG?
 
 
+##### (29) KL散度, JS散度, Wasserstein距离(推土机距离)
+
+
 ##### (28) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
 
 ##### (28) 布隆过滤?
