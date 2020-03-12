@@ -242,6 +242,8 @@ c. ANN? 局部敏感哈希, KD tree, NSG?
 
 
 ##### (29) KL散度, JS散度, Wasserstein距离(推土机距离)
+Wasserstein距离: 再来看式子，∏(Pr, Pg)代表对于(x,y)的边缘分布为Pr和Pg的联合分布的集合。我们从这个集合里面任选一个联合分布r，对应这个r联合分布，求出(x,y)服从r这个分布时x，y两个点对于||x-y||的期望值。对于联合分布集合里面所有的联合分布，我们都能求出这样一个期望值，其中最小的那个期望值就是我们要求的wasserstein-1 距离了。
+
 
 
 ##### (28) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
