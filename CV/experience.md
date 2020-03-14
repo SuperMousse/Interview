@@ -241,10 +241,10 @@ b. diffsuion?
 c. ANN? 局部敏感哈希, KD tree, NSG?
 
 ##### (29) DeepWalk, LINE、Node2Vec
-1. DeepWalk: 
+1. DeepWalk: 通过随机游走的方式，将图结构数据转化为了自然语言处理的任务来完成
 a. 从每个结点出发n_walks次，每一步都采取均匀采样的方式选择当前结点的邻接结点作为下一步的结点随机游走。当游走的路径长度达到walk_length后，停止一次游走。这样就生成了一个个游走的序列  
 b. 每个walk都被当成Word2Vec中的一个句子，而每个结点都是Word2Vec中的一个词; 之后采用word2vec的skip-gram算法, 使用一个大小为window_size的滑动窗口作为一条walk的context，使用一个context中的中心词去推测所有context中的其他词，使用的目标函数也与Word2Vec一致  
-2. LINE
+2. LINE: 不再采用随机游走的方法, 他在图上定义了两种相似度——一阶相似度与二阶相似度
 
 ##### (29) KL散度, JS散度, Wasserstein距离(推土机距离)
 Wasserstein距离: 再来看式子，∏(Pr, Pg)代表对于(x,y)的边缘分布为Pr和Pg的联合分布的集合。我们从这个集合里面任选一个联合分布r，对应这个r联合分布，求出(x,y)服从r这个分布时x，y两个点对于||x-y||的期望值。对于联合分布集合里面所有的联合分布，我们都能求出这样一个期望值，其中最小的那个期望值就是我们要求的wasserstein-1 距离了。
