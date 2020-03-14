@@ -241,10 +241,13 @@ b. diffsuion?
 c. ANN? 局部敏感哈希, KD tree, NSG?
 
 ##### (29) DeepWalk, LINE、Node2Vec
-1. DeepWalk: 通过随机游走的方式，将图结构数据转化为了自然语言处理的任务来完成
+1. DeepWalk: 通过随机游走的方式，将图结构数据转化为了自然语言处理的任务来完成  
 a. 从每个结点出发n_walks次，每一步都采取均匀采样的方式选择当前结点的邻接结点作为下一步的结点随机游走。当游走的路径长度达到walk_length后，停止一次游走。这样就生成了一个个游走的序列  
-b. 每个walk都被当成Word2Vec中的一个句子，而每个结点都是Word2Vec中的一个词; 之后采用word2vec的skip-gram算法, 使用一个大小为window_size的滑动窗口作为一条walk的context，使用一个context中的中心词去推测所有context中的其他词，使用的目标函数也与Word2Vec一致  
-2. LINE: 不再采用随机游走的方法, 他在图上定义了两种相似度——一阶相似度与二阶相似度
+b. 每个walk都被当成Word2Vec中的一个句子，而每个结点都是Word2Vec中的一个词; 之后采用word2vec的skip-gram算法, 使用一个大小为window_size的滑动窗口作为一条walk的context，使用一个context中的中心词去推测所有context中的其他词，使用的目标函数也与Word2Vec一致 
+
+2. LINE: 不再采用随机游走的方法, 他在图上定义了两种相似度——一阶相似度与二阶相似度  
+一阶相似度: 邻居节点的边权决定了一阶相似度, 实际一阶相似度为邻域边权和的归一化(w_{ij} / W), embeeding学习一阶相似度为节点内积+sigmoid, 最小化实际相似度与学习相似度之间的KL散度  
+二阶相似度: 邻居的相似程度决定了二阶相似度, 实际的二阶相似度p(v_j|v_i) = w_{ij} / d_i, w_{ij}为边ij的权, d_i为i节点的出度, embedding学习的二阶相似度为节点内积在邻域上的softmax, 再求两种相似度之间的KL散度  
 
 3. Node2Vec: 基于DeepWalk的延伸工作，它改进了DeepWalk随机游走的策略
 
