@@ -246,6 +246,8 @@ a. 从每个结点出发n_walks次，每一步都采取均匀采样的方式选�
 b. 每个walk都被当成Word2Vec中的一个句子，而每个结点都是Word2Vec中的一个词; 之后采用word2vec的skip-gram算法, 使用一个大小为window_size的滑动窗口作为一条walk的context，使用一个context中的中心词去推测所有context中的其他词，使用的目标函数也与Word2Vec一致  
 2. LINE: 不再采用随机游走的方法, 他在图上定义了两种相似度——一阶相似度与二阶相似度
 
+3. Node2Vec: 基于DeepWalk的延伸工作，它改进了DeepWalk随机游走的策略
+
 ##### (29) KL散度, JS散度, Wasserstein距离(推土机距离)
 Wasserstein距离: 再来看式子，∏(Pr, Pg)代表对于(x,y)的边缘分布为Pr和Pg的联合分布的集合。我们从这个集合里面任选一个联合分布r，对应这个r联合分布，求出(x,y)服从r这个分布时x，y两个点对于||x-y||的期望值。对于联合分布集合里面所有的联合分布，我们都能求出这样一个期望值，其中最小的那个期望值就是我们要求的wasserstein-1 距离了。
 
