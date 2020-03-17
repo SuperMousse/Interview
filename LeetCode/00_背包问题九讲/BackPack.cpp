@@ -53,6 +53,25 @@ for i in [1, 5]:
     else:
       f[i, j] = f[i-1, j]
       
+int dp(int num, int volume, vector<int> weight, vector<int> value) {
+    if ((weight.size() != value.size()) || num <= 0 || volume <= 0) {
+        return 0;
+    }
+    vector<vector<int>> dp(num+1, vector<int>(volume+1, 0));
+    for (int i = 1; i <= num; ++i) {
+        for (int j = 1; j <= volume; ++j) {
+            if ((j - weight[i-1]) >= 0) {
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i-1]] + value[i-1]);
+            }
+            else {
+                dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+    cout << dp[num][volume] << endl;
+    return dp[num][volume];
+}
+      
 // ************************ 一维动态规划 ************************
    f[i, j] = max(f[i-1, j], f[i-1, j-W_i]+V_i) 
 => f[j] = max(f[j], f[j-W_i]+V_i)
