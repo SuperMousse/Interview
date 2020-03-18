@@ -264,7 +264,6 @@ Wasserstein距离: 再来看式子，∏(Pr, Pg)代表对于(x,y)的边缘分布
 
 ##### (30) n-gram https://zhuanlan.zhihu.com/p/32829048; word2vec: CBOW/skip-gram
 
-##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 
 ##### (28) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
 
@@ -338,3 +337,47 @@ DBCAN（Density-Based Spatial Clustering of Applications with Noise，具有噪�
 
 介绍C++的虚函数
 析构函数一定要是虚函数吗
+
+
+
+##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
+map-reduce分为: input, split, map, shuffle, reduce, output六步  
+a. 输入(input)：如给定一个文档，包含如下四行：  
+Hello Java  
+Hello C  
+Hello Java  
+Hello C++  
+b. 拆分(split)：将上述文档中每一行的内容转换为key-value对，即：  
+0 - Hello Java  
+1 - Hello C  
+2 – Hello Java  
+3 - Hello C++   
+d. 映射(map)：将拆分之后的内容转换成新的key-value对，即：  
+(Hello , 1)   
+(Java , 1)  
+(Hello , 1)   
+(C , 1)  
+(Hello , 1)   
+(Java , 1)  
+(Hello , 1)   
+(C++ , 1)  
+e. 派发(shuffle)：将key相同的扔到一起去，即：  
+(Hello , 1)  
+(Hello , 1)  
+(Hello , 1)  
+(Hello , 1)   
+(Java , 1)  
+(Java , 1)  
+(C , 1)  
+(C++ , 1)  
+f. 这一步需要移动数据，原来的数据可能在不同的datanode上，这一步过后，相同key的数据会被移动到同一台机器上。最终，它会返回一个list包含各种k-value对，即：  
+{ Hello: 1,1,1,1}  
+{Java: 1,1}  
+{C: 1}  
+{C++: 1}  
+g. 缩减(reduce)：把同一个key的结果加在一起。如：  
+(Hello , 4)   
+(Java , 2)  
+(C , 1)   
+(C++,1)  
+h. 输出(output): 输出缩减之后的所有结果。  
