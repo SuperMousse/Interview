@@ -168,8 +168,8 @@ c. DenseNet直接concat不同层的特征图，而不是像ResNet一样element-w
 AlexNet: AlexNet引入了Relu和dropout, 引入数据增强、池化相互之间覆盖，卷积池化全连接层
 VGG: 整个网络都使用了同样3 * 3大小的卷积核尺寸和2 * 2最大池化尺寸, 2个3 * 3=1个5 * 5
 GoogleNet: Inception模块->将1x1，3x3，5x5的conv和3x3的pooling，stack在一起，一方面增加了网络的width，另一方面增加了网络对尺度的适应性  
-两个3*3的conv代替模块中的5*5，降低了参数量的同时，加速计算  
-7*7的卷积变成了1*7和7*1的两层串联，3*3的也一样，变成了1*3和3*1，这样加速了计算，还增加了网络的非线性，减小过拟合的概率  
+两个3 * 3的conv代替模块中的5 * 5，降低了参数量的同时，加速计算  
+7 * 7的卷积变成了1 * 7和7 * 1的两层串联，3 * 3的也一样，变成了1 * 3和3 * 1，这样加速了计算，还增加了网络的非线性，减小过拟合的概率  
 
 ##### (17) Inception-ResNet-V2和ResneXt模型的优势及对比？
 ResNeXt是在resnet中加了inception结构, 增加宽度；而Inception-ResNet-V2花式结构真多，是在Inception中加了renset的结构
