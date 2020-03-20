@@ -24,7 +24,6 @@ double PowerWithUnsignedExponent(int base, unsigned int exponent) {
 		if ((exponent & 0x1) != 0) {
 			result *= base;
 		}
-		result *= temp;
 		temp *= temp;
 		exponent >>= 1;
 	}
