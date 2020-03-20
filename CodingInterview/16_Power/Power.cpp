@@ -30,6 +30,7 @@ double PowerWithUnsignedExponent(int base, unsigned int exponent) {
 	return result;
 }
 
+
 double PowerWithUnsignedExponentRecurrent(int base, unsigned int exponent) {
 	if (exponent == 0) {
 		return 1.0;
