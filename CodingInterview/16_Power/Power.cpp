@@ -23,7 +23,6 @@ double PowerWithUnsignedExponent(int base, unsigned int exponent) {
 		if ((exponent & 0x1) == 0) {
 			result *= base;
 		}
-		result *= base;
 		base *= base;
 		exponent >>= 1;
 	}
@@ -45,6 +44,8 @@ double PowerWithUnsignedExponentRecurrent(int base, unsigned int exponent) {
 	}
 	return result;
 }
+
+
 
 double PowerWithUnsignedExponentRecurrent2(int base, unsigned int exponent) {
 	if (exponent == 0) {
