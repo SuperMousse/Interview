@@ -22,7 +22,7 @@ double PowerWithUnsignedExponent(int base, unsigned int exponent) {
 	int temp = base;
 	while (exponent > 0) {
 		if ((exponent & 0x1) != 0) {
-			result *= base;
+			result *= temp;
 		}
 		temp *= temp;
 		exponent >>= 1;
