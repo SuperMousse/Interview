@@ -19,11 +19,12 @@ double Power(double base, int exponent) {
 
 double PowerWithUnsignedExponent(int base, unsigned int exponent) {
 	double result = 1.0;
+	int temp = base;
 	while (exponent > 0) {
 		if ((exponent & 0x1) != 0) {
 			result *= base;
 		}
-		base *= base;
+		temp *= temp;
 		exponent >>= 1;
 	}
 	return result;
