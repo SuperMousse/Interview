@@ -24,7 +24,7 @@ bool isValidBST(TreeNode* root) {
     return true;
 }
 
-// 从二叉树的先序好中序序列中重构二叉树
+// 从二叉树的先序和中序序列中重构二叉树
 TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
     if (preorder.empty() || inorder.empty() ||
         preorder.size() != inorder.size()) {
