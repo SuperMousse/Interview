@@ -20,7 +20,7 @@
 	 // max depth
 	 int diameterOfBinaryTreeCore(TreeNode* root, int& maxSum) {
 		 if (root == nullptr) {
-			 return;
+			 return 0;
 		 }
 		 int left = diameterOfBinaryTreeCore(root->left, maxSum);
 		 int right = diameterOfBinaryTreeCore(root->right, maxSum);
