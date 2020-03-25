@@ -284,13 +284,12 @@ Wasserstein距离: 再来看式子，∏(Pr, Pg)代表对于(x,y)的边缘分布
 
 ##### (39) 数据中有噪声如何处理？
 
-##### (40) 
-随机森林，gbdt，xgboost区别？
-
-##### 决策树
+##### (40) 决策树
 ID3: 信息熵最大: 划分后节点的信息熵 - 划分前节点的信息熵  
 C4.5: 信息增益率最大  
 CART: 基尼系数  
+
+##### (41) 随机森林，gbdt，xgboost区别？
 
 bagging: 从数据集中有放回采样多次(36.5没采样到), 训练多个决策树, 然后vote  
 
@@ -300,11 +299,10 @@ bagging并行的训练很多的分类器降低了方差, 所以每个基分类�
 boosting每一轮都会比上一轮更加拟合原始数据, 偏差在降低, 所以要选择方差更小的基分类器, 要求更简单, 树会很浅或者剪枝
 
 
-##### 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？
+##### (41)集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？
 
 ##### 随机森林(Random Forest)的构建流程？
 
-决策树算法ID3, C4.5; CART简述？
 
 ##### (24) 语义分割网络FCN、UNet、ENet的特点？
 
@@ -314,12 +312,13 @@ boosting每一轮都会比上一轮更加拟合原始数据, 偏差在降低, �
 
 ##### (18) GAN的目标函数及其和交叉熵的区别？CycleGAN原理简介？其他GAN?
 
-图像融合泊松blending原理？
-PCA白化和ZCA白化（Zero-phase Component Analysis Whitening）白化的区别？
+##### 图像融合泊松blending原理？
 
-cross entropy，logistic loss 和 KL-divergence的关系和区别？
+##### PCA白化和ZCA白化（Zero-phase Component Analysis Whitening）白化的区别？
 
-为什么GAN的generator比discriminator更难训练？
+##### cross entropy，logistic loss 和 KL-divergence的关系和区别？
+
+##### 为什么GAN的generator比discriminator更难训练？
 
 ##### (5) YOLO系列
 
@@ -327,19 +326,20 @@ cross entropy，logistic loss 和 KL-divergence的关系和区别？
 
 ##### np实现CNN？实现maxPooling?
 
-改进的softmax损失函数有哪些？
-label smoothing 和 mixup如何实现？
-如何计算CNN所需要的计算力（FLOPs）和参数量（Parameters）？
+##### 改进的softmax损失函数有哪些？
 
-relu为什么可以防止梯度消失？为什么正则化可以防止过拟合？
+##### label smoothing 和 mixup如何实现？
+##### 如何计算CNN所需要的计算力（FLOPs）和参数量（Parameters）？
 
-EM（Expectation Maximization，最大期望算法）
+##### relu为什么可以防止梯度消失？为什么正则化可以防止过拟合？
 
-DBCAN（Density-Based Spatial Clustering of Applications with Noise，具有噪声的基于密度的聚类方法）
+##### EM（Expectation Maximization，最大期望算法）
+
+##### DBCAN（Density-Based Spatial Clustering of Applications with Noise，具有噪声的基于密度的聚类方法）
 
 
-介绍C++的虚函数
-析构函数一定要是虚函数吗
+##### 介绍C++的虚函数
+##### 析构函数一定要是虚函数吗
 
 ##### (30) 异质图神经网络
 a. 不同类型节点的异质性(eg. 电影, 演员, 导演)
