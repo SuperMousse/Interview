@@ -227,7 +227,7 @@ a. 不同尺度的feature map上生成proposal和multi-scale training 和multi-s
 
 ##### (27) SENet? Non-local?
 
-##### (27) SVD?
+##### (28) SVD?
 X = U∑V^T, U^{T}U=I, V^{T}V=I  
 A^{T}A的特征向量拼成V, AA^{T}的特征向量拼成U, 奇异值=sqrt(特征值), 通过特征值/向量阶段可以实现降维目的  
 X = U∑V^T  
@@ -235,14 +235,14 @@ X^T = V^{T}∑U
 X^{T}X = V(∑^2)V^{T}  
 V^{T}X^{T}XV = ∑^2, 所以V是X^{T}X的特征向量矩阵, 且其特征值为∑^2对角线上元素  
 
-##### (28) 图像检索常见Trick
+##### (29) 图像检索常见Trick
 a. DBA, QA(database augmentaton, query expansion)
 
 b. diffsuion?
 
 c. ANN? 局部敏感哈希, KD tree, NSG?
 
-##### (29) DeepWalk, LINE、Node2Vec
+##### (30) DeepWalk, LINE、Node2Vec
 1. DeepWalk: 通过随机游走的方式，将图结构数据转化为了自然语言处理的任务来完成  
 a. 从每个结点出发n_walks次，每一步都采取均匀采样的方式选择当前结点的邻接结点作为下一步的结点随机游走。当游走的路径长度达到walk_length后，停止一次游走。这样就生成了一个个游走的序列  
 b. 每个walk都被当成Word2Vec中的一个句子，而每个结点都是Word2Vec中的一个词; 之后采用word2vec的skip-gram算法, 使用一个大小为window_size的滑动窗口作为一条walk的context，使用一个context中的中心词去推测所有context中的其他词，使用的目标函数也与Word2Vec一致 
@@ -261,31 +261,30 @@ p为保守探索系数, 倾向于访问原有的节点, q为激进探索系数, 
 
 4. SDNE: 通过深度自编码器直接把一阶和二阶相似度保存在embedding中
 
-##### (29) KL散度, JS散度, Wasserstein距离(推土机距离)
+##### (31) KL散度, JS散度, Wasserstein距离(推土机距离)
 Wasserstein距离: 再来看式子，∏(Pr, Pg)代表对于(x,y)的边缘分布为Pr和Pg的联合分布的集合。我们从这个集合里面任选一个联合分布r，对应这个r联合分布，求出(x,y)服从r这个分布时x，y两个点对于||x-y||的期望值。对于联合分布集合里面所有的联合分布，我们都能求出这样一个期望值，其中最小的那个期望值就是我们要求的wasserstein-1 距离了。
 
-##### (30) n-gram https://zhuanlan.zhihu.com/p/32829048; word2vec: CBOW/skip-gram
+##### (32) n-gram https://zhuanlan.zhihu.com/p/32829048; word2vec: CBOW/skip-gram
 
 
-##### (28) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
+##### (33) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
 
-##### (28) 布隆过滤?
+##### (34) 布隆过滤?
 
-##### (29) 海量数据前k大
+##### (35) 海量数据前k大
 1. partition
 2. k-multiset
 
-##### (30)  怎么改善用户搜索后显示的内容的一个排序质量？说说有什么特征可以构建，用什么模型？
+##### (36)  怎么改善用户搜索后显示的内容的一个排序质量？说说有什么特征可以构建，用什么模型？
 
-##### (31) 单调递增数组，尽可能想一些方法将它们压缩
+##### (37) 单调递增数组，尽可能想一些方法将它们压缩
 
 
-##### (32) 向领导汇报工作, 如何讲述反向传播
+##### (38) GBDT原理，是回归树还是分类树? GBDT跟xgboost对比?xgboost怎么并行化 
 
-##### (30) GBDT原理，是回归树还是分类树? GBDT跟xgboost对比?xgboost怎么并行化 
+##### (39) 数据中有噪声如何处理？
 
-##### 数据中有噪声如何处理？
-
+##### (40) 
 随机森林，gbdt，xgboost区别？
 
 ##### 决策树
