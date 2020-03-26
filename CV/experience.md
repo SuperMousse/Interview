@@ -275,41 +275,43 @@ ID3: 信息熵最大: 划分后节点的信息熵 - 划分前节点的信息熵
 C4.5: 信息增益率最大  
 CART: 基尼系数  
 
-介绍GBDT,XGBOOST, LightGBM
+##### (35) 介绍一下GBDT,XGBOOST, LightGBM, 区别?
 
 
-##### (40) 决策树
 
-
-##### (41) 随机森林，gbdt，xgboost区别？
+##### (36) 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？随机森林是什么?
 
 bagging: 从数据集中有放回采样多次(36.5没采样到), 训练多个决策树, 然后vote  
+boosting:   
 
 随机森林: 以决策树为基学习器+bagging+随机特征选择: 随机选择样本(放回抽样, 行抽样); 构建决策树(CART树); 随机选择特征(列抽样); 随机森林投票(平均)
 
 bagging并行的训练很多的分类器降低了方差, 所以每个基分类器目的是降低偏差, 所以使用很深并且不剪枝的基分类器  
 boosting每一轮都会比上一轮更加拟合原始数据, 偏差在降低, 所以要选择方差更小的基分类器, 要求更简单, 树会很浅或者剪枝
 
+##### (37) 介绍GCN, GRaphSage, GAT
 
-##### (41)集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？
+##### (38) Softmax反向传播的梯度更新公式
+sigmoid=>f: f(x)( 1 - f(x) ) 
+softmax=>g: g(x)( 1 - g(x) )
 
-##### 随机森林(Random Forest)的构建流程？
+##### (39) 介绍一个CV里的经典网络，比如resnet, 讲讲3 * 3,5 * 5,1 * 1卷积
+
+##### (40) Resnet相当于传统机器学习中的什么
+
+##### (41) DeepCTR框架?
+
+##### (42) BN在训练和测试的时候的差别
+
+##### (43) LSTM和GRU的区别?
+
+##### (44) Word2vec里的negtive sampling
+
+##### (45) 讲一下HMM, CRF
+
+##### (46) 讲一下Transformer
 
 
-
-介绍GCN，GRaphSage ,GAT等
-Softmax反向传播的梯度更新公式
-介绍一个CV里的经典网络，比如resnet
-说说3 * 3,5 * 5,1 * 1卷积
-Resnet相当于传统机器学习中的什么
-可以看下deerpctr的框架
-BN在训练和测试的时候的差别
-Fast-rnn了解吗
-LSTM和GRU的区别
-Word2vec里的negtive sampling
-了解HMM,CRF嘛
-了解Bert, Transformer
-介绍一下transformer
 介绍一下熟悉的排序阶段的模型，比如面试阿里最好说下阿里系的文章，然后我一开始说了华为的文章deepfm，后面补充DIN，DIEN
 了解多任务学习嘛；说了ESSM,,然后说回头可以看看MMOE等等
 关于wide  and deep的记忆性和泛化性，然后说说one-hot为什么有效，尤其对于LR来说 ：：后面提示些分桶啊，内存啊
