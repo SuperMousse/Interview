@@ -264,6 +264,36 @@ p为保守探索系数, 倾向于访问原有的节点, q为激进探索系数, 
 ##### (31) KL散度, JS散度, Wasserstein距离(推土机距离)
 Wasserstein距离: 再来看式子，∏(Pr, Pg)代表对于(x,y)的边缘分布为Pr和Pg的联合分布的集合。我们从这个集合里面任选一个联合分布r，对应这个r联合分布，求出(x,y)服从r这个分布时x，y两个点对于||x-y||的期望值。对于联合分布集合里面所有的联合分布，我们都能求出这样一个期望值，其中最小的那个期望值就是我们要求的wasserstein-1 距离了。
 
+
+
+
+##### Dropout，dropout相当于传统机器学习中的哪个
+bagging
+
+##### L1, L2说一下
+介绍GBDT,XGBOOST
+LightGBM有了解嘛
+介绍GCN，GRaphSage ,GAT等
+Softmax反向传播的梯度更新公式
+介绍一个CV里的经典网络，比如resnet
+说说3 * 3,5 * 5,1 * 1卷积
+Resnet相当于传统机器学习中的什么
+可以看下deerpctr的框架
+BN在训练和测试的时候的差别
+Fast-rnn了解吗
+LSTM和GRU的区别
+Word2vec里的negtive sampling
+了解HMM,CRF嘛
+了解Bert, Transformer
+介绍一下transformer
+介绍一下熟悉的排序阶段的模型，比如面试阿里最好说下阿里系的文章，然后我一开始说了华为的文章deepfm，后面补充DIN，DIEN
+了解多任务学习嘛；说了ESSM,,然后说回头可以看看MMOE等等
+关于wide  and deep的记忆性和泛化性，然后说说one-hot为什么有效，尤其对于LR来说 ：：后面提示些分桶啊，内存啊
+说下为什么广告里面特别喜欢用id类特征，而数据挖掘不喜欢用（从泛化性和记忆性说下）
+说说除了CTR,讲讲召回阶段，了解哪些，协同过滤，双塔模型，后面又说了可以看看阿里的TDM文章，，后面又说了些多峰问题，和阿里的另一篇multi-interet的文章（题目回去搜一下）
+用户侧特征稀疏会造成什么情况
+
+
 ##### (32) n-gram https://zhuanlan.zhihu.com/p/32829048; word2vec: CBOW/skip-gram
 
 
@@ -347,31 +377,7 @@ b. 不同元路径语义的不同(电影1->演员->电影2, 电影1->导演->电
 c. 不同邻居的信息融合(电影1->电影2, 电影3)
 
 
-##### Dropout，dropout相当于传统机器学习中的哪个
-bagging
 
-##### L1, L2说一下
-介绍GBDT,XGBOOST
-LightGBM有了解嘛
-介绍GCN，GRaphSage ,GAT等
-Softmax反向传播的梯度更新公式
-介绍一个CV里的经典网络，比如resnet
-说说3 * 3,5 * 5,1 * 1卷积
-Resnet相当于传统机器学习中的什么
-可以看下deerpctr的框架
-BN在训练和测试的时候的差别
-Fast-rnn了解吗
-LSTM和GRU的区别
-Word2vec里的negtive sampling
-了解HMM,CRF嘛
-了解Bert, Transformer
-介绍一下transformer
-介绍一下熟悉的排序阶段的模型，比如面试阿里最好说下阿里系的文章，然后我一开始说了华为的文章deepfm，后面补充DIN，DIEN
-了解多任务学习嘛；说了ESSM,,然后说回头可以看看MMOE等等
-关于wide  and deep的记忆性和泛化性，然后说说one-hot为什么有效，尤其对于LR来说 ：：后面提示些分桶啊，内存啊
-说下为什么广告里面特别喜欢用id类特征，而数据挖掘不喜欢用（从泛化性和记忆性说下）
-说说除了CTR,讲讲召回阶段，了解哪些，协同过滤，双塔模型，后面又说了可以看看阿里的TDM文章，，后面又说了些多峰问题，和阿里的另一篇multi-interet的文章（题目回去搜一下）
-用户侧特征稀疏会造成什么情况
 
 
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
