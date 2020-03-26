@@ -347,6 +347,35 @@ b. 不同元路径语义的不同(电影1->演员->电影2, 电影1->导演->电
 c. 不同邻居的信息融合(电影1->电影2, 电影3)
 
 
+##### Dropout，dropout相当于传统机器学习中的哪个
+bagging
+
+##### L1, L2说一下
+介绍GBDT,XGBOOST
+LightGBM有了解嘛
+介绍GCN，GRaphSage ,GAT等
+Softmax反向传播的梯度更新公式
+介绍一个CV里的经典网络，比如resnet
+说说3 * 3,5 * 5,1 * 1卷积
+Resnet相当于传统机器学习中的什么
+可以看下deerpctr的框架
+BN在训练和测试的时候的差别
+Fast-rnn了解吗
+LSTM和GRU的区别
+Word2vec里的negtive sampling
+了解HMM,CRF嘛
+了解Bert, Transformer
+介绍一下transformer
+介绍一下熟悉的排序阶段的模型，比如面试阿里最好说下阿里系的文章，然后我一开始说了华为的文章deepfm，后面补充DIN，DIEN
+了解多任务学习嘛；说了ESSM,,然后说回头可以看看MMOE等等
+关于wide  and deep的记忆性和泛化性，然后说说one-hot为什么有效，尤其对于LR来说 ：：后面提示些分桶啊，内存啊
+说下为什么广告里面特别喜欢用id类特征，而数据挖掘不喜欢用（从泛化性和记忆性说下）
+说说除了CTR,讲讲召回阶段，了解哪些，协同过滤，双塔模型，后面又说了可以看看阿里的TDM文章，，后面又说了些多峰问题，和阿里的另一篇multi-interet的文章（题目回去搜一下）
+用户侧特征稀疏会造成什么情况
+Graph embdeding说一下，那几个经典的
+最后问昨天笔试的情况和问题，晚上给你补个笔试题
+
+
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 map-reduce分为: input, split, map, shuffle, reduce, output六步  
 a. 输入(input)：如给定一个文档，包含如下四行：  
