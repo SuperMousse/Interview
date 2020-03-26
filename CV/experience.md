@@ -175,13 +175,16 @@ GoogleNet: Inception模块->将1x1，3x3，5x5的conv和3x3的pooling，stack在
 ResNeXt是在resnet中加了inception结构, 增加宽度；而Inception-ResNet-V2花式结构真多，是在Inception中加了renset的结构
 
 
-##### (18) GPU显存占用量计算？
+##### (18) GPU显存占用量计算？ CNN所需要的计算力（FLOPs）和参数量（Parameters）？
+
 显存占用 = 模型显存占用 + batch_size × 每个样本的显存占用  
 Linear(M->N): 参数数目：M×N + N (weight + bias)
 Conv2d(Cin, Cout, K): 参数数目：Cin × Cout × K × K + Cout
 BatchNorm(N): 参数数目： 2N +2N (mean + var + weight + bias)
 Embedding(N,W): 参数数目： N × W, 没有bias
 
+FLOPs把一次乘法或者一次加法考虑为一次计算, 所有的乘法次数和加法次数加起来就是FLOPs
+Parameters计算方法看上面
 
 ##### (19) 深度学习上采样技术
 a. unpooling 补0  
@@ -275,7 +278,7 @@ ID3: 信息熵最大: 划分后节点的信息熵 - 划分前节点的信息熵
 C4.5: 信息增益率最大  
 CART: 基尼系数  
 
-##### (35) 介绍一下GBDT,XGBOOST, LightGBM, 区别?
+##### (35) 介绍一下GBDT,XGBOOST, LightGBM, 区别? GBDT原理，是回归树还是分类树? GBDT跟xgboost对比?xgboost怎么并行化 
 
 
 
@@ -312,31 +315,41 @@ softmax=>g: g(x)( 1 - g(x) )
 ##### (46) 讲一下Transformer
 
 ##### (47) 排序阶段模型
-介绍一下熟悉的排序阶段的模型，比如面试阿里最好说下阿里系的文章，然后我一开始说了华为的文章deepfm，后面补充DIN，DIEN
-了解多任务学习嘛；说了ESSM,,然后说回头可以看看MMOE等等
-关于wide  and deep的记忆性和泛化性，然后说说one-hot为什么有效，尤其对于LR来说 ：：后面提示些分桶啊，内存啊
-说下为什么广告里面特别喜欢用id类特征，而数据挖掘不喜欢用（从泛化性和记忆性说下）
-说说除了CTR,讲讲召回阶段，了解哪些，协同过滤，双塔模型，后面又说了可以看看阿里的TDM文章，，后面又说了些多峰问题，和阿里的另一篇multi-interet的文章（题目回去搜一下）
-用户侧特征稀疏会造成什么情况
+DeepFM, DIN, DIEN, 注意阿里系文章?
+
+##### (48) 召回阶段模型
+TDM
+
+##### (49) 讲一下多任务学习?
+ESSM, MMOE等?
+
+##### (50) 关于wide  and deep的记忆性和泛化性，然后说说one-hot为什么有效，尤其对于LR来说 ：：后面提示些分桶啊，内存啊
+
+##### (51) 说下为什么广告里面特别喜欢用id类特征，而数据挖掘不喜欢用（从泛化性和记忆性说下）
+
+##### (52) 协同过滤, 双塔模型, 多峰问题, 阿里multi-interest
+
+##### (53) 用户侧特征稀疏会造成什么情况
 
 
-##### (32) n-gram https://zhuanlan.zhihu.com/p/32829048; word2vec: CBOW/skip-gram
+##### (54) n-gram https://zhuanlan.zhihu.com/p/32829048; word2vec: CBOW/skip-gram
 
 
-##### (33) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
+##### (55) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
 
-##### (34) 布隆过滤?
+##### (56) 布隆过滤?
+n长度二进制数组, k个哈希函数, 哈希算索引将数组位上置1, 用于海量数据查询
 
 ##### (35) 海量数据前k大
 1. partition
 2. k-multiset
 
-##### (36)  怎么改善用户搜索后显示的内容的一个排序质量？说说有什么特征可以构建，用什么模型？
+##### (57)  怎么改善用户搜索后显示的内容的一个排序质量？说说有什么特征可以构建，用什么模型？
 
-##### (37) 单调递增数组，尽可能想一些方法将它们压缩
+##### (58) 单调递增数组，尽可能想一些方法将它们压缩
 
 
-##### (38) GBDT原理，是回归树还是分类树? GBDT跟xgboost对比?xgboost怎么并行化 
+##### (38) 
 
 ##### (39) 数据中有噪声如何处理？
 
@@ -367,7 +380,7 @@ softmax=>g: g(x)( 1 - g(x) )
 ##### 改进的softmax损失函数有哪些？
 
 ##### label smoothing 和 mixup如何实现？
-##### 如何计算CNN所需要的计算力（FLOPs）和参数量（Parameters）？
+
 
 ##### relu为什么可以防止梯度消失？为什么正则化可以防止过拟合？
 
