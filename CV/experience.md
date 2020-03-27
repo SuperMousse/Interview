@@ -308,6 +308,22 @@ softmax=>g: g(x)( 1 - g(x) )
 ##### (42) BN在训练和测试的时候的差别
 
 ##### (43) LSTM和GRU的区别?
+RNN: 
+
+
+LSTM:  
+i_t = sigma(W_{ii}x_{t} + b_{ii} + W_{hi}h_{t-1} + b_{hi})  
+o_t = sigma(W_{io}x_{t} + b_{io} + W_{ho}h_{t-1} + b_{ho})  
+f_t = sigma(W_{if}x_{t} + b_{if} + W_{hf}h_{t-1} + b_{hf})  
+g_t =  tanh(W_{ig}x_{t} + b_{ig} + W_{hg}h_{t-1} + b_{hg})  
+c_t = f_t * c_{t-1} + g_t * i_t  
+h_t = o_t * tanh(c_t)  
+
+GRU: 
+r_t = sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{t-1} + b_{hr})  
+z_t = sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{t-1} + b_{hz})  
+n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))
+h_t = (1 - z_t) * n_t + z_t * h_{t-1}
 
 ##### (44) Word2vec里的negtive sampling
 
