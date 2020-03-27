@@ -332,7 +332,10 @@ h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden stat
 
 ##### (44) Word2vec里的negtive sampling
 
-##### (45) 讲一下HMM, CRF
+##### (45) 讲一下HMM, CRF（隐马尔科夫模型, 条件随机场）
+1.HMM是生成模型，CRF是判别模型  
+2.HMM是概率有向图，CRF是概率无向图  
+3.HMM求解过程可能是局部最优，CRF可以全局最优  
 
 ##### (46) 讲一下Transformer
 
