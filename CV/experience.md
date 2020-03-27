@@ -280,6 +280,7 @@ CART: 基尼系数
 
 ##### (35) 介绍一下GBDT,XGBOOST, LightGBM, 区别? GBDT原理，是回归树还是分类树? GBDT跟xgboost对比?xgboost怎么并行化 
 
+GBDT: 回归树
 
 
 ##### (36) 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？随机森林是什么?
