@@ -309,6 +309,8 @@ softmax=>g: g(x)( 1 - g(x) )
 
 ##### (43) LSTM和GRU的区别?
 RNN: 
+h_t = f(W_{ih}x_{t} + b_{ih} + W_{hh}x_{t} + b_{hh})
+o_t = g(W_{ho}h_{t})
 
 
 LSTM:  
