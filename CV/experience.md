@@ -325,9 +325,9 @@ h_t = o_t * tanh(c_t)                                       hidden state
 
 GRU: 
 r_t = sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{t-1} + b_{hr})           reset gate       
-z_t = sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{t-1} + b_{hz})           update gate
-n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))   memory
-h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden state  
+z_t = sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{t-1} + b_{hz})           update gate  
+n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))   memory  
+h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden state    
 
 ##### (44) Word2vec里的negtive sampling
 
