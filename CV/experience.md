@@ -323,7 +323,7 @@ g_t =  tanh(W_{ig}x_{t} + b_{ig} + W_{hg}h_{t-1} + b_{hg})  遗忘门
 c_t = f_t * c_{t-1} + g_t * i_t                             memory cell  
 h_t = o_t * tanh(c_t)                                       hidden state  
 
-GRU: 
+GRU:   
 r_t = sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{t-1} + b_{hr})           reset gate       
 z_t = sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{t-1} + b_{hz})           update gate  
 n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))   memory  
