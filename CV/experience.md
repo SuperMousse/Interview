@@ -308,24 +308,26 @@ softmax=>g: g(x)( 1 - g(x) )
 ##### (42) BN在训练和测试的时候的差别
 
 ##### (43) LSTM和GRU的区别?
+1. GRU参数更少因此更容易收敛，但是数据集很大的情况下，LSTM表达性能更好
+2. 从结构上来说，GRU只有两个门(update和reset)，LSTM有三个门(input，output, forget)，GRU直接将hidden state 传给下一个单元，而LSTM则用memory cell把 hidden state 包装起来  
 RNN: 
 h_t = f(W_{ih}x_{t} + b_{ih} + W_{hh}x_{t} + b_{hh})
 o_t = g(W_{ho}h_{t})
 
 
 LSTM:  
-i_t = sigma(W_{ii}x_{t} + b_{ii} + W_{hi}h_{t-1} + b_{hi})  
-o_t = sigma(W_{io}x_{t} + b_{io} + W_{ho}h_{t-1} + b_{ho})  
-f_t = sigma(W_{if}x_{t} + b_{if} + W_{hf}h_{t-1} + b_{hf})  
-g_t =  tanh(W_{ig}x_{t} + b_{ig} + W_{hg}h_{t-1} + b_{hg})  
-c_t = f_t * c_{t-1} + g_t * i_t  
-h_t = o_t * tanh(c_t)  
+i_t = sigma(W_{ii}x_{t} + b_{ii} + W_{hi}h_{t-1} + b_{hi})  输入门   
+o_t = sigma(W_{io}x_{t} + b_{io} + W_{ho}h_{t-1} + b_{ho})  输入门   
+f_t = sigma(W_{if}x_{t} + b_{if} + W_{hf}h_{t-1} + b_{hf})  遗忘门  
+g_t =  tanh(W_{ig}x_{t} + b_{ig} + W_{hg}h_{t-1} + b_{hg})  遗忘门  
+c_t = f_t * c_{t-1} + g_t * i_t                             memory cell  
+h_t = o_t * tanh(c_t)                                       hidden state  
 
 GRU: 
-r_t = sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{t-1} + b_{hr})  
-z_t = sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{t-1} + b_{hz})  
-n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))
-h_t = (1 - z_t) * n_t + z_t * h_{t-1}
+r_t = sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{t-1} + b_{hr})           reset gate       
+z_t = sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{t-1} + b_{hz})           update gate
+n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))   memory
+h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden state  
 
 ##### (44) Word2vec里的negtive sampling
 
