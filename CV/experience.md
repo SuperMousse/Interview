@@ -371,7 +371,7 @@ z_t = sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{t-1} + b_{hz})           update gate
 n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))   memory  
 h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden state    
 
-##### (43) Word2vec
+##### (43) Word2vec: word2vec参数量巨大, 容易过拟合, 把常见词组作为一个单词/减少常见词抽样; 训练缓慢, 使用层次softmax/negative sampling
 a. CBOW： 周围词输入预测中心词, one-hot * 输入embedding矩阵, 多个词的均值作为隐层输入, 再乘输出矩阵, softmax预测中心词  
 b. skip-gram: 中心词输入, 预测周围词; 构建(中心词, 周围词)的样本对, 统计其概率, 输入中心词, 矩阵变换后softmax预测其样本对概率
 ###### 从隐藏层到输出的Softmax层的计算量很大，因为要计算所有词的Softmax概率，再去找概率最大的值, hierarchical softmax 和negtive sampling就是用于解决这个问题
@@ -381,7 +381,7 @@ Loss = sum(log(p(w_t|context)))
 p(w_t|context) = p(c1=1|x_t) p(c2=0|x_t, c1=1) p(c3=1|x_t, c1=1, c2=0) ...
 p(c1|x_t) = sigmoid(w x_t) c1=1, 1 - sigmoid(w x_t), c1= 0
 
-d. negtive sampling:
+d. negative sampling: softmax时我们希望目标类别为1, 其他类别都为0, 这些类别就是negative word, 在negative word中采样一部分用于目标word的训练
 
 
 ##### (44) 讲一下Transformer, BERT
