@@ -320,9 +320,9 @@ e. shrinkage,相当于学习速率(XGBoost中的eta). XGBoost在进行完一次�
  
 
 4) LightGBM  
-
-
-
+LightGBM和XGBoost的决策树生长策略不同
+LightGBM: leaf-wise, 不停地找到当前增益最大的节点, 向下生成, 容易生成较深的决策树, 产生过拟合  
+XGBoost: level-wise, 逐层生成树节点, 不容易过拟合, 但不加区分的对待同一层的叶子，带来了很多没必要的开销
 
 
 ##### (36) 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？随机森林是什么?
@@ -344,13 +344,12 @@ softmax=>g: g(x)( 1 - g(x) )
 ##### (39) 介绍一个CV里的经典网络，比如resnet, 讲讲3 * 3,5 * 5,1 * 1卷积
 
 ##### (40) Resnet相当于传统机器学习中的什么
+多分类LR
 
-##### (41) DeepCTR框架?
-
-##### (42) BN在训练和测试的时候的差别
+##### (41) BN在训练和测试的时候的差别
 训练的时候学习u, sigma, alpha, beta, 测试的时候直接使用之前学习到的alpha, beta, 以及滑动均值保存的u, sigma, 而不是测试样本重新计算滑动均值
 
-##### (43) LSTM和GRU的区别?
+##### (42) LSTM和GRU的区别?
 1. GRU参数更少因此更容易收敛，但是数据集很大的情况下，LSTM表达性能更好
 2. 从结构上来说，GRU只有两个门(update和reset)，LSTM有三个门(input，output, forget)，GRU直接将hidden state 传给下一个单元，而LSTM则用memory cell把 hidden state 包装起来  
 RNN: 
@@ -372,7 +371,9 @@ z_t = sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{t-1} + b_{hz})           update gate
 n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))   memory  
 h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden state    
 
-##### (44) Word2vec里的negtive sampling
+##### (43) Word2vec里的negtive sampling, 层级softmax
+
+
 
 ##### (45) 讲一下HMM, CRF（隐马尔科夫模型, 条件随机场）
 1.HMM是生成模型，CRF是判别模型  
@@ -380,6 +381,10 @@ h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden stat
 3.HMM求解过程可能是局部最优，CRF可以全局最优  
 
 ##### (46) 讲一下Transformer
+
+##### (41) DeepCTR框架?
+
+
 
 ##### (47) 排序阶段模型
 DeepFM, DIN, DIEN, 注意阿里系文章?
