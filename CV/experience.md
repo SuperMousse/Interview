@@ -244,7 +244,9 @@ a. DBA, QA(database augmentaton, query expansion)
 b. diffsuion?
 
 c. ANN? 局部敏感哈希, 
-d. KD tree: 用于实现knn算法
+d. KD tree: 用于实现knn算法  
+KD树本身是一个二叉树, 用于对T个k维的数据点进行knn搜索, 首先选取一个包含所有数据点的超矩形区域, 选取坐标轴x^l, l = j%k + 1, 其中j为二叉树深度  
+选取x^l轴的中位数, x^l = median将空间划分为左右两个矩形, 然后继续递归的进行划分
 e. NSG?
 
 ##### (30) DeepWalk, LINE、Node2Vec
