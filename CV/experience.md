@@ -374,9 +374,13 @@ h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden stat
 ##### (43) Word2vec
 a. CBOW： 周围词输入预测中心词, one-hot * 输入embedding矩阵, 多个词的均值作为隐层输入, 再乘输出矩阵, softmax预测中心词  
 b. skip-gram: 中心词输入, 预测周围词; 构建(中心词, 周围词)的样本对, 统计其概率, 输入中心词, 矩阵变换后softmax预测其样本对概率
-###### 从隐藏层到输出的Softmax层的计算量很大，因为要计算所有词的Softmax概率，再去找概率最大的值, hierarchical softmax 和negtive sampling
-就是用于解决这个问题
-c. hierarchical softmax:  
+###### 从隐藏层到输出的Softmax层的计算量很大，因为要计算所有词的Softmax概率，再去找概率最大的值, hierarchical softmax 和negtive sampling就是用于解决这个问题
+c. hierarchical softmax: 首先将所有待分的类别根据词频构建哈夫曼树(词频为权值, 哈夫曼树为带权路径和最小的树, 每个类别都变成了01编码), 然后哈夫曼树的每一个分叉都对应了一个逻辑斯特回归(使用同一个输出向量计算LR), 0向左, 1向右, 树的深度为logN, N为总的类别数, 最终p(w|context)转化成了路径上逻辑斯特回归的连乘  
+若某类别(word)w_t, 其哈夫曼编码为code = {1, 0, 1, ..., 1}, x_t为其输出向量  
+Loss = sum(log(p(w_t|context)))  
+p(w_t|context) = p(c1=1|x_t) p(c2=0|x_t, c1=1) p(c3=1|x_t, c1=1, c2=0) ...
+p(c1|x_t) = sigmoid(w x_t) c1=1, 1 - sigmoid(w x_t), c1= 0
+
 d. negtive sampling:
 
 
