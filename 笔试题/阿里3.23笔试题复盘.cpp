@@ -8,4 +8,39 @@ result = N * C_{N}^{N} + (N-1) * C_{N}^{N-1}           + ... + 0 * C_{N}^{0}
 2 * result = N * (C_{N}^{0} + C_{N}^{1} + ... + C_{N}^{N})  
     result = N * 2^{N-1}  
 
-2.
+
+long long fastPow(long long base, long long N) {
+    if(N == 0) {
+        return 1;
+    }
+    if(N == 1) {
+        return 2;
+    }
+    long long  result = 1.0;
+    long long temp = base;
+    
+    while(N > 0) {
+        if(N & 0x1 != 0) {
+            result = (result % 1000000007) * (temp % 1000000007);
+        }
+        temp = (temp % 1000000007) * (temp % 1000000007);
+        N >>= 1;
+    }
+    return result;
+}
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+
+
+
+    long long N;
+    cin >> N;
+    cout << (N * fastPow(2, N - 1)) % 1000000007;
+
+    
+    return 0;
+}
+
+2. 小强在玩一个走迷宫的游戏, 他操纵的人物现在位于迷宫的起点, 他的目标是尽快的到达终点, 每一次他可以选择花费一个时间单位向上, 下, 左,右
+走一格
