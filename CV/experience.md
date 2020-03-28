@@ -402,7 +402,7 @@ ESSM, MMOE等?
 ##### (52) 协同过滤, 双塔模型, 多峰问题, 阿里multi-interest
 
 ##### (53) 用户侧特征稀疏会造成什么情况
-
+embedding的维度很大, 导致embedding占用了很大的空间, 全读进来内存承受不了, 可以考虑对id进行hash或者重编码处理
 
 ##### (54) n-gram https://zhuanlan.zhihu.com/p/32829048; word2vec: CBOW/skip-gram
 
