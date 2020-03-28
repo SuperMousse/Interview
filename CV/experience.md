@@ -243,7 +243,9 @@ a. DBA, QA(database augmentaton, query expansion)
 
 b. diffsuion?
 
-c. ANN? 局部敏感哈希, KD tree, NSG?
+c. ANN? 局部敏感哈希, 
+d. KD tree: 用于实现knn算法
+e. NSG?
 
 ##### (30) DeepWalk, LINE、Node2Vec
 1. DeepWalk: 通过随机游走的方式，将图结构数据转化为了自然语言处理的任务来完成  
