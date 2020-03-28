@@ -289,11 +289,13 @@ C4.5: 信息增益率最大
 CART: 基尼系数  
 
 ##### (35) 介绍一下GBDT,XGBOOST, LightGBM, 区别? GBDT原理，是回归树还是分类树? GBDT跟XGBoost对比?XGBoost怎么并行化 
-1). AdaBoost:   
+1) AdaBoost:   
 a. 初始化数据集权重为均匀权重w_{i} = 1/N, 使用带权数据学习第m个基分类器, 计算分类误差率e_{m} = sum(w_{i}I(G(x_i) = y_i)), 分类器权重系数  
 a_{i} = 1/2 log((1-e_{m}) / e_{m}), 更新数据集权重分布w_{i}^{new} = w_{i}^{old} e^{-a_{m}y_{i}G(x_i)}, 如果预测相同权重系数为  
-w_{i}^{old} e^{-a_{m}}, 权重变小, 否则权重变大
-b. 最终分类器f(x) = sum(a_{m}G_{m}(x)), 多分类器线性加权和
+w_{i}^{old} e^{-a_{m}}, 权重变小, 否则权重变大(注意权重还要归一化)  
+b. 最终分类器f(x) = sum(a_{m}G_{m}(x)), 多分类器线性加权和  
+
+2) XGBoost
 
 GBDT: 回归树  
 GBDT与XGBoost对比: 
