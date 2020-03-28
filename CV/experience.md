@@ -372,10 +372,10 @@ n_t =  tanh(W_{in}x_{t} + b_{in} + r_t * (W_{hn}h_{t-1} + b_{hn}))   memory
 h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden state    
 
 ##### (43) Word2vec
-a. CBOW  
-b. skip-gram  
-c. hierarchical softmax  
-d. negtive sampling  
+a. CBOW： 周围词输入预测中心词, one-hot * 输入embedding矩阵, 多个词的均值作为隐层输入, 再乘输出矩阵, softmax预测中心词  
+b. skip-gram: 中心词输入, 预测周围词; 构建(中心词, 周围词)的样本对, 统计其概率, 输入中心词, 矩阵变换后softmax预测其样本对概率
+c. hierarchical softmax:  
+d. negtive sampling:
 
 
 ##### (44) 讲一下Transformer, BERT
