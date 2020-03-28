@@ -55,3 +55,161 @@ E#..
 ....
 输出: 仅一行一个整数表示从起点最小花费多少时间单位到达终点, 如果无法到达终点, 输出-1  
 如4
+
+
+// BFS
+// 1. 首先把起点坐标放入队列
+// 2. 每一次访问队头元素，观察其1步可以到达的（上、下、左、右、中心对称位）的坐标：
+//    如果该坐标当前记录的某一种飞行器使用次数k下的值>当前值+1，则更新该值，把这一坐标加入队列
+//   （注意，上、下、左、右是同k值比较，中心对称位需要使用一次飞行器，所以是k+1和K比较）
+// 3. 队列清空，更新完成
+
+//定义坐标点
+struct position{
+    int x;
+    int y;
+};
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+
+
+    int n = 4;
+    int m = 4;
+    position start;
+    position end;
+    position posTemp;
+    char charTemp;
+    vector<char> rowTemp;
+    vector<vector<char>> map = {{'#', 'S', '.', '.'},
+                                {'E', '#', '.', '.'},
+                                {'#', '.', '.', '.'},
+                                {'.', '.', '.', '.'}};
+    queue<position> queuePos;
+    
+    // dp[i, j, k]表示第i, j个位置用了k个飞行器时, 到达需要的步数, 初始化较大数值
+    int dp[n][m][6];
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            for (int k = 0; k < 6; ++k) {
+                dp[i][j][k] = n * m + 1;
+            }
+        }
+    }
+    
+    // 记录输入数据, 记录起点, 终点
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            // cin >> charTemp;
+            // rowTemp.push_back(charTemp);
+            if (map[i][j] == 'S') {
+                start.x = i;
+                start.y = j;
+                queuePos.push(start);
+                for (int k = 0; k < 6; ++k) {
+                    dp[i][j][k] = 0;
+                }
+            }
+            else if(map[i][j] == 'E') {
+                end.x = i;
+                end.y = j;
+            }
+        }
+        // map.push_back(rowTemp);
+        // rowTemp.clear();
+    }
+    
+    // BFS走完地图
+    while (!queuePos.empty()) {
+        posTemp = queuePos.front();
+        // 左右上下走
+        if (posTemp.x > 0 && map[posTemp.x - 1][posTemp.y] != '#') {
+            bool flag = false;
+            for (int k = 0; k < 6; ++k) {
+                if (dp[posTemp.x - 1][posTemp.y][k] > dp[posTemp.x][posTemp.y][k] + 1) {
+                    dp[posTemp.x - 1][posTemp.y][k] = dp[posTemp.x][posTemp.y][k] + 1;
+                    flag = true;
+                }
+            }
+            if (flag == true) {
+                position pos;
+                pos.x = posTemp.x - 1;
+                pos.y = posTemp.y;
+                queuePos.push(pos);
+            }
+        }
+        if (posTemp.y > 0 && map[posTemp.x][posTemp.y - 1] != '#') {
+            bool flag = false;
+            for (int k = 0; k < 6; ++k) {
+                if (dp[posTemp.x][posTemp.y - 1][k] > dp[posTemp.x][posTemp.y][k] + 1) {
+                    dp[posTemp.x][posTemp.y - 1][k] = dp[posTemp.x][posTemp.y][k] + 1;
+                    flag = true;
+                }
+            }
+            if (flag == true) {
+                position pos;
+                pos.x = posTemp.x;
+                pos.y = posTemp.y - 1;
+                queuePos.push(pos);
+            }
+        }
+        if (posTemp.x < (n - 1) && map[posTemp.x + 1][posTemp.y] != '#') {
+            bool flag = false;
+            for (int k = 0; k < 6; ++k) {
+                if (dp[posTemp.x + 1][posTemp.y][k] > dp[posTemp.x][posTemp.y][k] + 1) {
+                    dp[posTemp.x + 1][posTemp.y][k] = dp[posTemp.x][posTemp.y][k] + 1;
+                    flag = true;
+                }
+            }
+            if (flag == true) {
+                position pos;
+                pos.x = posTemp.x + 1;
+                pos.y = posTemp.y;
+                queuePos.push(pos);
+            }
+        }
+        if (posTemp.y < (m - 1) && map[posTemp.x][posTemp.y + 1] != '#') {
+            bool flag = false;
+            for (int k = 0; k < 6; ++k) {
+                if (dp[posTemp.x][posTemp.y + 1][k] > dp[posTemp.x][posTemp.y][k] + 1) {
+                    dp[posTemp.x][posTemp.y + 1][k] = dp[posTemp.x][posTemp.y][k] + 1;
+                    flag = true;
+                }
+            }
+            if (flag == true) {
+                position pos;
+                pos.x = posTemp.x;
+                pos.y = posTemp.y + 1;
+                queuePos.push(pos);
+            }
+        }
+        // 中心对称走
+        if (map[n - 1 - posTemp.x][m - 1 - posTemp.y] != '#') {
+            bool flag = false;
+            for (int k = 0; k < 6; ++k) {
+                if (dp[n - 1 - posTemp.x][m - 1 - posTemp.y][k + 1] > dp[posTemp.x][posTemp.y][k] + 1) {
+                    dp[n - 1 - posTemp.x][m - 1 - posTemp.y][k + 1] = dp[posTemp.x][posTemp.y][k] + 1;
+                    flag = true;
+                }
+            }
+            if (flag == true) {
+                position pos;
+                pos.x = n - 1 - posTemp.x;
+                pos.y = m - 1 - posTemp.y;
+                queuePos.push(pos);
+            }
+        }
+        queuePos.pop();
+    }
+    
+    if (dp[end.x][end.y][5] == (n * m + 1)) {
+        cout << -1 << endl;
+    }
+    else {
+        cout << dp[end.x][end.y][5] << endl;
+    }
+
+    
+    return 0;
+}
+
