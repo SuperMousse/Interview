@@ -374,6 +374,8 @@ h_t = (1 - z_t) * n_t + z_t * h_{t-1}                                hidden stat
 ##### (43) Word2vec
 a. CBOW： 周围词输入预测中心词, one-hot * 输入embedding矩阵, 多个词的均值作为隐层输入, 再乘输出矩阵, softmax预测中心词  
 b. skip-gram: 中心词输入, 预测周围词; 构建(中心词, 周围词)的样本对, 统计其概率, 输入中心词, 矩阵变换后softmax预测其样本对概率
+###### 从隐藏层到输出的Softmax层的计算量很大，因为要计算所有词的Softmax概率，再去找概率最大的值, hierarchical softmax 和negtive sampling
+就是用于解决这个问题
 c. hierarchical softmax:  
 d. negtive sampling:
 
