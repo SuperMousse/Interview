@@ -328,7 +328,7 @@ XGBoost: level-wise, 逐层生成树节点, 不容易过拟合, 但不加区分�
 ##### (36) 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？随机森林是什么?
 
 bagging: 从数据集中有放回采样多次(36.5没采样到), 训练多个决策树, 然后vote  
-boosting:   
+boosting: 往上看  
 
 随机森林: 以决策树为基学习器+bagging+随机特征选择: 随机选择样本(放回抽样, 行抽样); 随机选择特征(列抽样); 构建决策树(CART树); 随机森林投票(平均)
 
