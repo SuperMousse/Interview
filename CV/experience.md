@@ -385,7 +385,6 @@ d. negative sampling: softmax时我们希望目标类别为1, 其他类别都为
 Loss = p(w_t, context) * p(neg_1, context) * p(neg_2, context) * ...  
      = sigmoid(w * x_0) (1 - sidmoid(w * x_{neg1})) * (1 - sidmoid(w * x_{neg2})) * ...  
 
-
 ##### (44) 讲一下Transformer, BERT
 
 ##### (45) 讲一下HMM, CRF（隐马尔科夫模型, 条件随机场）
@@ -394,11 +393,11 @@ Loss = p(w_t, context) * p(neg_1, context) * p(neg_2, context) * ...
 3.HMM求解过程可能是局部最优，CRF可以全局最优  
 
 ##### (53) 用户侧特征稀疏会造成什么情况
-embedding的维度很大, 导致embedding占用了很大的空间, 全读进来内存承受不了, 可以考虑对id进行hash或者重编码处理
+embedding的维度很大, 导致embedding占用了很大的空间, 全读进来再进行look-up内存承受不了, 可以考虑对id进行hash或者重编码处理
 
 ##### (50) 关于wide and deep的记忆性和泛化性，
 Wide & Deep 模型的核心思想:
-结合线性模型的记忆能力和 DNN 模型的泛化能力，从而提升整体模型性能
+结合 线性模型的记忆能力 和 DNN模型的泛化能力，从而提升整体模型性能
 
 ##### (51) 说下为什么广告里面特别喜欢用id类特征，而数据挖掘不喜欢用（从泛化性和记忆性说下）
 
