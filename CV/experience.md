@@ -386,6 +386,8 @@ Loss = p(w_t, context) * p(neg_1, context) * p(neg_2, context) * ...
      = sigmoid(w * x_0) (1 - sidmoid(w * x_{neg1})) * (1 - sidmoid(w * x_{neg2})) * ...  
 
 ##### (44) 讲一下Transformer, BERT
+Transformer: multi-head self attention, add & layer norm, FFN, add & layer norm
+BERT:  双向transformer, 预训练任务: mask预测, AB句子, 判断B是否是A的下一句
 
 ##### (45) 讲一下HMM, CRF（隐马尔科夫模型, 条件随机场）
 1.HMM是生成模型，CRF是判别模型  
