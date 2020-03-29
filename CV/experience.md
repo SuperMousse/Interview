@@ -392,9 +392,9 @@ Loss = p(w_t, context) * p(neg_1, context) * p(neg_2, context) * ...
 2.HMM是概率有向图，CRF是概率无向图  
 3.HMM求解过程可能是局部最优，CRF可以全局最优  
 
-##### (53) 用户侧特征稀疏会造成什么情况
-a. embedding的维度很大, 导致embedding占用了很大的空间, 全读进来再进行look-up内存承受不了, 可以考虑对id进行hash或者重编码处理
-b. 对于极其稀疏的user, 可以认为user之间相互无关, 那么很难学习到多user之间的交互信息, 此时embedding学习不准确, LR的记忆性会产生更好的效果
+##### (53) 用户侧特征稀疏会造成什么情况  
+a. embedding的维度很大, 导致embedding占用了很大的空间, 全读进来再进行look-up内存承受不了, 可以考虑对id进行hash或者重编码处理  
+b. 对于极其稀疏的user, 可以认为user之间相互无关, 那么很难学习到多user之间的交互信息, 此时embedding学习不准确, LR的记忆性会产生更好的效果  
 
 ##### (50) 关于wide and deep的记忆性和泛化性  
 a. Wide & Deep 模型的核心思想:  
