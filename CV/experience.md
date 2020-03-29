@@ -239,21 +239,21 @@ X^{T}X = V(∑^2)V^{T}
 V^{T}X^{T}XV = ∑^2, 所以V是X^{T}X的特征向量矩阵, 且其特征值为∑^2对角线上元素  
 
 ##### (29) 图像检索常见Trick
-a. DBA, QA(database augmentaton, query expansion)
+a. DBA, QA(database augmentaton, query expansion)  
 
-b. diffsuion?
+b. diffusion?  
 
-c. ANN? 局部敏感哈希, 
-d. KD tree: 用于实现knn算法  
+c. ANN? 局部敏感哈希,   
+d. KD tree: 用于实现knn算法    
 构建: KD树本身是一个二叉树, 用于对T个k维的数据点进行knn搜索, 首先选取一个包含所有数据点的超矩形区域, 选取坐标轴x^l, l = j%k + 1, 其中j为二叉树深度, 选取x^l轴的中位数, x^l = median将空间划分为左右两个矩形, 然后继续递归的进行划分   
 使用:   
 a. 从根节点出发递归地找到包含当前节点的叶子节点, 当前节点和待查询节点比较, 若比较坐标轴上小于当前节点, 则左子树, 否则右子树; 把该叶子节点作为当前
 近似最近邻  
 b. 查找节点一定位于当前节点的一个子节点对应的区域内  
 检查当前节点的父节点的 另外一个叶子节点区域中, 是否有离查找节点更近的点, 即检查另一区域是否与以查找点为球心, (近似最近邻-查找点)为半径的圆相交, 若
-相交则可能存在最近邻, 向下递归; 若不存在, 向上递归
-c. 回退到根节点, 并尝试继续回退时, 搜索结束
-e. NSG(Navigating Spreading-out Graph):  
+相交则可能存在最近邻, 向下递归; 若不存在, 向上递归  
+c. 回退到根节点, 并尝试继续回退时, 搜索结束  
+e. NSG(Navigating Spreading-out Graph):    
 
 ##### (30) DeepWalk, LINE、Node2Vec
 1. DeepWalk: 通过随机游走的方式，将图结构数据转化为了自然语言处理的任务来完成  
