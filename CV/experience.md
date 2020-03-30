@@ -449,6 +449,13 @@ b: 基于项目的协同过滤(Item-based Collaborative Filtering): 根据用户
 c: 基于模型的协同过滤推荐(Model-based Collaborative Filtering): 根据用户数据, 训练一个推荐模型, 生成推荐数据
 
 
+##### 冷启动策略有哪些?
+a. 推荐热门的
+b. 基于用户信息进行推荐
+c. 利用其它app沉淀的信息推荐
+d. 主动构造选项测试用户兴趣
+e. 随机曝光, 然后强化学习, 探索-利用做balance?
+
 
 ##### 双塔模型
 
