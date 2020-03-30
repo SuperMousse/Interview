@@ -487,6 +487,11 @@ c. focal loss等hard mining的方法
 d. AUC会对于正负样本的分布变化总体保持稳定
 e. 过/欠采样后，分布会产生偏移, 影响分类器的边界
 
+##### 神经网络参数初始化为0?逻辑回归参数初始化为0?
+神经网络参数初始化为0:
+y = f(sum(w_i * x_i)), y' = f' * x_i, 当w_i为0时, f' = y(1-y) = 0.5 * (1 - 0.5)不为0, 梯度更新没问题
+
+
 ##### 双塔模型
 
 ##### 多峰问题
@@ -500,6 +505,8 @@ python的字典是如何实现的: 哈希计算索引, 存在对应位置的数�
 如何解决哈希冲突
 讲一下如何用graph embedding做召回
 graph embedding中如何做负采样
+python迭代器和生成器的区别
+LDA和SVD有什么联系
 
 ##### (54) n-gram https://zhuanlan.zhihu.com/p/32829048; word2vec: CBOW/skip-gram
 
