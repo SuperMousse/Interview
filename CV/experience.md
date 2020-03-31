@@ -461,8 +461,10 @@ a. FM召回:  FM也可以用作召回, 把离线计算的embedding保存下来, 
 b. DNN双塔召回: 双塔其实就是一个塔user embedding, 一个塔item embedding, 然后双塔做内积, user embedding在测试时实时计算, item embedding提前计算然后保存下来, 对于一个query, 转化成了item embedding的检索问题  
 c. 用户行为序列做召回: GRU, Transformer等把用户行为序列转化为embedding, 然后与item embedding混合做召回   
 d. 用户多兴趣拆分(MIND: Multi-Interest Network with Dynamic Routing for Recommendation at Tmall):  
+e. TDM
+f. i2i
 
-TDM, XDL, Euler?
+XDL, Euler?
 
 ##### (49) 讲一下多任务学习?
 ESSM(Entire Space Multi-Task Model: An Eﬀective Approach for Estimating Post-Click Conversion Rate)  
@@ -478,6 +480,10 @@ a. 基于用户的协同过滤(User-based Collaborative Filtering): 与目标用
 b: 基于项目的协同过滤(Item-based Collaborative Filtering): 根据用户的信息或者评价, 发现物品和物品之间的相似度，然后根据用户的历史偏好信息将类似的物品推荐给该用户
 c: 基于模型的协同过滤推荐(Model-based Collaborative Filtering): 根据用户数据, 训练一个推荐模型, 生成推荐数据
 
+
+
+##### graph embedding做召回
+利用图上节点的异质性, 为user, item分别学习embeding, 实际使用时可以用embedding的内积做召回
 
 ##### 冷启动策略有哪些?  
 用户冷启动:   
@@ -521,13 +527,9 @@ w5的导数与w4相同, 同理可得同一层的每一个权值导数都相同, 
 b. y = f(sum(w_i * x_i)), y' = f' * x_i, 当w_i为0时, f' = y(1-y) = 0.5 * (1 - 0.5)不为0, 梯度更新没问题
 
 
-##### 双塔模型
-
 ##### 多峰问题
 
 
-##### graph embedding做召回
-利用图上节点的异质性, 为user, item分别学习embeding, 实际使用时可以用embedding的内积做召回
 
 介绍一下多态
 python的字典是如何实现的: 哈希计算索引, 存在对应位置的数组上
