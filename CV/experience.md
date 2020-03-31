@@ -450,9 +450,11 @@ c. 多阶段训练问题: 各个阶段独立训练, 然后进行召回-排序时
 ##### (47) 排序阶段模型
 a. FM（因子分解机）: y = w_0 + sum_{i=1}^{n}(w_i * x_i) + sum_{i=1}^{n}sum_{j=i+1}^{n}(<v_i, v_j> x_i * x_j)  
 <v_i, v_j>是为了每一个x_i, x_j学习的一个embedding的内积, 如果把<v_i, v_j>替换为w_{ij}, 那么如果训练数据中没有出现过x_1, x_3的特征组合, w_{13}的权重就是0, 模型只有记忆性没有泛化性, 将w_{ij}变为向量内积之后, 即使x_1, x_3没有同时出现过, 只要x_i, x_j出现过样本, 那么他们就有自己的embedding, 所以还是可以进行计算这个特征组合的权重, 泛化性强;  
-b. MF(矩阵分解): 现有M = (user, item)的稀疏矩阵, 表示用户对于某些商品的评价分数, 希望预测出某个用户对于某一个未知的商品的评价分数, 希望进行如下矩阵分解: M = U I^T, U = (user, embedding), I = (item, embedding), 所以我们求解Loss = sum(m_{ij} - u^T * i), 求导通过梯度下降更新u, i, 实际使用时u, i也可以加入l2正则化, 矩阵分解对于小规模推荐系统效果还可以, 大规模效果不太好  
+b. MF(矩阵分解): 现有M = (user, item)的稀疏矩阵, 表示用户对于某些商品的评价分数, 希望预测出某个用户对于某一个未知的商品的评价分数, 希望进行如下矩阵分解: M = U I^T, U = (user, embedding), I = (item, embedding), 所以我们求解Loss = sum(m_{ij} - u^T * i), 求导通过梯度下降更新u, i, 实际使用时u, i也可以加入l2正则化, 矩阵分解对于小规模推荐系统效果还可以, 大规模效果不太好    
 c. FFM: 引入域的概念  
-d. DeepFM: 与Wide&Deep模型结构相同, Wide部分使用FM，FM和Deep部分共享embedding, FM学习一阶和二阶特征, Deep学习高阶特征, 相比Wide&Deep不需要手动特征工程  
+y = w_0 + sum_{i=1}^{n}(w_i * x_i) + sum_{i=1}^{n}sum_{j=i+1}^{n}(<v_{i, f_j}, v_{j, f_i}> x_i * x_j)  
+<v_i, v_j>改为<v_{i, f_j}, v_{j, f_i}>, v_i要使用对应的f_j域对应的embedding, 将多个域分开, 参数量变大, 增强拟合能力  
+d. DeepFM: 与Wide&Deep模型结构相同, Wide部分使用FM，FM和Deep部分共享embedding, FM学习一阶和二阶特征, Deep学习高阶特征, 相比Wide&Deep不需要手动特征工程   
 e. DIN(Deep Interest Network for Click-Through Rate Prediction):  
 现在有用户的行为序列, 希望预测用户的下一次点击的商品, 输入有user feature: good_id, shop_id, 待匹配的有ad feature: good_id, shop_id, other_id   
 V_ua = sum_{i=1}^{n}w_i V_i = sum_{i=1}^{n} g(V_i, V_a)V_i, V_i为用户的第i次行为的embedding, V_a为第a个商品的embedding, V_ua为user在第a个商品下的embedding  
