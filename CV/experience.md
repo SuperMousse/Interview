@@ -458,7 +458,7 @@ f: DIEN:
 
 ##### (48) 召回阶段模型
 FM召回:  FM也可以用作召回, 把离线计算的embedding保存下来, 然后embedding内积就可以计算相似度  
-DNN双塔召回:   
+DNN双塔召回: 双塔其实就是一个塔user embedding, 一个塔item embedding, 然后双塔做内积, user embedding在测试时实时计算, item embedding提前计算然后保存下来, 对于一个query, 转化成了item embedding的检索问题
 
 TDM, XDL, Euler?
 
