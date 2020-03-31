@@ -525,10 +525,12 @@ b. y = f(sum(w_i * x_i)), y' = f' * x_i, 当w_i为0时, f' = y(1-y) = 0.5 * (1 -
 ##### 阿里multi-interest
 
 
+##### graph embedding做召回
+利用图上节点的异质性, 为user, item分别学习embeding, 实际使用时可以用embedding的内积做召回
+
 介绍一下多态
 python的字典是如何实现的: 哈希计算索引, 存在对应位置的数组上
 如何解决哈希冲突
-讲一下如何用graph embedding做召回
 graph embedding中如何做负采样
 python迭代器和生成器的区别
 LDA和SVD有什么联系
