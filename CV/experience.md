@@ -454,7 +454,7 @@ FM, DeepFM, DIN, DIEN, 注意阿里系文章?
 FM召回:  
 DNN双塔召回:   
 
-TDM
+TDM, XDL, Euler?
 
 ##### (49) 讲一下多任务学习?
 ESSM, MMOE等?
