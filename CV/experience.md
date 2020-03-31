@@ -453,18 +453,21 @@ a. FM（因子分解机）: y = w_0 + sum_{i=1}^{n}(w_i * x_i) + sum_{i=1}^{n}su
 b. MF(矩阵分解): 现有M = (user, item)的稀疏矩阵, 表示用户对于某些商品的评价分数, 希望预测出某个用户对于某一个未知的商品的评价分数, 希望进行如下矩阵分解: M = U I^T, U = (user, embedding), I = (item, embedding), 所以我们求解Loss = sum(m_{ij} - u^T * i), 求导通过梯度下降更新u, i, 实际使用时u, i也可以加入l2正则化, 矩阵分解对于小规模推荐系统效果还可以, 大规模效果不太好  
 c. FFM: 引入域的概念  
 d. DeepFM:  
-e. DIN:  
-f: DIEN:  
+e. DIN(Deep Interest Network for Click-Through Rate Prediction):  
+f: DIEN(Deep Interest Evolution Network for Click-Through Rate Prediction):  
 
-##### (48) 召回阶段模型: 只要能够学得embedding的模型, 理论上都可以用作召回/排序, 看速度的权衡
-FM召回:  FM也可以用作召回, 把离线计算的embedding保存下来, 然后embedding内积就可以计算相似度  
-DNN双塔召回: 双塔其实就是一个塔user embedding, 一个塔item embedding, 然后双塔做内积, user embedding在测试时实时计算, item embedding提前计算然后保存下来, 对于一个query, 转化成了item embedding的检索问题
-用户行为序列做召回: GRU, Transformer等把用户行为序列转化为embedding, 然后与item embedding混合做召回
+##### (48) 召回阶段模型: 只要能够学得embedding的模型, 理论上都可以用作召回/排序, 看速度的权衡  
+a. FM召回:  FM也可以用作召回, 把离线计算的embedding保存下来, 然后embedding内积就可以计算相似度   
+b. DNN双塔召回: 双塔其实就是一个塔user embedding, 一个塔item embedding, 然后双塔做内积, user embedding在测试时实时计算, item embedding提前计算然后保存下来, 对于一个query, 转化成了item embedding的检索问题  
+c. 用户行为序列做召回: GRU, Transformer等把用户行为序列转化为embedding, 然后与item embedding混合做召回   
+d. 用户多兴趣拆分(MIND: Multi-Interest Network with Dynamic Routing for Recommendation at Tmall):  
 
 TDM, XDL, Euler?
 
 ##### (49) 讲一下多任务学习?
-ESSM, MMOE等?
+ESSM(Entire Space Multi-Task Model: An Eﬀective Approach for Estimating Post-Click Conversion Rate)  
+
+MMOE(Modeling Task Relationships in Multi-task Learning with Multi-gate Mixture-of-Experts)  
 
 
 
@@ -521,9 +524,6 @@ b. y = f(sum(w_i * x_i)), y' = f' * x_i, 当w_i为0时, f' = y(1-y) = 0.5 * (1 -
 ##### 双塔模型
 
 ##### 多峰问题
-
-
-##### 阿里multi-interest
 
 
 ##### graph embedding做召回
