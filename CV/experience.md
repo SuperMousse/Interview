@@ -472,7 +472,7 @@ f. i2i
 XDL, Euler?
 
 ##### (49) 讲一下多任务学习?
-ESSM(Entire Space Multi-Task Model: An Eﬀective Approach for Estimating Post-Click Conversion Rate)  
+ESSM(Entire Space Multi-Task Model: An Effective Approach for Estimating Post-Click Conversion Rate)  
 
 MMOE(Modeling Task Relationships in Multi-task Learning with Multi-gate Mixture-of-Experts)  
 
