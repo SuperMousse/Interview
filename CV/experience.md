@@ -459,6 +459,7 @@ V_ua = sum_{i=1}^{n}w_i V_i = sum_{i=1}^{n} g(V_i, V_a)V_i, V_i为用户的第i�
 对学习到的商品embedding进行二维可视化, 发现用户的兴趣是多峰的, 即存在多个明显的聚类中心;  
 用户的兴趣不是一个点, 而是一个多峰的函数, 而且当候选广告发生变化的时候, 这个兴趣函数也在变化着;  
 f: DIEN(Deep Interest Evolution Network for Click-Through Rate Prediction):  
+用户的兴趣是不断进化的，而DIN抽取的用户兴趣之间是独立无关联的，没有捕获到兴趣的动态进化性; 通过用户的显式的行为来表达用户隐含的兴趣，这一准确性无法得到保证.  
 
 ##### (48) 召回阶段模型: 只要能够学得embedding的模型, 理论上都可以用作召回/排序, 看速度的权衡  
 a. FM召回:  FM也可以用作召回, 把离线计算的embedding保存下来, 然后embedding内积就可以计算相似度   
