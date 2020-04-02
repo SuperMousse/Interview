@@ -73,3 +73,4 @@ vector<int> preorderTraversal(TreeNode* root) {
 }
 
 // 非递归后序遍历
+// 解法一: 根据后序遍历 
