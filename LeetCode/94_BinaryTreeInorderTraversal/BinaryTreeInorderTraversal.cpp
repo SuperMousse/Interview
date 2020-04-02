@@ -23,7 +23,7 @@ vector<int> inorderTraversal(TreeNode* root) {
  }
 
 
-// 非递归
+// 非递归中序遍历
  class Solution {
  public:
 	 vector<int> inorderTraversal(TreeNode* root) {
@@ -48,3 +48,8 @@ vector<int> inorderTraversal(TreeNode* root) {
 		 return result;
 	 }
  };
+
+// 非递归先序遍历
+
+
+// 非递归后续遍历
