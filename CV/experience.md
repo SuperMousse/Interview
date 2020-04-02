@@ -480,7 +480,7 @@ a. ESSM(Entire Space Multi-Task Model: An Effective Approach for Estimating Post
 2）CVR步骤发生在点击后，其训练数据比CTR更为稀疏  
 CTR(所有训练数据, 点击/未点击)，CVR(所有点击数据, 转化/未转化)， CTCVR是三个不同的任务，点击率高不一定转化率高，转化率高也不一定点击率高，他们是一个序列，需要点击->转化, 所以我们之前训练的CTR实际上是CTCVR  
 p_{CTCVR}(z=1, y=1, |x) = p_{CVR}(z=1|y=1, x) * p_{CTR}(y|x=1)  
-所以构造双路并行模型, 一路为CVR(主路), 一路为CTR(支路), p_{CVR} * P_{CTR} = p_{CTCVR}，loss中为CTR & CTCVR的交叉熵加和, 可以用全部数据训练CTR, 用点击数据训练CTCVR, 从而隐式地学习CVR  
+所以构造双路并行模型, 一路为CVR(主路), 一路为CTR(支路), 两路共享embedding, p_{CVR} * P_{CTR} = p_{CTCVR}，loss中为CTR & CTCVR的交叉熵加和, 可以用全部数据训练CTR, 用点击数据训练CTCVR, 从而隐式地学习CVR  
 p_{CTCVR} = p_{CVR} * P_{CTR}， 也可以用p_{CVR} = p_{CTCVR} / P_{CTR}, 但是除法容易导致数值不稳定  
 
 b. MMOE(Modeling Task Relationships in Multi-task Learning with Multi-gate Mixture-of-Experts)  
