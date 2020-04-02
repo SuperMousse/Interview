@@ -484,7 +484,10 @@ p_{CTCVR}(z=1, y=1, |x) = p_{CVR}(z=1|y=1, x) * p_{CTR}(y|x=1)
 p_{CTCVR} = p_{CVR} * P_{CTR}， 也可以用p_{CVR} = p_{CTCVR} / P_{CTR}, 但是除法容易导致数值不稳定  
 
 b. MMOE(Modeling Task Relationships in Multi-task Learning with Multi-gate Mixture-of-Experts)  
-
+ESSM中对于CTR, CVR使用了shared bottem, 但是CTR, CVR是两个高度相关的任务，如果任务之间的的差异的影响  
+多任务学习范式:   
+ESSM: input => shared bottem                                       => 分出两个支路分别做多任务学习  
+MMOE: input => multi expert(neural network), 门控融合(多个门系数和为1, 门控可以共享多个expert权重, 也可以每个任务学习一个门控) => 分出两个支路分别做多任务学习
 
 
 ##### (52) 协同过滤
