@@ -50,6 +50,26 @@ vector<int> inorderTraversal(TreeNode* root) {
  };
 
 // 非递归先序遍历
+vector<int> preorderTraversal(TreeNode* root) {
+    if (root == nullptr) {
+        return vector<int>();
+    }
+    vector<int> result;
+    stack<TreeNode*> stackTree;
+    TreeNode* pNode = root;
+    stackTree.push(pNode);
+    while (!stackTree.empty()) {
+        pNode = stackTree.top();
+        stackTree.pop();
+        result.push_back(pNode->val);
+        if (pNode->left != nullptr) {
+            stackTree.push(pNode->left);
+        }
+        if (pNode->right != nullptr) {
+            stackTree.push(pNode->right);
+        }
+    }
+    return result;
+}
 
-
-// 非递归后续遍历
+// 非递归后序遍历
