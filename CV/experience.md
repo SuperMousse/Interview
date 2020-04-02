@@ -465,7 +465,8 @@ f: DIEN(Deep Interest Evolution Network for Click-Through Rate Prediction):
 
 ##### (48) 召回阶段模型: 只要能够学得embedding的模型, 理论上都可以用作召回/排序, 看速度的权衡  
 a. FM召回:  FM也可以用作召回, 把离线计算的embedding保存下来, 然后embedding内积就可以计算相似度   
-b. DNN双塔召回: 双塔其实就是一个塔user embedding, 一个塔item embedding, 然后双塔做内积, user embedding在测试时实时计算, item embedding提前计算然后保存下来, 对于一个query, 转化成了item embedding的检索问题  
+b. DNN双塔召回: 起源于DSSM， 微软发布的用于query/ doc的相似度计算模型, embedding算余弦相似度然后softmax  
+双塔其实就是一个塔user embedding, 一个塔item embedding, 然后双塔做内积, user embedding在测试时实时计算, item embedding提前计算然后保存下来, 对于一个query, 转化成了item embedding的检索问题  
 c. 用户行为序列做召回: GRU, Transformer等把用户行为序列转化为embedding, 然后与item embedding混合做召回   
 d. 用户多兴趣拆分(MIND: Multi-Interest Network with Dynamic Routing for Recommendation at Tmall):  
 e. TDM  
