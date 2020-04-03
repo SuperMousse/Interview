@@ -12,3 +12,4 @@
 
 5. Adam
 
+5. AdaDelta
