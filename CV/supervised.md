@@ -24,7 +24,9 @@
 
    推导: u1 = \sum{x_i}, u2 = \sum{x_i}, S1^{2} = \sum{(x_i-u1)^{T}(x_i-u1)}, S2^{2} = \sum{(x_i-u2)^{T}(x_i-u2)}  
    J(w) = |w^{T}(u1-u2)|^{2} / (S1^2+S2^{2}) = w^{T}S_{b}w / w^{T}S_{w}w   
-   另分母为常数, 拉格朗日乘子法  J(w) = S_{b}w - S_{w}w = 0, S_{b}展开后w与u1-u0方向相同得出闭式解(u1-u2)/S{w}   
+   另分母为常数, 拉格朗日乘子法  J(w) = S_{b}w - lambda S_{w}w = 0, lambada S_{w} w = S_{b} w, lambda w = S_{w}^{-1} S_{b} w,  
+   lambda w = S_{w}^{-1} (u1 - u2) (u1 - u2)^{T} w, lambda w = S_{w}^{-1} (u1 - u2) * constant, w = constant S_{w}^{-1} (u1 - u2)  
+   S_{b}展开后w与u1-u0方向相同得出闭式解(u1-u2)/S{w}   
    
    LDA: 有监督的降维方法(需要根据类别来训练w),降维最多降到k-1维(w特征向量, 受到求解矩阵的秩的限制), 可以用于降维，还可以用于分类, 可以使用类别的先验知识, 更明确, 更能反映样本差异性  
    
