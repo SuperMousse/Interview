@@ -18,3 +18,19 @@ Only three moves are needed (remember each move increments two elements):
 // sum + m * (n - 1) = x * n
 // x = minNum + m, 因为数组中最小的数字经过变换后还是最小的, 他变换的次数就是所有数字的变换次数
 // 推出 m = sum - n * minNum
+
+
+int minMoves(vector<int>& nums) {
+    if(nums.empty()) {
+        return 0;
+    }
+    int minNum = nums[0];
+    int sum = 0;
+    for (auto i : nums) {
+        minNum = minNum < i ? minNum : i;
+    }
+    for (auto i : nums) {
+        sum += i - minNum;
+    }
+    return sum;
+}
