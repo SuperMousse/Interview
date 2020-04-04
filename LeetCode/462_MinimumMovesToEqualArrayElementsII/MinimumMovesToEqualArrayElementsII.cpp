@@ -16,7 +16,7 @@ Only two moves are needed (remember each move increments or decrements one eleme
 [1,2,3]  =>  [2,2,3]  =>  [2,2,2]
 
 
-// 因为只能选择一个数字+1, 或-1, 最快速相等的方法是使得所有数字都变成数组的中位数
+// 因为只能选择一个数字+1, 或-1, 最快速相等的方法是使得所有数字都变成数组的中位数(奇数时取中间, 偶数时取中间两个中靠后的一个)
 
 int minMoves2(vector<int>& nums) {
     if (nums.empty()) {
