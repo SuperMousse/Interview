@@ -615,7 +615,7 @@ cross entropy的样本分布是围绕圆点的射线, 加入triplet/center loss�
 
 ##### 改进的softmax损失函数有哪些？
 a. softmax: e^{wx_i} / sum_{j}(wx_j), wx = |w||x|cos(theta) 
-b. cosFace: 令|w| = 1, |x| = s    
+b. cosFace: 令|w| = 1, |x| = s, 分别对w和x做L2 Normalization, 使其Norm为1，但是考虑到x的Norm太小会导致训练loss太大(softmax的值太小), 进行一次缩放，固定为大小s  
 softmax => e^{scos(theta_i)} / sum_{j}(scos(theta_j))  
 加入margin惩罚, cosFace => e^{s ( cos(theta_i) - m ) } / sum_{j}(s ( cos(theta_j) - m ))  
 c. arcFace:  
