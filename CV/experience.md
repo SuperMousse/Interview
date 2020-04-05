@@ -585,6 +585,11 @@ n长度二进制数组, k个哈希函数, 哈希算索引将数组位上置1, �
 ##### (39) 数据中有噪声如何处理？
 
 
+##### 哪些场景下的分类问题不适用于交叉熵损失函数？
+hinge loss: max(0, 1 - y(wx+b)), wx+b > 1时损失才为0, 有margin为1的惩罚, 对wx+b提出了更高的要求, 不仅仅是sigmoid(wx+b) > 0.5  
+cross entropy只是对于概率的拟合, 没有考虑到输入x的margin性质, 也就是样本的稀疏性, 特异性, 当希望这种性质的时候, margin-based loss更有效  
+cross entropy的样本分布是围绕圆点的射线, 加入triplet/center loss后变为一团一团的聚类  
+
 
 ##### (24) 语义分割网络FCN、UNet、ENet的特点？
 
