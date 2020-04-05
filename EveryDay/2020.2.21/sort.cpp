@@ -81,3 +81,54 @@ void mergeSort(vector<int>& nums, int start, int end) {
 
 
 // 基数排序
+int maxbit(vector<int> nums) // 求数据的最大位数
+{
+    int maxVal = nums[0]; // 最大数字
+    /// 先求出最大数，再求其位数，这样有原先依次每个数判断其位数，稍微优化点。
+    for (auto n : nums) {
+        maxVal = maxVal > n ? maxVal : n;
+    }
+    int maxbit = 0;
+    while (maxVal > 0) {
+        maxVal /= 10;
+        ++maxbit;
+    }
+    return maxbit;
+}
+
+void radixsort(vector<int>& nums) //基数排序
+{
+    if (nums.empty()) {
+        return;
+    }
+    int length = nums.size();
+    int maxDigit = maxbit(nums);
+    vector<int> temp(length, 0);
+    vector<int> count(10, 0); // 计数器
+    int radix = 1;
+    for(int i = 0; i < maxDigit; i++) //进行d次排序
+       {
+           for(int j = 0; j < 10; ++j)
+               count[j] = 0; //每次分配前清空计数器
+           for(int j = 0; j < length; ++j)
+           {
+               int k = (nums[j] / radix) % 10; //统计每个桶中的记录数
+               ++count[k];
+           }
+           for(int j = 1; j < 10; ++j) {
+               count[j] = count[j - 1] + count[j]; //将temp中的位置依次分配给每个桶
+           }
+           for(int j = length - 1; j >= 0; --j) //将所有桶中记录依次收集到tmp中
+           {
+               int k = (nums[j] / radix) % 10;
+               temp[count[k] - 1] = nums[j];
+               --count[k];
+           }
+           for(int j = 0; j < length; ++j) { //将临时数组的内容复制到data中
+               nums[j] = temp[j];
+           }
+           radix = radix * 10;
+       }
+    
+    return;
+}
