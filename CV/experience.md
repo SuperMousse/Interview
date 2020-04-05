@@ -614,7 +614,8 @@ cross entropy的样本分布是围绕圆点的射线, 加入triplet/center loss�
 ##### np实现CNN？实现maxPooling?
 
 ##### 改进的softmax损失函数有哪些？
-arcFace, cosFace  
+cosFace:  
+arcFace:  
 
 ##### label smoothing 和 mixup如何实现？
 
