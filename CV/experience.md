@@ -327,10 +327,12 @@ f. 缺失值处理, xgboost把缺失值当做稀疏矩阵来对待，本身的�
  
 
 4) LightGBM  
-LightGBM和XGBoost的决策树生长策略不同
+a. LightGBM和XGBoost的决策树生长策略不同
 LightGBM: leaf-wise, 不停地找到当前增益最大的节点, 向下生成, 容易生成较深的决策树, 产生过拟合  
 XGBoost: level-wise, 逐层生成树节点, 不容易过拟合, 但不加区分的对待同一层的叶子，带来了很多没必要的开销
-
+b. 分割点策略不同, XGBoost是把所有数据进行排序, 寻找最佳分割点, LightGBM是把数据分箱, 然后根据离散值寻找最佳分割点  
+分箱后存储数据减少, 计算代价变小  
+c. 直方图差加速: 某个节点的直方图可以根据 父节点直方图 - 兄弟节点直方图 计算得到  
 
 ##### (36) 集成学习(Ensemble Learning)中的bagging算法和boosting算法流程和区别？随机森林是什么?stacking为什么有效?
 
