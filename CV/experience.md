@@ -463,9 +463,10 @@ e. DIN(Deep Interest Network for Click-Through Rate Prediction):
 现在有用户的行为序列, 希望预测用户的下一次点击的商品, 输入有user feature: good_id, shop_id, 待匹配的有ad feature: good_id, shop_id, other_id   
 V_ua = sum_{i=1}^{n}w_i V_i = sum_{i=1}^{n} g(V_i, V_a)V_i, V_i为用户的第i次行为的embedding, V_a为第a个商品的embedding, V_ua为user在第a个商品下的embedding  
 对学习到的商品embedding进行二维可视化, 发现用户的兴趣是多峰的, 即存在多个明显的聚类中心;  
-用户的兴趣不是一个点, 而是一个多峰的函数, 而且当候选广告发生变化的时候, 这个兴趣函数也在变化着;  
+用户的兴趣不是一个点, 而是一个多峰的函数, 一个峰就表示一个兴趣，峰值的大小表示兴趣强度, 而且当候选广告发生变化的时候, 这个兴趣函数也在变化着;  
 f: DIEN(Deep Interest Evolution Network for Click-Through Rate Prediction):  
 用户的兴趣是不断进化的，而DIN抽取的用户兴趣之间是独立无关联的，没有捕获到兴趣的动态进化性; 通过用户的显式的行为来表达用户隐含的兴趣，这一准确性无法得到保证.  
+
 
 ##### (48) 召回阶段模型: 只要能够学得embedding的模型, 理论上都可以用作召回/排序, 看速度的权衡  
 a. FM召回:  FM也可以用作召回, 把离线计算的embedding保存下来, 然后embedding内积就可以计算相似度   
@@ -556,8 +557,6 @@ Loss对w4求导: (y-z) f'(0) y1 = (y-z)f'(0) f(0)
 w5的导数与w4相同, 同理可得同一层的每一个权值导数都相同, 没有任何鉴别力了  
 b. y = f(sum(w_i * x_i)), y' = f' * x_i, 当w_i为0时, f' = y(1-y) = 0.5 * (1 - 0.5)不为0, 梯度更新没问题
 
-
-##### 多峰问题
 
 ##### 抽蓝球红球，蓝结束红放回继续，平均结束游戏抽取次数 
 几何分布, 成功概率为p, 失败则继续, 期望为1/p
