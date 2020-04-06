@@ -478,7 +478,7 @@ b. DNN双塔召回: 起源于DSSM， 微软发布的用于query/ doc的相似度
 双塔其实就是一个塔user embedding, 一个塔item embedding, 然后双塔做内积, user embedding在测试时实时计算, item embedding提前计算然后保存下来, 对于一个query, 转化成了item embedding的检索问题  
 c. 用户行为序列做召回: GRU, Transformer, RNN等把用户行为序列转化为embedding, 然后与item embedding混合做分类或检索来进行召回  
 d. 用户多兴趣拆分(MIND: Multi-Interest Network with Dynamic Routing for Recommendation at Tmall):  
-相较于传统的DeepMatch生成一个用户兴趣向量, MIND生成多个用户兴趣向量  
+相较于传统的DeepMatch生成一个用户兴趣向量, MIND使用多个胶囊生成多个用户兴趣向量  
 e. TDM深度匹配树做召回
 
 XDL, Euler?
