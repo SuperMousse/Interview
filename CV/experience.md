@@ -465,8 +465,11 @@ V_ua = sum_{i=1}^{n}w_i V_i = sum_{i=1}^{n} g(V_i, V_a)V_i, V_i为用户的第i�
 对学习到的商品embedding进行二维可视化, 发现用户的兴趣是多峰的, 即存在多个明显的聚类中心;  
 用户的兴趣不是一个点, 而是一个多峰的函数, 一个峰就表示一个兴趣，峰值的大小表示兴趣强度, 而且当候选广告发生变化的时候, 这个兴趣函数也在变化着;  
 f: DIEN(Deep Interest Evolution Network for Click-Through Rate Prediction):  
-用户的兴趣是不断进化的，而DIN抽取的用户兴趣之间是独立无关联的，没有捕获到兴趣的动态进化性; 通过用户的显式的行为来表达用户隐含的兴趣，这一准确性无法得到保证.  
-用户行为序列转换成embedding, 然后输入GRU, 建模行为之间的关系  
+用户的兴趣是不断进化的，而DIN抽取的用户兴趣之间是独立无关联的，没有捕获到兴趣的动态进化性; 通过用户的显式的行为来表达用户隐含的兴趣，这一准确性无法得到保证.   
+a). 用户行为序列转换成embedding, 然后输入GRU, 建模行为之间的依赖; 但是GRU只能学习行为之间的依赖, 不能很好地反应兴趣, 所以加入辅助损失(auxiliary loss), 根据当前GRU隐状态和下一个正确item内积, 和sampled negative item做内积, L_{aux} = -(log<h, e_{pos}> + log(1-<h, 1-e_{neg}>)), L = L_{target} + alpha L_{aux}  
+b). GRU with attentional update gate(AUGRU): 将GRU的update gate乘上attention系数, z_t = a_t * z_t  
+a_t = e^{h_t W e_ad} / sum_{j=1}^{T} (e^{h_j W e_ad}), e_ad为广告embedding, a_t反应了h_t和广告embedding之间的关系    
+c). AUGRU输出送入DNN中和其他特征concat起来  
 
 
 ##### (48) 召回阶段模型: 只要能够学得embedding的模型, 理论上都可以用作召回/排序, 看速度的权衡  
