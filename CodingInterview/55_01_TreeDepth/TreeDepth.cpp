@@ -47,3 +47,5 @@ int TreeDepth(TreeNode* pRoot)
 
 		 return res;
 	 }
+
+// 树的最小深度
