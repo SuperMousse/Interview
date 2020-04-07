@@ -595,7 +595,7 @@ LDA和SVD有什么联系
 
 
 ##### 大规模向量检索
-可以把向量先进行聚类, 然后在进行检索时, 只在聚类内部进行检索
+可以把向量先进行聚类, 然后在进行检索时, 只在聚类内部进行检索(ANN), 开源库faiss
 
 
 ##### (55) TF-IDF: term frequency–inverse document frequency, 词频-逆文档频率(log)
