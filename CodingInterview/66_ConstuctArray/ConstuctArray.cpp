@@ -1,3 +1,5 @@
+// 构造数组, 其中每个元素是除了a[i]的元素乘积
+
 // 剑指offer 解法
 vector<int> multiply(const vector<int>& A) {
 	vector<int> result;
