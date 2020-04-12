@@ -1,5 +1,9 @@
 // 剑指offer解法: 动态规划, 循环
 
+// f(i) 表示第i位上可以翻译的数字由多少个
+// f(i) = f(i+1) + g(i, i+1) * f(i+2), 
+// g(i, i+1) = 1 if (i, i+1)拼起来在10-25之间, 否则g(i, i+1) = 0
+
 int GetTranslationCount(int number) {
 	if (number < 1) {
 		return 0;
