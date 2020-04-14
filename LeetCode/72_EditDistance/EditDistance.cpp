@@ -35,8 +35,8 @@ int minDistance(string word1, string word2) {
                 dp[i][j] = dp[i - 1][j - 1];
             }
             else {
-                int insertOperation = dp[i - 1][j - 1] + 1;
-                int replaceOperation = dp[i][j - 1] + 1;
+                int replaceOperation  = dp[i - 1][j - 1] + 1;
+                int insertOperation = dp[i][j - 1] + 1;
                 int deleteOperation = dp[i - 1][j] + 1;
                 dp[i][j] = min(insertOperation, min(replaceOperation, deleteOperation));
             }
