@@ -399,16 +399,16 @@ Loss = p(w_t, context) * p(neg_1, context) * p(neg_2, context) * ...
      = sigmoid(w * x_0) (1 - sidmoid(w * x_{neg1})) * (1 - sidmoid(w * x_{neg2})) * ...  
 
 ##### (44) 讲一下Transformer, BERT
-Transformer: multi-head self attention, add & layer norm, FFN, add & layer norm
-BERT:  双向transformer, 预训练任务: a. mask词然后预测; b. AB句子, 判断B是否是A的下一句
-OpenAI GPT: 受限transformer, 只处理当前词左侧的词  
+Transformer: multi-head self attention, add & layer norm, FFN, add & layer norm  
+BERT:  双向transformer, 预训练任务: a. mask词然后预测; b. AB句子, 判断B是否是A的下一句  
+OpenAI GPT: 受限transformer, 只处理当前词左侧的词   
 ELMo: 经过独立训练的从左到右和从右到左LSTM的串联  
-只有BERT是双向的上下文信息
+只有BERT是双向的上下文信息  
 
-##### (45) 讲一下HMM, CRF（隐马尔科夫模型, 条件随机场）
-1.HMM是生成模型，CRF是判别模型  
-2.HMM是概率有向图，CRF是概率无向图  
-3.HMM求解过程可能是局部最优，CRF可以全局最优  
+##### (45) 讲一下HMM, CRF（隐马尔科夫模型, 条件随机场）  
+1.HMM是生成模型，CRF是判别模型    
+2.HMM是概率有向图，CRF是概率无向图    
+3.HMM求解过程可能是局部最优，CRF可以全局最优    
 
 ##### (53) 用户侧特征稀疏会造成什么情况  
 a. embedding的维度很大, 导致embedding占用了很大的空间, 全读进来再进行look-up内存承受不了, 可以考虑对id进行hash或者重编码处理  
