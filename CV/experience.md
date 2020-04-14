@@ -504,11 +504,11 @@ MMOE: input => multi expert(neural network), 门控融合(多个门系数和为1
 
 
 ##### (52) 协同过滤
-基于内容的过滤: 根据物品内容或者元数据, 发现物品或内容的相似性, 基于用户历史行为进行推荐
-基于协同过滤的推荐:  
-a. 基于用户的协同过滤(User-based Collaborative Filtering): 与目标用户有相同喜好的邻居，然后根据目标用户的邻居的喜好产生向目标用户的推荐; 
-b: 基于项目的协同过滤(Item-based Collaborative Filtering): 根据用户的信息或者评价, 发现物品和物品之间的相似度，然后根据用户的历史偏好信息将类似的物品推荐给该用户
-c: 基于模型的协同过滤推荐(Model-based Collaborative Filtering): 根据用户数据, 训练一个推荐模型, 生成推荐数据
+基于内容的过滤: 根据物品内容或者元数据, 发现物品或内容的相似性, 基于用户历史行为进行推荐  
+基于协同过滤的推荐:    
+a. 基于用户的协同过滤(User-based Collaborative Filtering): 与目标用户有相同喜好的邻居，然后根据目标用户的邻居的喜好产生向目标用户的推荐;   
+b: 基于项目的协同过滤(Item-based Collaborative Filtering): 根据用户的信息或者评价, 发现物品和物品之间的相似度，然后根据用户的历史偏好信息将类似的物品推荐给该用户  
+c: 基于模型的协同过滤推荐(Model-based Collaborative Filtering): 根据用户数据, 训练一个推荐模型, 生成推荐数据  
 
 
 
