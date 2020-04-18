@@ -627,6 +627,10 @@ hinge loss: max(0, 1 - y(wx+b)), wx+b > 1时损失才为0, 有margin为1的惩�
 cross entropy只是对于概率的拟合, 没有考虑到输入x的margin性质, 也就是样本的稀疏性, 特异性, 当希望这种性质的时候, margin-based loss更有效  
 cross entropy的样本分布是围绕圆点的射线, 加入triplet/center loss后变为一团一团的聚类  
 
+##### 不可导情况下的BP处理
+次梯度  
+重参数  
+
 
 ##### (24) 语义分割网络FCN、UNet、ENet的特点？
 
