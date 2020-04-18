@@ -214,7 +214,9 @@ OR: 统计所有类别的Precision
 
 ##### (23) CNN感受野计算？
 l_k = l_{k-1} + [(f_k - 1) * s1 * s2 * ... s_{k-1}]
-l_k为第k层感受野, f_k为第k层filter尺寸, s_i为第i层stride, 空洞卷积相当于卷积核dialate, 按照dialate后的filter大小计算
+l_k为第k层感受野, f_k为第k层filter尺寸, s_i为第i层stride, 空洞卷积相当于卷积核dialate, 按照dialate后的filter大小计算  
+
+输入(H, W)feature map, 卷积核大小(k, k), 输出feature map大小 ( (H - k + 2 * padding) / stride ) + 1
 
 ##### (24) 语义分割模型的评价指标PA,mPA,mIoU？
 PA: pixel accuracy, 分对的像素总量除以像素总数
