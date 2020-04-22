@@ -368,8 +368,8 @@ softmax是LR在多分类问题上的推广
 1. GRU参数更少因此更容易收敛，但是数据集很大的情况下，LSTM表达性能更好
 2. 从结构上来说，GRU只有两个门(update和reset)，LSTM有三个门(input，output, forget)，GRU直接将hidden state 传给下一个单元，而LSTM则用memory cell把 hidden state 包装起来  
 RNN: 
-h_t = f(W_{ih}x_{t} + b_{ih} + W_{hh}x_{t} + b_{hh})
-o_t = g(W_{ho}h_{t})
+h_t = f(W_{ih}x_{t} + b_{ih} + W_{hh}x_{t} + b_{hh})  
+o_t = g(W_{ho}h_{t})  
 
 
 LSTM:  
