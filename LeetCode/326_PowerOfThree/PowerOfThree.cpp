@@ -13,3 +13,12 @@ bool isPowerOfThree(int n) {
 	}
 	return true;
 }
+
+
+bool isPowerOfThree(int n) {
+if (n == 0) {
+    return false;
+}
+// 3^19 = 1162261467
+return n > 0 && (1162261467 % n == 0);
+}
