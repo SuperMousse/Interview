@@ -697,6 +697,10 @@ c. 不同邻居的信息融合(电影1->电影2, 电影3)
 
 ##### embedding技术应用
 
+##### CNN的反向传播
+##### 为了下SVM，高斯核实映射到多少维，为什么
+##### 做了一个medium的题，一个二维数组，有0和1，把所有相邻的1连起来，问最终有几块 
+
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 map-reduce分为: input, split, map, shuffle, reduce, output六步  
 a. 输入(input)：如给定一个文档，包含如下四行：  
