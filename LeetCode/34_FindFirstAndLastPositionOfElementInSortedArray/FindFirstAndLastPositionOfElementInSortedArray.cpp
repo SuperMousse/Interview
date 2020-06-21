@@ -26,7 +26,7 @@ vector<int> searchRange(vector<int>& nums, int target) {
         // search right
         end = nums.size() - 1;
         while(start < end) {
-            int middle = (start + end) / 2 + 1; // make middle biased to right
+            int middle = (start + end) / 2 + 1; // make middle biased to right, for midddle - 1
             if(nums[middle] > target) {
                 end = middle - 1;
             }
