@@ -127,6 +127,26 @@ top k 频率的数字
 手上的所有牌能否构成顺子, 0算任意牌: 剑指61  
 
 
+int get_average(int a[], int n) {
+    int aver = 0;
+    int rest = 0;  // [0, n)
+    for (int i = 0; i < n; ++i) {
+        aver += a[i] / n;
+        int temp = a[i] % n;
+        if (temp < 0) {
+            temp += n;
+            aver -= 1;
+        }
+        if (rest > n - temp) {  // rest + temp > n，防止溢出
+            aver++;
+            rest -= (n - temp);
+        } else {
+            rest += temp;
+        }
+    }
+    return (aver >= 0) ? aver : aver + 1;  // 假定负数结果向0取整
+}
+
 
 1.有序数组构建平衡二叉树（力扣）
 
