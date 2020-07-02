@@ -195,13 +195,8 @@ Sigmoid，Tanh，Relu等激活函数的优缺点（这里之前没有复习到�
 神经网络中网络权重W初始化为0有什么问题？
 DIN和DIEN网络结构介绍
 
-作者：Kirto先森
-链接：https://www.nowcoder.com/discuss/383086?type=2
-来源：牛客网
 
-腾讯PCG-看点-用户增长(offer)
-一面（60min）2020.03.16 10:00
-介绍论文，包括论文背景，创新点，难点
+
 算法题：现有100W 资讯文本的title，文本的长度为1-40个字左右。len(titles)=100W ，1<=len(titles[i])<=40
 现有一个100W左右的禁用词, 每个词的长度在1-6个字左右左右。len(forbid_words) = 100W ，1<=len(forbid_words[i])<=6
 
