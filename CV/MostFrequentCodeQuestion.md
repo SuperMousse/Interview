@@ -126,7 +126,7 @@ top k 频率的数字
 
 手上的所有牌能否构成顺子, 0算任意牌: 剑指61  
 
-
+求n个数字的平均数 https://www.nowcoder.com/discuss/81769?type=1&order=1&pos=4&page=1  
 int get_average(int a[], int n) {
     int aver = 0;
     int rest = 0;  // [0, n)
