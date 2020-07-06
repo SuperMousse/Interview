@@ -869,6 +869,19 @@ LSTM中每一个gate的作用是什么, 为什么和RNN比较起来, LSTM可以�
 聚类: 常见算法  
 
 
+文本分类: 常见分类方案; 多标签分类; 小样本学习; 情感分析任务; 意图分类任务;   
+文本匹配: 短文本匹配; 长文本匹配; 文本生成;  
+文本生成: seq2seq; Copynet、Pointer-network; Graph2seq;  
+语言模型: GPT; LSTM-AutenEncoder; MaskedLM;
+机器翻译  
+问答系统  
+序列标注: CRF; HMM; NER识别; 分词、词性标注任务;   
+
+推荐: 推荐召回; 推荐排序; 推荐多样性;  
+搜索: query理解; 内容理解; 搜索召回; 搜索排序;  
+广告: 广告触发; 广告排序; 广告方案; query改写;  
+
+
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 map-reduce分为: input, split, map, shuffle, reduce, output六步  
 a. 输入(input)：如给定一个文档，包含如下四行：  
