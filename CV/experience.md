@@ -881,6 +881,9 @@ LSTM中每一个gate的作用是什么, 为什么和RNN比较起来, LSTM可以�
 搜索: query理解; 内容理解; 搜索召回; 搜索排序;  
 广告: 广告触发; 广告排序; 广告方案; query改写;  
 
+推荐算法: DEN深度参与网络  Multi-gated DEN; DNN; DSSM； YoutubeDNN; MIND; TDF深度匹配树; RL强化学习; Advanced-ICF
+
+
 
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 map-reduce分为: input, split, map, shuffle, reduce, output六步  
