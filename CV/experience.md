@@ -841,6 +841,32 @@ DIN中Attention机制实现
 Attention机制
 
 
+名词: 过拟合, 欠拟合, 样本空间, 正则化, 半监督, 无监督, 偏差和方差的区别, 归一化(原因, 策略)  
+线性模型: 朴素贝叶斯, LR, SVM, FM  
+树模型: GBDT, RF
+深度模型: word2vec, fasttext, dnn, rbm, cnn, rnn, attention, 激活函数, 梯度最优化方法, tensorflow  
+
+梯度下降的优缺点  
+权重衰减和学习率衰减介绍  
+batch size对收敛速度的影响  
+防止梯度消失的策略有哪些  
+softmax原理解释  
+介绍word2vec原理  
+说一下pooling的作用, 为什么max pooling更常用, 哪些情况下avg pooling比max pooling更合适  
+batch normalization和layer normalization比较  
+解释perplexity指标  
+如何理解KL散度  
+信息熵 交叉熵 相对熵 KL散度区别?  
+交叉熵和最大似然估计的联系  
+MSE和交叉熵的比较  
+详细解释seq2seq中的attention和beam search机制  
+LSTM中每一个gate的作用是什么, 为什么和RNN比较起来, LSTM可以防止梯度消失  
+
+
+
+强化学习: 学习策略, 适用场景  
+迁移学习: 学习策略, 适用场景  
+聚类: 常见算法  
 
 
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
