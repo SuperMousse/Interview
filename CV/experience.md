@@ -140,7 +140,7 @@ f'(x) = f'(x0) + f''(x0)(x-x0)
 x = x0 - f'(x0) / f''(x0)  
 即为二阶方法
 
-##### (12) SGD/AdaDelta/Adam优化方法的区别？  
+##### (12) SGD/AdaDelta/Adam优化方法的区别？ 各种优化器的优缺点比较?
 见optimizer.md, https://www.cnblogs.com/guoyaohua/p/8542554.html
 
 ##### (13) 目标检测里的hard negative mining做法？
@@ -737,8 +737,7 @@ LR和SVM的优缺点
 用过哪些聚类算法  
 overfitting怎么解决  
 常见的激活函数  
-batchsize是不是越大越好  
-各种优化器的优劣  
+batchsize是不是越大越好    
 xgb相比gbdt有哪些优点  
 AUC曲线有什么样的含义
 
@@ -798,7 +797,7 @@ GIL锁: Python解释器被一个全局解释器锁保护着，它确保任何时
 
 
 
-说说Adam等优化器的区别（从Momentum到RMSprop到Adam以及Adam可能不会收敛，还说了NAG和AdaGrad）
+
 对于LR来说，LR如果多了一维冗余特征，其权重和AUC会怎样变化（权重变为1/2, AUC不会变化）
 写出LR的损失函数（交叉熵损失函数）
 
@@ -846,7 +845,6 @@ batch size对收敛速度的影响
 softmax原理解释  
 
 说一下pooling的作用, 为什么max pooling更常用, 哪些情况下avg pooling比max pooling更合适  
-batch normalization和layer normalization比较  
 解释perplexity指标  
 如何理解KL散度  
 信息熵 交叉熵 相对熵 KL散度区别?  
@@ -875,7 +873,6 @@ LSTM中每一个gate的作用是什么, 为什么和RNN比较起来, LSTM可以�
 广告: 广告触发; 广告排序; 广告方案; query改写;  
 
 推荐算法: DEN深度参与网络  Multi-gated DEN; DNN; DSSM； YoutubeDNN; MIND; TDF深度匹配树; RL强化学习; Advanced-ICF
-
 
 
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
