@@ -805,8 +805,6 @@ Sigmoid，Tanh，Relu等激活函数的优缺点（这里之前没有复习到�
 
 
 
-
-
 讲一下Youtube DNN
 FM与DeepFM关联?  FM的泛化能力  
 谈谈1 * 1卷积
