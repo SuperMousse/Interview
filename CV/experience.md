@@ -748,7 +748,7 @@ with关键字能够做什么
 copy与deep copy  
 
 
-map是如何实现的  
+STL map是如何实现的  
 
 STL中的sort实现, 快排/递归的弊端  
 
@@ -844,7 +844,7 @@ Attention机制
 batch size对收敛速度的影响  
 防止梯度消失的策略有哪些  
 softmax原理解释  
-介绍word2vec原理  
+
 说一下pooling的作用, 为什么max pooling更常用, 哪些情况下avg pooling比max pooling更合适  
 batch normalization和layer normalization比较  
 解释perplexity指标  
