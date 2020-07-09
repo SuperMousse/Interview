@@ -33,3 +33,28 @@ ListNode* mergeKLists(vector<ListNode*>& lists) {
 
 
 // 方法二: 堆
+ListNode* mergeKLists(vector<ListNode*>& lists) {
+    if (lists.empty()) {
+        return nullptr;
+    }
+    ListNode* pHead = new ListNode(0);
+    ListNode* pCurrent = pHead;
+    vector<ListNode*> heap;
+    for (int i = 0; i < lists.size(); ++i) {
+        if (lists[i] != nullptr) {
+            heap.push_back(lists[i]);
+        }
+    }
+    make_heap(heap.begin(), heap.end(), cmp);
+    while (heap.size() > 0) {
+        pCurrent->next = heap.front();
+        pop_heap(heap.begin(), heap.end(), cmp);
+        heap.pop_back();
+        pCurrent = pCurrent->next;
+        if (pCurrent->next) {
+            heap.push_back(pCurrent->next);
+            push_heap(heap.begin(), heap.end(), cmp);
+        }
+    }
+    return pHead->next;
+}
