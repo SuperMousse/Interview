@@ -7,3 +7,55 @@
 // 则median = (max(left_part) + min(right_part))/2  
 
 
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+    int m = nums1.size();
+    int n = nums2.size();
+    if (n < m) {
+        return findMedianSortedArrays(nums2, nums1);
+    }
+    int imin = 0;
+    int imax = m;
+    int i = 0;
+    int j = 0;
+    int halfTotalLen = (m + n + 1) / 2;
+    while (imin <= imax) {
+        i = (imin + imax) / 2;
+        j = halfTotalLen - i;
+        // i, j不在边界值并且需要继续迭代
+        if (i > 0 && j < n && nums1[i-1] > nums2[j]) {
+            imax = i - 1;
+        }
+        else if (j > 0 && i < m && nums2[j-1] > nums1[i]) {
+            imin = i + 1;
+        }
+        // i,j 到达可能停止的位置
+        else {
+            int maxOfLeft = 0;
+            int minOfRight = 0;
+            if (i == 0) {
+                maxOfLeft = nums2[j-1];
+            }
+            else if (j == 0) {
+                maxOfLeft = nums1[i-1];
+            }
+            else {
+                maxOfLeft = max(nums1[i-1], nums2[j-1]);
+            }
+            if ((m + n) % 2 == 1) {
+                return maxOfLeft;
+            }
+
+            if (i == m) {
+                minOfRight = nums2[j];
+            }
+            else if (j == n) {
+                minOfRight = nums1[i];
+            }
+            else {
+                minOfRight = min(nums1[i], nums2[j]);
+            }
+            return (maxOfLeft + minOfRight) / 2.0;
+        }
+    }
+    return -1;
+}
