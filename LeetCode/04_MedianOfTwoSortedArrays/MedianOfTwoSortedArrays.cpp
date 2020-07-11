@@ -45,26 +45,26 @@ double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         else {
             int maxOfLeft = 0;
             int minOfRight = 0;
-            if (i == 0) {
+            if (i == 0) { // i == 0 || j == 0需要停止
                 maxOfLeft = nums2[j-1];
             }
             else if (j == 0) {
                 maxOfLeft = nums1[i-1];
             }
-            else {
+            else {  // i, j均不为0， 满足 B[j-1] <= A[i] && A[i-1] <= B[j]
                 maxOfLeft = max(nums1[i-1], nums2[j-1]);
             }
             if ((m + n) % 2 == 1) {
                 return maxOfLeft;
             }
 
-            if (i == m) {
+            if (i == m) {  // i == m || j == n需要停止
                 minOfRight = nums2[j];
             }
             else if (j == n) {
                 minOfRight = nums1[i];
             }
-            else {
+            else { // i != m, j != n, 满足 B[j-1] <= A[i] && A[i-1] <= B[j]
                 minOfRight = min(nums1[i], nums2[j]);
             }
             return (maxOfLeft + minOfRight) / 2.0;
