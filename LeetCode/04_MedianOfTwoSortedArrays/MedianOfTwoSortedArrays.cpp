@@ -7,6 +7,19 @@
 // 则median = (max(left_part) + min(right_part))/2  
 
 
+// 在搜索循环中，我们只会遇到三种情况：  
+
+// <a> (j == 0 or i == m or B[j-1] <= A[i]) and  
+//     (i == 0 or j = n or A[i-1] <= B[j])  
+//     说明 i 的值满足要求，停止循环  
+
+// <b> j > 0 and i < m and B[j - 1] > A[i]  
+//     说明 i 的值太小， 增加它  
+
+// <c> i > 0 and j < n and A[i - 1] > B[j]  
+//     说明 i 的值过大， 减小它  
+
+
 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
     int m = nums1.size();
     int n = nums2.size();
