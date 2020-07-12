@@ -1,8 +1,10 @@
-1. Video BERT  
+1. BERT 细节考点
+
+2. Video BERT  
 
 
-2. VL-BERT  
+3. VL-BERT  
 
 
 
-2. Fasion-BERT  
+4. Fasion-BERT  
