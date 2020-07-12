@@ -1,3 +1,8 @@
+// 两次扫描  
+// 从左向右扫描, 维护max值, 发现当前值小于max, 则位于无序区间内, 为last, 否则更新max  
+// 从右向左扫描, 维护min值, 发现当前值小于min, 则位于无序区间内, 为first, 否则更新min  
+// 最终结果为[first, last]  
+
 // 解法一: 排序, 时间复杂度O(NlogN)
 int findUnsortedSubarray(vector<int>& nums) {
 		 if (nums.empty()) {
