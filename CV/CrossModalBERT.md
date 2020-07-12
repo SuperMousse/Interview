@@ -19,3 +19,4 @@ c. Mask ROI分类, 随机mask一部分ROI, 置0, 注意全图上的对应位置�
 
 
 4. Fasion-BERT  
+跨模态BERT的基础上提出了时尚领域的BERT, 直接Patch切分+多任务自平衡损失
