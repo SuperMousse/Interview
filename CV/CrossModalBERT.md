@@ -22,3 +22,8 @@ c. Mask ROI分类, 随机mask一部分ROI, 置0, 注意全图上的对应位置�
 跨模态BERT的基础上提出了时尚领域的BERT, 直接Patch切分+多任务自适应损失  
 a. 多任务模型: Mask语言模型; Mask视觉模型， 随机mask10%, 计算其真实值与计算值之间的KL散度; 视觉-文本对齐, 二分类；   
 b. 多任务自适应损失： L = w_i * l_i, w_i = (L - grad(l_i)^2)^{-1} / normalize_sum, L = 3为任务数量  
+
+
+5. ViL-BERT  
+1. 跨模态双流Transformer:  双流Transformer, 每一路的Q来自自己, K, V来自另外一个模态  
+2. Mask语言模型+视觉文本对齐分类   
