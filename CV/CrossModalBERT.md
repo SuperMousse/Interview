@@ -10,7 +10,8 @@ d. BERT是如何使用Transformer的？
 
 
 2. Video BERT  
-
+a. 文本token follow BERT, 视觉token对frame level图像做hierarchical k-means做聚类，一共得到20736个类中心。把类中心作为visual token，每一个视觉特征向量都由它属于的类中心来表征  
+b. mask语言模型 + 文本视觉对齐(判断是否来自同一个clip)
 
 3. VL-BERT  
 a. Language token + Faster R-CNN提取的视觉token做多任务学习， token embedding: 语言token + [IMG], Visual feature embedding: 全图(语言部分) + ROI(视觉部分); Segement Embedding: A, B; Position Embdding: 1, 2,.., 7;  
