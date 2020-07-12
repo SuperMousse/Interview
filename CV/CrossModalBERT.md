@@ -25,5 +25,5 @@ b. 多任务自适应损失： L = w_i * l_i, w_i = (L - grad(l_i)^2)^{-1} / nor
 
 
 5. ViL-BERT  
-1. 跨模态双流Transformer:  双流Transformer, 每一路的Q来自自己, K, V来自另外一个模态  
-2. Mask语言模型+视觉文本对齐分类   
+a. 跨模态双流Transformer:  双流Transformer, 每一路的Q来自自己, K, V来自另外一个模态  
+b. Mask语言模型+视觉文本对齐分类   
