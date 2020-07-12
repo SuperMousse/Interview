@@ -13,7 +13,9 @@ d. BERT是如何使用Transformer的？
 
 
 3. VL-BERT  
-
+a. Language token + Faster R-CNN提取的视觉token做多任务学习， token embedding: 语言token + [IMG], Visual feature embedding: 全图(语言部分) + ROI(视觉部分); Segement Embedding: A, B; Position Embdding: 1, 2,.., 7;  
+b. Mask语言模型  
+c. Mask ROI分类, 随机mask一部分ROI, 置0, 注意全图上的对应位置也要置0  
 
 
 4. Fasion-BERT  
