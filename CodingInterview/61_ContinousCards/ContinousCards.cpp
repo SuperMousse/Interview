@@ -34,7 +34,7 @@ bool IsContinuous(vector<int> numbers) {
 
 
 // 牛客网解法
-// 顺子满足的条件：max-min<5;
+// 顺子满足的条件：max-min<5; 顺子只能五张
 //				除0外其他的数字都不能重复
 //				传入的数组放5个元素
 bool IsContinuous(vector<int> numbers) {
