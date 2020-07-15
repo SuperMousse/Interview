@@ -5,7 +5,7 @@ a. 如何训练一个模型, loss不下降该怎么办
 b. loss出现nan该怎么办  
 c. 损失函数有哪些? cross entropy, l1, l2, 比较一下  
 d. 讲一下k-means, EM算法, 他们之间有什么关系  
-e. 讲一下Transformer, self-attention, scale因子作用? 用了什么norm, layernorm的公式是什么, 作用?    
+e. 讲一下Transformer, self-attention, scale因子作用? 用了什么norm, layernorm的公式是什么, 作用? 多头有什么用?     
 f. 讲一下拉普拉斯矩阵, 谱域图卷积怎么做? 空域图卷积怎么做? 空域图卷积一般框架是什么(read-out?)? 空域图卷积常见的有哪些? GraphSAGE, GIN, 结构?  
 g. 还有哪些Graph Embedding的算法 DeepWalk, LINe, Node2vec,   
 h. 讲一下机器学习的偏差和方差, bagging和boosting都是什么?  
