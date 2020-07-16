@@ -21,4 +21,5 @@ b. isBalanceTree(TreeNode* root), 判断输入的树是否是平衡二叉树
 ##### 4. 总结: 
 a. GBDT讲的不太好, 注意改进;  
 b. EM算法没回答上来, 学习;  
-c. 空域图卷积的一般结构? read-out操作是什么? 不会  
+c. 空域图卷积的一般结构?   消息传递网络： 消息传递=>状态更新=>图读出(read-out, graph pooling)   
+GraphSAGE的框架实际上就是消息传递和状态更新这一步骤  
