@@ -14,3 +14,6 @@ graph embedding召回, 跨模态bert embedding
 
 算法题：  
 强盗跳着房子拿金币， dp  
+
+
+微博广告部->基础算法组： 做look-alike, 召回等
