@@ -34,7 +34,7 @@ a. 多任务模型: Mask语言模型; Mask视觉模型， 随机mask10%, 计算�
 b. 多任务自适应损失： L = w_i * l_i, w_i = (L - grad(l_i)^2)^{-1} / normalize_sum, L = 3为任务数量  
 c. 29w图片/描述对, 其中26w训练, 3w测试
 d. 跨模态匹配: [CLS]标记输出的表示匹配得分
-e. 跨模态检索: 两阶段, 预训练使用1000w<title, image> pair来进行训练, finetune使用200w<query, title, image> triplets, 使用query和点击的数据来构成fintune数据集
+e. 跨模态检索: 两阶段, 预训练使用1000w<title, image> pair来进行训练, finetune使用200w<query, title, image> triplets, 使用query和点击的数据来构成fintune数据集, test时把新的query送入fasionBERT, 然后和已经抽取好的跨模态向量计算相似度  
 
 5. ViL-BERT  
 a. 跨模态双流Transformer:  双流Transformer, 每一路的Q来自自己, K, V来自另外一个模态  
