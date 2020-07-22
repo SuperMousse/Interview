@@ -3,7 +3,8 @@
 ##### 1. 面试官迟到, 4点的面试改到5点  
 ##### 2. 框架, 分布式  
 a. 使用的基础框架是什么, Pytorch, Tensoflow, 他们最大的区别是什么? 动态计算图;  
-b. 有没有用过Pytorch的分布式训练? nn.Parallel, distributed.Parallel; 了不了解分布式的底层梯度回传机制? 不太懂, 过了;  
+b. 有没有用过Pytorch的分布式训练? nn.Parallel, distributed.Parallel; 了不了解分布式的底层梯度回传机制? 不太懂, 过了;   
+https://fyubang.com/2019/07/08/distributed-training/
 ##### 3. 项目经历  
 项目经历, 聊跨模态BERT,  Session推荐; 狂问每一个细节, VL-BERT有细节还有不足(必须再精读回忆一下, 看一下FashionBERT); 问项目是独立完成的还是大家合作的; 
 ##### 4. 做题
