@@ -25,7 +25,7 @@ a. Language token + Faster R-CNN提取的视觉token做多任务学习， token 
 b. Mask语言模型  
 c. Mask ROI分类, 随机mask一部分ROI, 置0, 注意全图上的对应位置也要置0  
 d. VL-BERT用于多标签分类, 可以首先进行跨模态的pretrain, 遵照原有的自监督训练模式, 然后作为之后分类模型的初始化, 把caption和文本共同送入模型中, 在[CLS]标记上进行多标签分类  
-e. VL-BERT用于跨模态检索, 预训练的时候把caption和文本共同送入模型中, 自监督训练,  
+e. VL-BERT用于跨模态检索, 预训练的时候把caption和文本共同送入模型中, 自监督训练,  然后抽取跨模态特征, 测试的时候输入query  
 
 
 4. Fasion-BERT  
