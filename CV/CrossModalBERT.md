@@ -10,10 +10,11 @@ d. BERT是如何使用Transformer的？
 e. BERT tokenizer: 
 BERT将句子分解成：整个单词(如word), 出现在单词前面或者单独出现的子单词(em), 不在单词前面的子单词(##ing); tokenizer首先检查单词是否在词表中, 然后尝试分解为尽可能大的子单词, 最后分解为单个
 字符, 并没有分解成[UNK]这种未登录字符
-f. 词向量&句向量
-词向量/句向量: 最后2/4隐层求平均
-g. 词表外的词可以直接通过tokenizer分解之后求向量平均的方法来生成词向量
-h. BERT本身并不太适用于单词级别的相似度, 因为BERT本身是上下文相关的, 'river bank'河岸完全不同于'bank'银行
+f. 词向量&句向量  
+词向量/句向量: 最后2/4隐层求平均  
+g. 词表外的词可以直接通过tokenizer分解之后求向量平均的方法来生成词向量  
+h. BERT本身并不太适用于单词级别的相似度, 因为BERT本身是上下文相关的, 'river bank'河岸完全不同于'bank'银行  
+i. BERT做多标签分类, 直接把单句输入BERT中, 然后在[CLS]标记上进行分类
 
 2. Video BERT  
 a. 文本token follow BERT, 视觉token对frame level图像做hierarchical k-means做聚类，一共得到20736个类中心。把类中心作为visual token，每一个视觉特征向量都由它属于的类中心来表征  
