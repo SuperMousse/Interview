@@ -23,6 +23,10 @@ g. graph embedding召回, 跨模态bert embedding
 
 
 
+
+
+
+
 #### 新浪微博二面面经 7.23
 ##### 1. 自我介绍及项目经历
 问SGG & VL-BERT, 具体到细节, 计时20分钟
