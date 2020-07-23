@@ -4,17 +4,18 @@ a. BERT双向体现在什么地方？
 b. BERT如何预训练？   
 Mask语言模型， 当前词换为mask，然后对其进行分类预测； 下一句预测： 选择句子A和句子B, 50%B真的在A后面，50%不是，通过[CLS]标记进行分类预测    
 c. 对于MLM任务, 给定的句子中随机选择 15% 的标记，其中80%被换位[mask]，10%不变、10%随机替换其他单词，原因是什么？  
-BERT在训练的时候有[mask], 但是在finetune的时候没有[mask], 当前词时可见的并且参与到最终向量的生成, 这导致了训练和使用的时候的bias,  其中一部分的词的随机替换相当于一方面进行“加噪”, 告诉模型输入的词有可能是错得, 另一方面在训练和finetune之间的bias进行平衡; 缺点是每次只有15的数据被标记, 需要更长时间来收敛；      
-d. BERT是如何使用Transformer的？  
+BERT在训练的时候有[mask], 但是在finetune的时候没有[mask], 当前词时可见的并且参与到最终向量的生成, 这导致了训练和使用的时候的bias,  其中一部分的词的随机替换相当于一方面进行“加噪”, 告诉模型输入的词有可能是错得, 另一方面在训练和finetune之间的bias进行平衡; 缺点是每次只有15的数据被标记, 需要更长时间来收敛； encoder 的输出上添加一个分类层,用嵌入矩阵乘以输出向量，将其转换为词汇的维度,用 softmax 计算mask中每个单词的概率  
+d. NSP(Next Sentence Prediction):用一个简单的分类层将 [CLS] 标记的输出变换为 2×1 形状的向量,用 softmax 计算  
+e. BERT是如何使用Transformer的？  
 使用了Transformer的Encoder, 12层或24层  
-e. BERT tokenizer: 
+f. BERT tokenizer: 
 BERT将句子分解成：整个单词(如word), 出现在单词前面或者单独出现的子单词(em), 不在单词前面的子单词(##ing); tokenizer首先检查单词是否在词表中, 然后尝试分解为尽可能大的子单词, 最后分解为单个
 字符, 并没有分解成[UNK]这种未登录字符
-f. 词向量&句向量  
+g. 词向量&句向量  
 词向量/句向量: 最后2/4隐层求平均  
-g. 词表外的词可以直接通过tokenizer分解之后求向量平均的方法来生成词向量  
-h. BERT本身并不太适用于单词级别的相似度, 因为BERT本身是上下文相关的, 'river bank'河岸完全不同于'bank'银行  
-i. BERT做多标签分类, 直接把单句输入BERT中, 然后在[CLS]标记上进行分类
+h. 词表外的词可以直接通过tokenizer分解之后求向量平均的方法来生成词向量  
+i. BERT本身并不太适用于单词级别的相似度, 因为BERT本身是上下文相关的, 'river bank'河岸完全不同于'bank'银行  
+j. BERT做多标签分类, 直接把单句输入BERT中, 然后在[CLS]标记上进行分类
 
 2. Video BERT  
 a. 文本token follow BERT, 视觉token对frame level图像做hierarchical k-means做聚类，一共得到20736个类中心。把类中心作为visual token，每一个视觉特征向量都由它属于的类中心来表征  
