@@ -988,6 +988,8 @@ batch size对收敛速度的影响
 广告: 广告触发; 广告排序; 广告方案; query改写;  
 
 
+k-means的分布式实现, map-reduce  
+
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 map-reduce分为: input, split, map, shuffle, reduce, output六步  
 a. 输入(input)：如给定一个文档，包含如下四行：  
