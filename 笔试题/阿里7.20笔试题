@@ -8,6 +8,8 @@
 // k * (a + b + c) = n => (a + b + c) = n / k
 // 找到a + b + c = n / k, 并且a, b, c两两互质, 并且互不相等
 
+// 注意, 有人说int过不了, 需要long
+
 // 最大公约数 greatest common divisor
 int gcd(int a, int b)
 {
@@ -88,3 +90,7 @@ vector<int> splitNum(int n, int k) {
     cout << endl;
 
 }
+
+
+
+// 题目二
