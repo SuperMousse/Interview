@@ -108,3 +108,6 @@ vector<int> splitNum(int n, int k) {
 // 1
 // 28
 // 498
+
+// 题目: 魔法指纹: https://www.cnblogs.com/BCOI/p/9123169.html
+
