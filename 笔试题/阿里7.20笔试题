@@ -1,0 +1,90 @@
+// 题一
+// 给定数字n, 判断是否存在n=x+y+z, 使得x, y, z两两最大的公约数是k
+// k \in [1, 10^18]
+
+// 给定数字n, 判断是否存在n=x+y+z, 使得x, y, z两两最大的公约数是k
+// k \in [1, 10^18]
+// k * a + k * b + k * c = n
+// k * (a + b + c) = n => (a + b + c) = n / k
+// 找到a + b + c = n / k, 并且a, b, c两两互质, 并且互不相等
+
+// 最大公约数 greatest common divisor
+int gcd(int a, int b)
+{
+    // Everything divides 0
+    if (a == 0 || b == 0)
+        return 0;
+
+    // base case
+    if (a == b)
+        return a;
+
+    // a is greater
+    if (a > b)
+        return gcd(a-b, b);
+
+    return gcd(a, b-a);
+}
+
+bool check(int a, int b, int c) {
+    if (a != b && a != c && b != c &&
+        gcd(a, b) == 1 && gcd(a, c) == 1 && gcd(b, c) == 1) {
+        return true;
+    }
+    return false;
+}
+
+vector<int> threeSum(vector<int>& nums, int k) {
+    vector<int> result;
+    if (nums.size() < 3) {
+        return result;
+    }
+    int length = nums.size();
+    for (int i = 0; i < length - 2; ++i)
+    {
+        if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
+            int left = i + 1;
+            int right = length - 1;
+            int sum = k - nums[i];
+            while (left < right) {
+                if (nums[left] + nums[right] == sum) {
+                    if (check(nums[i], nums[left], nums[right])) {
+                        result.push_back(nums[i]);
+                        result.push_back(nums[left]);
+                        result.push_back(nums[right]);
+                        break;
+                    }
+                    ++left;
+                    --right;
+                }
+                else if (nums[left] + nums[right] < sum) {
+                    ++left;
+                }
+                else {
+                    --right;
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+
+vector<int> splitNum(int n, int k) {
+    if (n < 3 || k < 1 || (n / k < 3) || (n % k) != 0) {
+        return vector<int>();
+    }
+    vector<int> result;
+    vector<int> factors;
+    int multiple = n / k;
+    for (int i = 1; i <= multiple; ++i) {
+        factors.push_back(i);
+    }
+    result = threeSum(factors, multiple);
+    for (auto n : result) {
+        cout << n << " ";
+    }
+    cout << endl;
+
+}
