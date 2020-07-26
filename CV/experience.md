@@ -640,7 +640,7 @@ n长度二进制数组, k个哈希函数, 哈希算索引将数组位上置1, �
 Parameter Server(类似Map Reduce): GPU0把数据分成多份之后分发到各个卡上, 各个卡分别计算梯度完成后到GPU0上做累积, 计算参数更新后再分发到各个卡上, 缺点: 所有卡都需要同步之后才能继续, 所有卡都需要和GPU0 进行通信, 模型较大或者数据较大的时候通信开销很大  
 All Reduce(Ring All Reduce, baidu):   
 
-介绍一下多态
+多态
 python的字典是如何实现的: 哈希计算索引, 存在对应位置的数组上
 如何解决哈希冲突
 graph embedding中如何做负采样
@@ -972,6 +972,9 @@ batch size对收敛速度的影响
 给你均值方差，让你利用正态分布随机生成1000个点（不能用库，说的不是很好）
 
 
+k-means的分布式实现, map-reduce  
+
+
 ##### 场景分析题: 
 强化学习: 学习策略, 适用场景  
 迁移学习: 学习策略, 适用场景  
@@ -988,7 +991,6 @@ batch size对收敛速度的影响
 广告: 广告触发; 广告排序; 广告方案; query改写;  
 
 
-k-means的分布式实现, map-reduce  
 
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 map-reduce分为: input, split, map, shuffle, reduce, output六步  
