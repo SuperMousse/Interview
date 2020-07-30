@@ -26,3 +26,4 @@ int maxCake(vector<int> cake) {
 
 
 // 题二
+// https://www.nowcoder.com/discuss/459193?type=1
