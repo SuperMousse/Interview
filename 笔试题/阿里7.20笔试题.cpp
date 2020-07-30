@@ -110,4 +110,4 @@ vector<int> splitNum(int n, int k) {
 // 498
 
 // 题目: 魔法指纹: https://www.cnblogs.com/BCOI/p/9123169.html
-
+// https://www.nowcoder.com/discuss/455839?type=1&channel=-2&source_id=discuss_tag_discuss_hot
