@@ -19,3 +19,5 @@ int findDays(vector<int> eggs) {
 
 // 题二
 
+// https://www.nowcoder.com/discuss/462000?type=2&channel=-2&source_id=discuss_terminal_discuss_hot 
+// tuogy这个人还有其他题解
