@@ -40,8 +40,7 @@ void quickSort(vector<int>& nums, int start, int end) {
 
 // 归并排序
 // 注意, 首先要把数组分成两部分, 然后再把两部分当做有序数组来进行合并
-void merge(vector<int>& nums, int start, int middle, int end) {
-    vector<int> temp(end - start + 1, -1); // 临时存储
+void merge(vector<int>& nums, int start, int middle, int end, vector<int>& temp) {
     int i = start; // 左序列指针
     int j = middle + 1; // 右序列指针
     int t = 0; // 临时数组指针
@@ -68,12 +67,12 @@ void merge(vector<int>& nums, int start, int middle, int end) {
 }
 
 // divide and conquer
-void mergeSort(vector<int>& nums, int start, int end) {
+void mergeSort(vector<int>& nums, int start, int end, vector<int>& temp) {
     if (!nums.empty() && start < end) {
         int middle = (start + end) / 2;
-        mergeSort(nums, start, middle);
-        mergeSort(nums, middle + 1, end);
-        merge(nums, start, middle, end);
+        mergeSort(nums, start, middle, temp);
+        mergeSort(nums, middle + 1, end, temp);
+        merge(nums, start, middle, end, temp);
     }
     return;
 }
