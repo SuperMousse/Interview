@@ -69,20 +69,21 @@ void merge(vector<int>& nums, int start, int middle, int end, vector<int>& temp)
 // 归并merge, 空间复杂度O(1)
 void merge(vector<int>& arr, int start, int middle, int end)
 {
-    int i, j, k, key;
-    i = start; // 左序列指针
-    j = middle + 1; // 右序列指针
+    int i = start; // 左序列指针
+    int j = middle + 1; // 右序列指针
+    int k = 0;
+    int key = 0;
     while (i < j && j <= end)  //当i等于j或者j到达末尾时终止
     {
         if (arr[i] > arr[j])
         {
             k = j;
             key = arr[j];
+            // 发现j上的数字比较小, 所有数字向后移动, 直到j可以放入为止
             while (k > i && arr[k - 1] > key)
             {
                 arr[k] = arr[k - 1];
                 --k;
-
             }
             arr[k] = key;
             ++j;
@@ -90,6 +91,7 @@ void merge(vector<int>& arr, int start, int middle, int end)
         ++i;
     }
 }
+
 
 
 
