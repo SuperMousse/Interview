@@ -1,3 +1,6 @@
+// trie: 前缀树/字典树, 键不是直接保存在节点中，而是由节点在树中的位置决定,
+// 一个节点的所有子孙都有相同的前缀，也就是这个节点对应的字符串，而根节点对应空字符串
+
 class TrieNode {
 public:
     // Initialize your data structure here.
