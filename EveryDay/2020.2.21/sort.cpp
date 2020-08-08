@@ -38,7 +38,7 @@ void quickSort(vector<int>& nums, int start, int end) {
 
 
 
-// 归并排序
+// 归并排序, 空间复杂度O(N)
 // 注意, 首先要把数组分成两部分, 然后再把两部分当做有序数组来进行合并
 void merge(vector<int>& nums, int start, int middle, int end, vector<int>& temp) {
     int i = start; // 左序列指针
@@ -65,6 +65,33 @@ void merge(vector<int>& nums, int start, int middle, int end, vector<int>& temp)
         nums[start++] = temp[t++];
     }
 }
+
+// 归并merge, 空间复杂度O(1)
+void merge(vector<int>& arr, int start, int middle, int end)
+{
+    int i, j, k, key;
+    i = start; // 左序列指针
+    j = middle + 1; // 右序列指针
+    while (i < j && j <= end)  //当i等于j或者j到达末尾时终止
+    {
+        if (arr[i] > arr[j])
+        {
+            k = j;
+            key = arr[j];
+            while (k > i && arr[k - 1] > key)
+            {
+                arr[k] = arr[k - 1];
+                --k;
+
+            }
+            arr[k] = key;
+            ++j;
+        }
+        ++i;
+    }
+}
+
+
 
 // divide and conquer
 void mergeSort(vector<int>& nums, int start, int end, vector<int>& temp) {
