@@ -35,6 +35,29 @@ void quickSort(vector<int>& nums, int start, int end) {
 
 }
 
+// 非递归快排
+void quickSort(vector<int>& nums, int start, int end) {
+    stack<int> st;
+    st.push(start);
+    st.push(end);
+    while (!st.empty()) {
+        int right = st.top();
+        st.pop();
+        int left = st.top();
+        st.pop();
+        if (left >= right) {
+            continue;
+        }
+        int middle = partition(nums, start, end);
+        st.push(left);
+        st.push(middle - 1);
+
+        st.push(middle + 1);
+        st.push(right);
+    }
+    return;
+}
+
 
 
 
