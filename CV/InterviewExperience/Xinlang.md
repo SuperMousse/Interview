@@ -6,7 +6,7 @@
 问论文, 问项目, 对跨模态BERT感兴趣, 仔细聊到每一个细节    
 ##### 3. 基础知识  
 a. 交叉熵公式, 是最小化还是最大化, softmax, sigmoid, 为啥多分类sigmoid, 不是softmax    
-b. 交叉熵如何改进, 讲了focal loss, 顺便提了一下hard mining
+b. 交叉熵如何改进, 讲了focal loss, 顺便提了一下hard mining  
 c. 讲一下BN, 公式原理是什么    
 d. 什么是过拟合, 怎么解决?   
 e. L1, L2正则化是什么, 为什么能够解决过拟合？  
