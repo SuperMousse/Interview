@@ -1,6 +1,8 @@
 // 动态规划
 // 通配符匹配
 
+// dp[i][j]表示s:[0, ..., i], p:[0, ..., j]的字符是否匹配
+
 bool isMatch(string s, string p) {
     int m = s.size();
     int n = p.size();
