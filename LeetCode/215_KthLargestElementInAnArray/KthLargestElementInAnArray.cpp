@@ -9,7 +9,7 @@ int findKthLargest(vector<int>& nums, int k) {
             KSet.insert(num);
         }
         else {
-            multiset<int, greater<int> >::iterator it = --KSet.end(); // 从小到大
+            multiset<int, greater<int> >::iterator it = --KSet.end(); // 从大到小
             if (num > *it) {
                 KSet.erase(it);
                 KSet.insert(num);
