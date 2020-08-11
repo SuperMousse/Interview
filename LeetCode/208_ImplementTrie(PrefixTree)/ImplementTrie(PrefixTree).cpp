@@ -1,17 +1,31 @@
 // trie: 前缀树/字典树, 键不是直接保存在节点中，而是由节点在树中的位置决定,
 // 一个节点的所有子孙都有相同的前缀，也就是这个节点对应的字符串，而根节点对应空字符串
+// trie是一种高效的检索数据结构(reTRIEval)
+// 例子, 其中.代表叶子节点
+/*
+                       root
+                    /   \    \
+                    t   a.    b
+                    |   |     |
+                    h   n     y.
+                    |   |  \  |
+                    e.  s  y. e.
+                 /  |   |
+                 i  r   w
+                 |  |   |
+                 r. e.  e
+                        |
+                        r.
+*/
 
-class TrieNode {
-public:
-    // Initialize your data structure here.
-    bool is_word;
+
+struct TrieNode {
+    bool isEndOfWord;  // isEndOfWord is true if the node represents end of a word
     TrieNode *children[26];
-    
     TrieNode() {
-        is_word = false;
-        
+        isEndOfWord = false;
         for (int i = 0; i < 26; i++)
-            children[i] = NULL;
+            children[i] = nullptr;
     }
 };
 
@@ -23,59 +37,55 @@ public:
 
     // Inserts a word into the trie.
     void insert(string word) {
-        int word_len = word.length();
+        int wordLen = word.size();
         int k = 0;
-        TrieNode *cur = root;
-        
-        for (int i = 0; i < word_len; i++)
+        TrieNode *current = root;
+
+        for (int i = 0; i < wordLen; ++i)
         {
             k = word[i] - 'a';
-            
-            if (cur->children[k] == NULL)
+            if (current->children[k] == nullptr)
             {
-                cur->children[k] = new TrieNode();
+                current->children[k] = new TrieNode();
             }
-            
-            cur = cur->children[k];
+            current = current->children[k];
         }
-        
-        cur->is_word = true;
+        current->isEndOfWord = true;
     }
 
     // Returns if the word is in the trie.
     bool search(string word) {
-        int word_len = word.length();
+        int wordLen = word.size();
         int k = 0;
-        TrieNode *cur = root;
-        
-        for (int i = 0; i < word_len; i++)
+        TrieNode *current = root;
+
+        for (int i = 0; i < wordLen; ++i)
         {
             k = word[i] - 'a';
-            cur = cur->children[k];
-            
-            if (cur == NULL)
+            current = current->children[k];
+
+            if (current == NULL)
                 return false;
         }
-        
-        return cur->is_word;
+
+        return current->isEndOfWord;
     }
 
     // Returns if there is any word in the trie
     // that starts with the given prefix.
     bool startsWith(string prefix) {
-        int word_len = prefix.length();
+        int wordLen = prefix.size();
         int k = 0;
-        TrieNode *cur = root;
-        
-        for (int i = 0; i < word_len; i++)
+        TrieNode *current = root;
+
+        for (int i = 0; i < wordLen; ++i)
         {
             k = prefix[i] - 'a';
-            cur = cur->children[k];
-            
-            if (cur == NULL)
+            current = current->children[k];
+
+            if (current == NULL)
                 return false;
         }
-        
         return true;
     }
 
