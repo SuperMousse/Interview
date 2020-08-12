@@ -23,3 +23,6 @@ int subarraySum(vector<int>& nums, int k) {
     }
     return count;
 }
+
+
+// 解法二： 排序后双指针， 复杂度O(NlogN)
