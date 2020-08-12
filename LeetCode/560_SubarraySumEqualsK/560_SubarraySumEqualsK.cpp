@@ -25,4 +25,4 @@ int subarraySum(vector<int>& nums, int k) {
 }
 
 
-// 解法二： 排序后双指针， 复杂度O(NlogN)
+// 解法二： 双指针不可行
