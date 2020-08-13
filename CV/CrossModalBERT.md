@@ -16,6 +16,9 @@ g. 词向量&句向量
 h. 词表外的词可以直接通过tokenizer分解之后求向量平均的方法来生成词向量  
 i. BERT本身并不太适用于单词级别的相似度, 因为BERT本身是上下文相关的, 'river bank'河岸完全不同于'bank'银行  
 j. BERT做多标签分类, 直接把单句输入BERT中, 然后在[CLS]标记上进行分类
+h. NSP任务的缺点, NSP任务是50%直接从训练集中选取连续的两段话, 50%从不同的文件中选取一句话, 但是某些研究表明去除NSP反而在一些任务上取得了更好地结果, ALBERT作者认为这是由于NSP的任务难度
+不够, 因为A、B来自不同的文件, 不需要进行句子语义级别的分类, 仅仅需要不同文本的分类学习就可以使得NSP学的很好; ALBERT中提出SOP(Self-supervised loss for sentence-order prediction), 只是把A、B句子对调, 在进行NSP学习, 强迫模型专注在下一句是否连续的预测上  
+
 
 2. Video BERT  
 a. 文本token follow BERT, 视觉token对frame level图像做hierarchical k-means做聚类，一共得到20736个类中心。把类中心作为visual token，每一个视觉特征向量都由它属于的类中心来表征  
