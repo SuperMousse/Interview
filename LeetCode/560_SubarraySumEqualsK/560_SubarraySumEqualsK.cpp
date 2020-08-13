@@ -24,5 +24,3 @@ int subarraySum(vector<int>& nums, int k) {
     return count;
 }
 
-
-// 解法二： 双指针不可行
