@@ -33,7 +33,7 @@ void heapSort(vector<int>& nums) {
     return;
 }
 
-// 调整堆结构, 只限于调整
+// 调整堆结构, 只限于调整, 小顶堆使得nums[k]>nums[k+1], nums[k]<temp
 void adjustHeap(vector<int>& nums, int i, int length) {
     int temp = nums[i]; // 取出当前元素i
     // 从i结点的左子结点开始，也就是2i+1处开始, k = 2k+1是为了防止交换后子节点混乱的情况
