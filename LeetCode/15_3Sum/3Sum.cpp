@@ -15,7 +15,7 @@ vector<vector<int>> threeSum(vector<int>& nums) {
 		if (nums[i] > 0) {
 			break;
 		}
-		// i=0无论何时都作为triplet的第一个元素; i>0的元素只使用最后一个不重复的元素作为triplet的第一个元素
+		// i=0无论何时都作为triplet的第一个元素; i>0的元素只使用第一个不重复的元素作为triplet的第一个元素
 		// 如 -1, -1, 2, 3只使用第二个-1, 因为两个-1会产生相同的triplet
 		if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
 			int left = i + 1;
