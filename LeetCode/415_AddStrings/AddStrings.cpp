@@ -1,3 +1,4 @@
+// 两个数字字符串 "123", "12"相加, 返回相加的结果
 
 string addStrings(string num1, string num2) {
     if (num1.empty()) {
