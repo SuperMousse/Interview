@@ -1,3 +1,25 @@
+/*
+给定二叉树
+    1
+   / \
+  2   5
+ / \   \
+3   4   6
+
+二叉树展开成List变为
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+ */
+
 // 后序遍历
 void flatten(TreeNode* root) {
     if(root == nullptr || (root->left == nullptr && root->right == nullptr)) {
