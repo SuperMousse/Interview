@@ -1,4 +1,4 @@
-// 剑指offer答案
+// 剑指offer答案, 优点代码简洁, 缺点奇数和偶数内部无法保持稳定
 void reOrderArray(vector<int>& array) {
 	if (array.empty())
 		return;
@@ -59,7 +59,7 @@ void reOrderArray(vector<int>& array) {
 }
 
 
-// 牛客网解法
+// 牛客网解法, 优点就是奇数和偶数内部会保持稳定
 /**
  * 1.要想保证原有次序，则只能顺次移动或相邻交换。
  * 2.i从左向右遍历，找到第一个偶数。
