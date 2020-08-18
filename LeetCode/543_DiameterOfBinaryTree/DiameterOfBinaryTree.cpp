@@ -4,6 +4,13 @@
  2. If the longest path does not include the root node, this problem is divided
     into 2 sub-problem: set left child and right child as the new root separately, 
 	and repeat step1.
+	
+          1
+         / \
+        2   3
+       / \     
+      4   5   
+ 对于1来说, 左子树深度为2, 右子树深度为1
  */
 
  class Solution {
