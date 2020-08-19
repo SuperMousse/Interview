@@ -663,6 +663,14 @@ All Reduce(Ring All Reduce, baidu):
 2. 非稳定排序算法包括：选择排序、快速排序、希尔排序、堆排序
 
 
+##### CTR校准
+https://zhuanlan.zhihu.com/p/83982030  
+
+##### 哪些场景下的分类问题不适用于交叉熵损失函数？
+hinge loss: max(0, 1 - y(wx+b)), wx+b > 1时损失才为0, 有margin为1的惩罚, 对wx+b提出了更高的要求, 不仅仅是sigmoid(wx+b) > 0.5  
+cross entropy只是对于概率的拟合, 没有考虑到输入x的margin性质, 也就是样本的稀疏性, 特异性, 当希望这种性质的时候, margin-based loss更有效  
+cross entropy的样本分布是围绕圆点的射线, 加入triplet/center loss后变为一团一团的聚类  
+
 多态
 python的字典是如何实现的: 哈希计算索引, 存在对应位置的数组上
 如何解决哈希冲突
@@ -730,11 +738,6 @@ LDA和SVD有什么联系
 ##### (39) 数据中有噪声如何处理？
 
 
-##### 哪些场景下的分类问题不适用于交叉熵损失函数？
-hinge loss: max(0, 1 - y(wx+b)), wx+b > 1时损失才为0, 有margin为1的惩罚, 对wx+b提出了更高的要求, 不仅仅是sigmoid(wx+b) > 0.5  
-cross entropy只是对于概率的拟合, 没有考虑到输入x的margin性质, 也就是样本的稀疏性, 特异性, 当希望这种性质的时候, margin-based loss更有效  
-cross entropy的样本分布是围绕圆点的射线, 加入triplet/center loss后变为一团一团的聚类  
-
 ##### 不可导情况下的BP处理
 次梯度  
 重参数  
@@ -769,6 +772,20 @@ softmax => e^{scos(theta_i)} / sum_{j}(scos(theta_j))
 加入margin惩罚, cosFace => e^{s ( cos(theta_i) - m ) } / sum_{j}(s ( cos(theta_j) - m ))    
 c. arcFace:    
  e^{s cos(theta_i - m) } / sum_{j}(s cos(theta_j - m) )    
+ 
+##### 推荐系统评价指标  
+用户满意度: 问卷调查, 无法离线计算, 只能在线调查或者实验  
+预测准确率: a. 评分预测(平均绝对误差, MAE; 均方根误差, RMSE;)  b. TopN推荐(Recall, Precision)  
+覆盖率: 信息熵, 基尼系数;  
+多样性: 推荐列表两两之间的不相似性  
+新颖性: 推荐结果的平均流行度, 因为越不热门的物品越有可能让用户觉得新颖  
+惊喜度: 推荐结果和用户的历史物品不相似, 但是让用户觉得满意  
+信任度: 社交网络带来的对于信息的信任程度; 大V/官方给用户带来的信任;  
+实时性: 推荐过去很久的新闻带来很差的体验, 推荐系统需要实时更新推荐列表并且能够把新加入的物品推荐给用户
+健壮性: 发现并抵抗作弊行为, 电商系统比如刷单, 新闻系统比如标题党  
+
+#### Dropout在训练、测试是如何处理的
+根据丢失概率p生成多重伯努利分布的向量, 然后和原有的输入相乘; 在测试的时候乘 1/(1-p), 因为训练期望为 E = p * 0 + (1-p)x, 需要1/(1-p)使得期望保持一致
 
 ##### label smoothing 和 mixup如何实现？
 
@@ -780,16 +797,7 @@ c. arcFace:
 ##### DBCAN（Density-Based Spatial Clustering of Applications with Noise，具有噪声的基于密度的聚类方法）
 
 
-##### 推荐系统评价指标  
-用户满意度: 问卷调查, 无法离线计算, 只能在线调查或者实验  
-预测准确率: a. 评分预测(平均绝对误差, MAE; 均方根误差, RMSE;)  b. TopN推荐(Recall, Precision)  
-覆盖率: 信息熵, 基尼系数;  
-多样性: 推荐列表两两之间的不相似性  
-新颖性: 推荐结果的平均流行度, 因为越不热门的物品越有可能让用户觉得新颖  
-惊喜度: 推荐结果和用户的历史物品不相似, 但是让用户觉得满意  
-信任度: 社交网络带来的对于信息的信任程度; 大V/官方给用户带来的信任;  
-实时性: 推荐过去很久的新闻带来很差的体验, 推荐系统需要实时更新推荐列表并且能够把新加入的物品推荐给用户
-健壮性: 发现并抵抗作弊行为, 电商系统比如刷单, 新闻系统比如标题党  
+
 
 ##### 徒手SGD
 
@@ -839,8 +847,7 @@ python处理多进程和多线程的底层原理
 给一个类似树的结构，每个节点都可以有多个节点（不止两个树）然后每个根节点和字节点间的路径不一样，求叶子结点到叶子结点的最大路径
 
 
-#### Dropout在训练、测试是如何处理的
-根据丢失概率p生成多重伯努利分布的向量, 然后和原有的输入相乘; 在测试的时候乘 1/(1-p), 因为训练期望为 E = p * 0 + (1-p)x, 需要1/(1-p)使得期望保持一致
+
 
 
 如何解决类别不平衡问题，CTR场景下如何生成训练数据
@@ -904,9 +911,6 @@ d. 因此存放在全局数据区
 一个类，只要有纯虚函数就称为抽象类，一个抽象类只能作为基类，而且不能定义抽象类的对象，但是可以定义抽象类的指针，为的是，可以指向派生类的对象从而实现多态. 
 
 
-
-
-
 ##### Glove词向量: https://zhuanlan.zhihu.com/p/101179171
 Loss = sum f_{ik} * (w_{i}^{T} * w_{k} - b_{i} - b_{k} - log(X_{ik})), f(X_{ik})为权重函数, Loss在用w_i, w_k拟合ik的共现次数
 
@@ -915,13 +919,14 @@ a. 不同类型节点的异质性(eg. 电影, 演员, 导演)
 b. 不同元路径语义的不同(电影1->演员->电影2, 电影1->导演->电影3)
 c. 不同邻居的信息融合(电影1->电影2, 电影3)
 
+##### 常见的优化算法  
+梯度下降法, 梯度下降法的变种(Momentum, Nesterov Momentum, Adagrad, Adam), 牛顿法(拟牛顿法)  
+
 ##### embedding技术应用
 
 ##### CNN的反向传播
 ##### 为了下SVM，高斯核实映射到多少维，为什么
 
-##### 常见的优化算法  
-梯度下降法, 梯度下降法的变种(Momentum, Nesterov Momentum, Adagrad, Adam), 牛顿法(拟牛顿法)  
 
 归一化方法有哪些  
 
@@ -1061,41 +1066,18 @@ k-means的分布式实现, map-reduce
 ##### (31) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 map-reduce分为: input, split, map, shuffle, reduce, output六步  
 a. 输入(input)：如给定一个文档，包含如下四行：  
-Hello Java  
-Hello C  
-Hello Java 
-Hello C++  
+Hello Java  Hello C  Hello Java  Hello C++  
 b. 拆分(split)：将上述文档中每一行的内容转换为key-value对，即：  
-0 - Hello Java  
-1 - Hello C  
-2 – Hello Java  
-3 - Hello C++   
+0 - Hello Java  1 - Hello C  2 – Hello Java  3 - Hello C++   
 d. 映射(map)：将拆分之后的内容转换成新的key-value对，即：  
-(Hello , 1)   
-(Java , 1)  
-(Hello , 1)   
-(C , 1)  
-(Hello , 1)   
-(Java , 1)  
-(Hello , 1)   
-(C++ , 1)  
+(Hello , 1)   (Java , 1)  (Hello , 1)   (C , 1)  (Hello , 1)   (Java , 1)  (Hello , 1)   (C++ , 1)  
 e. 派发(shuffle)：将key相同的扔到一起去，即：  
-(Hello , 1)  
-(Hello , 1)  
-(Hello , 1)  
-(Hello , 1)   
-(Java , 1)  
-(Java , 1)  
+(Hello , 1)  (Hello , 1)  (Hello , 1)  (Hello , 1)   
+(Java , 1)  (Java , 1)  
 (C , 1)  
 (C++ , 1)  
 f. 这一步需要移动数据，原来的数据可能在不同的datanode上，这一步过后，相同key的数据会被移动到同一台机器上。最终，它会返回一个list包含各种k-value对，即：  
-{ Hello: 1,1,1,1}  
-{Java: 1,1}  
-{C: 1}  
-{C++: 1}  
+{ Hello: 1,1,1,1}  {Java: 1,1}  {C: 1}  {C++: 1}  
 g. 缩减(reduce)：把同一个key的结果加在一起。如：  
-(Hello , 4)   
-(Java , 2)  
-(C , 1)   
-(C++,1)  
+(Hello , 4)   (Java , 2)  (C , 1)   (C++,1)  
 h. 输出(output): 输出缩减之后的所有结果。  
