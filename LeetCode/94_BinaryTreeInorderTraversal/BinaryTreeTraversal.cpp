@@ -62,11 +62,11 @@ vector<int> preorderTraversal(TreeNode* root) {
         pNode = stackTree.top();
         stackTree.pop();
         result.push_back(pNode->val);
-        if (pNode->left != nullptr) {
-            stackTree.push(pNode->left);
-        }
         if (pNode->right != nullptr) {
             stackTree.push(pNode->right);
+        }
+        if (pNode->left != nullptr) {
+            stackTree.push(pNode->left);
         }
     }
     return result;
