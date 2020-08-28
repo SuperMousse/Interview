@@ -66,7 +66,8 @@ int NumberOf1(string& strN, int begin) {
 	}
 
 	// numOtherDigits是01346-21345除了第一位之外的数位中1的数目
-	// 1346, 1347, .., 1999, 11000, 11001, ..., 11345 (1000个第二位为1的), 11346, ..., 11999, 21000, 21345 (1000个)  
+	// 1346~11345, 11346~21345, 每一段中选择其中一位是1, 其余三位可以在0~9中选择, 
+	// first表示有几段, (length-1)表示1有几种选择, 10^(length-2)表示其余几位的选择
 	int numberOtherDigits = first * (length - 1) * PowerBase10(length - 2);
 	// numRecursive是1~1345中的数目
 	int numRecursive = NumberOf1(strN, begin + 1);
