@@ -52,6 +52,7 @@ int NumberOf1(string& strN, int begin) {
 	}
 
 	// 假设strN是"21345"
+	// 1~9999, 10000~19999, 20000~21345
 	// numFirstDigit是数字10000~19999的第一位中的数目, 对于length位数其最高位的1只会出现10^(length-1)次
 	// 如果first=1, 那么其最高位的1只会出现其后(length-1)位+1次, 如123456中的最高位1只会出现234567次
 	int numFirstDigit = 0;
