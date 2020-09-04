@@ -33,7 +33,7 @@ int search(vector<int>& nums, int target) {
 }
  
 
-// 解法二: 两次二分搜索
+ // 解法二: 两次二分搜索
  // 先找到最小元素，然后再进行正常的二分搜索
  int search(vector<int>& nums, int target) {
    if (nums.empty()) {
