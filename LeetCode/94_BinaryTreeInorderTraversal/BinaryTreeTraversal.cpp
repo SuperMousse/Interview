@@ -113,7 +113,7 @@ vector<int> postorderTraversal(TreeNode* root) {
     TreeNode* pNode = root;
     TreeNode* pPrev = nullptr;
     while (!stackTree.empty() || !pPrev) {
-        while (!pNode) {
+        while (pNode) {
             stackTree.push(pNode);
             pNode = pNode->left;
         }
