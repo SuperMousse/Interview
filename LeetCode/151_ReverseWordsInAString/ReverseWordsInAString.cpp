@@ -10,7 +10,7 @@ string reverseWords(string s) {
     for (int i = 0; i < len; ++i) {
         if (s[i] != ' ') {
             if (ptr != 0) {
-                s[ptr++] = ' '; // 如果扫描到非起始点, 插入一个' '
+                s[ptr++] = ' '; // 前一轮找到一个' '并且reverse后, 当前轮次插入一个' '
             }
             int j = i;
             // 拷贝从i开始到i之后的第一个非' '字符
