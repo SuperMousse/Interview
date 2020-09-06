@@ -109,7 +109,7 @@ STL中的sort实现, 快排/递归的弊端
 ROC全称是“受试者工作特征曲线”（Receiver Operating Characteristic）  
 ROC曲线的面积就是AUC（Area Under Curve）  
 AUC用于衡量“二分类问题”机器学习算法性能（泛化能力）  
-将score从大到小排序，每次选取不同的threshold，得到一组FPR和TPR，即ROC曲线上的一个点，将多个这样的点连成线就是ROC曲线。  
+将score从大到小排序，每次选取不同的threshold，得到一组FPR和TPR (TPR纵轴)，即ROC曲线上的一个点，将多个这样的点连成线就是ROC曲线。  
 ROC只有大于y=x的直线才是有意义的, 否则应该反向预测; ROC中越靠近左上角的模型越好  
 为什么使用ROC和AUC作为评价指标？  
 
