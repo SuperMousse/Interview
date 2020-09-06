@@ -27,3 +27,14 @@ private:
     vector<int> nums;
     vector<int> random;
 };
+
+
+void shuffle(vector<int>& nums) {
+    int len = nums.size();
+    for (int i = len - 1; i >= 0; --i) {
+        int randomIndex = rand() % (i + 1);
+
+        swap(nums[i], nums[randomIndex]);
+    }
+    return;
+}
