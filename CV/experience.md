@@ -769,6 +769,11 @@ c. 不同邻居的信息融合(电影1->电影2, 电影3)
 搜索: query理解; 内容理解; 搜索召回; 搜索排序;  
 广告: 广告触发; 广告排序; 广告方案; query改写;  
 
+##### 如何验证反向传播的参数更新是否正确
+a. 从参数更新看指标是否正常
+b. 梯度校验, BP实际上是解析的方法计算梯度, 还可以通过数值微分的方法计算梯度, 两者相差不应该太多, f'(theta) = (f(theta + epsilon) + f(theta - epsilon)) / 2 epsilon,  
+dL/dw_i = L(w_i + 10^-4) -  L(w_i - 10^-4) / (2 * 10^-4)
+
 
 ##### (86) hadoop经典word count代码逻辑梳理；用hadoop统计100w词语的词频，map/reduce工作原理；
 map-reduce分为: input, split, map, shuffle, reduce, output六步  
