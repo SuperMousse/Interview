@@ -1,3 +1,5 @@
+// 需要找到一个仅有出度的节点作为最开始的起点(其入度为0), 然后再向后计算
+
 class Solution {
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
