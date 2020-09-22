@@ -16,8 +16,11 @@ g. 词向量&句向量
 h. 词表外的词可以直接通过tokenizer分解之后求向量平均的方法来生成词向量  
 i. BERT本身并不太适用于单词级别的相似度, 因为BERT本身是上下文相关的, 'river bank'河岸完全不同于'bank'银行  
 j. BERT做多标签分类, 直接把单句输入BERT中, 然后在[CLS]标记上进行分类
-h. NSP任务的缺点, NSP任务是50%直接从训练集中选取连续的两段话, 50%从不同的文件中选取一句话, 但是某些研究表明去除NSP反而在一些任务上取得了更好地结果, ALBERT作者认为这是由于NSP的任务难度
-不够, 因为A、B来自不同的文件, 不需要进行句子语义级别的分类, 仅仅需要不同文本的分类学习就可以使得NSP学的很好; ALBERT中提出SOP(Self-supervised loss for sentence-order prediction), 只是把A、B句子对调, 在进行NSP学习, 强迫模型专注在下一句是否连续的预测上  
+k. NSP任务的缺点, NSP任务是50%直接从训练集中选取连续的两段话, 50%从不同的文件中选取一句话, 但是某些研究表明去除NSP反而在一些任务上取得了更好地结果, ALBERT作者认为这是由于NSP的任务难度
+不够, 因为A、B来自不同的文件, 不需要进行句子语义级别的分类, 仅仅需要不同文本的分类学习就可以使得NSP学的很好; ALBERT中提出SOP(Self-supervised loss for sentence-order prediction), 只是把A、B句子对调, 在进行NSP学习, 强迫模型专注在下一句是否连续的预测上, 能够让模型学习到更多句子间的语义关系   
+l. 为什么self-attention要除以sqrt(d), 除以的数字为什么是sqrt(d)  
+当QK^T中向量维度增长时, 会导致内积的结果大幅度增加, 导致进入了softmax的梯度饱和区; 假设Q, K为均值为0, 方差为1的独立随机变量, 那么QK^T=sum(q_i * k_i)的均值为0, 方差为d, 除以sqrt(d)之后让方差保持为1   
+
 
 
 2. Video BERT  
