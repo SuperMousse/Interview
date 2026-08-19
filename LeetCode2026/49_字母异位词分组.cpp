@@ -2,12 +2,8 @@
 // 输入: strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
 // 输出: [["bat"],["nat","tan"],["ate","eat","tea"]]
+// 把字符相同, 但顺序不同的数组聚合到一起
 
-// 解释：
-
-// 在 strs 中没有字符串可以通过重新排列来形成 "bat"。
-// 字符串 "nat" 和 "tan" 是字母异位词，因为它们可以重新排列以形成彼此。
-// 字符串 "ate" ，"eat" 和 "tea" 是字母异位词，因为它们可以重新排列以形成彼此。
 // 扫描法
 class Solution {
 public:
@@ -43,3 +39,22 @@ public:
 };
 
 // 排序法
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> result;
+        if (strs.empty()) {
+            return result;
+        }
+        unordered_map<string, vector<string>> map;
+        for (int i = 0; i < strs.size(); i++) {
+            string temp = strs[i];
+            sort(temp.begin(), temp.end());
+            map[temp].push_back(strs[i]);
+        }
+        for (auto& pair : map) {
+            result.push_back(std::move(pair.second));
+        }
+        return result;
+    }
+};
