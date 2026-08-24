@@ -13,6 +13,7 @@ public:
             return false;
         }
         // 快慢指针，如果有环最终慢指针会被快指针追上
+        // 这里可以不让slow, fast同时从Head出发，因为没有严格的公式约束
         ListNode* pSlow = head;
         ListNode* pFast = head->next;
         while(pFast->next != nullptr && pFast->next->next != nullptr) {
