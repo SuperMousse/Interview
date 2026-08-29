@@ -30,3 +30,38 @@ public:
         return core(root, root);
     }
 };
+
+
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if (root == nullptr) {
+            return true;
+        }
+        queue<TreeNode*> queue;
+        TreeNode* pLeft = root->left;
+        TreeNode* pRight = root->right;
+        queue.push(pLeft);
+        queue.push(pRight);
+        while (!queue.empty()) {
+            pLeft = queue.front();
+            queue.pop();
+            pRight = queue.front();
+            queue.pop();
+            if (pLeft == nullptr && pRight == nullptr) {
+                continue;
+            }
+            if (pLeft == nullptr || pRight == nullptr) {
+                return false;
+            }
+            if (pLeft->val != pRight->val) {
+                return false;
+            }
+            queue.push(pLeft->left);
+            queue.push(pRight->right);
+            queue.push(pLeft->right);
+            queue.push(pRight->left);
+        }
+        return true;
+    }
+};
