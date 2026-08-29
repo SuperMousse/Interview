@@ -22,3 +22,30 @@ public:
 
     }
 };
+
+
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if (root == nullptr) {
+            return 0;
+        }
+        int depth = 0;
+        queue<TreeNode*> queueTree;
+        queueTree.push(root);
+        while(!queueTree.empty()) {
+            ++depth;
+            for (int i = 0, n = queueTree.size(); i < n; i++) {
+                TreeNode *pNode = queueTree.front();
+                queueTree.pop();
+                if (pNode->left != nullptr) {
+                    queueTree.push(pNode->left);
+                }
+                if (pNode->right != nullptr) {
+                    queueTree.push(pNode->right);
+                }
+            }
+        }
+        return depth;
+    }
+};
