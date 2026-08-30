@@ -22,3 +22,33 @@ public:
         return root;
     }
 };
+
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if (root == nullptr) {
+            return root;
+        }
+        queue<TreeNode*> queue;
+        queue.push(root);
+        TreeNode* pLeft = nullptr;
+        TreeNode* pRight = nullptr;
+        while(!queue.empty()) {
+            TreeNode* pCurr = queue.front();
+            queue.pop();
+            pLeft = pCurr->left;
+            pRight = pCurr->right;
+            pCurr->left = pRight;
+            pCurr->right = pLeft;
+            if (pLeft != nullptr) {
+                queue.push(pLeft);
+            }
+            if (pRight != nullptr) {
+                queue.push(pRight);
+            }
+        }
+        return root;
+    }
+};
+
