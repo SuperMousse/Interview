@@ -20,3 +20,25 @@ public:
         return newHead;
     }
 };
+
+
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return head;
+        }
+        ListNode dummy(0, head);
+        ListNode* dummyHead = &dummy;
+        ListNode* pCurr = dummyHead;
+        while(pCurr->next != nullptr && pCurr->next->next != nullptr) {
+            ListNode* pFirst = pCurr->next;
+            ListNode* pSecond = pCurr->next->next;
+            pCurr->next = pSecond;
+            pFirst->next = pSecond->next;
+            pSecond->next = pFirst;
+            pCurr = pFirst;
+        }
+        return dummyHead->next;
+    }
+};
