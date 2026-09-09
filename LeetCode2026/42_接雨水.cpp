@@ -25,3 +25,33 @@ public:
         return result;
     }
 };
+
+// 还可以用双指针来记录lefMax，rightMax，从而不创建大小为n的2个数组
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int len = height.size();
+        if (len == 0) {
+            return 0;
+        }
+        int result = 0;
+        int left = 0;
+        int right = len - 1;
+        int leftMax = 0;
+        int rightMax = 0;
+        // 不动的那个指针实际上维护了当前的最大值
+        while (left < right) {
+            leftMax = max(leftMax, height[left]);
+            rightMax = max(rightMax, height[right]);
+            // 当左侧矮于右侧时，雨水高度由左侧决定
+            if (height[left] < height[right]) {
+                result += leftMax - height[left]; // 左侧最大值 - 当前高度 = 雨水高度
+                ++left;
+            } else {
+                result += rightMax - height[right];
+                --right;
+            }
+        }
+        return result;
+    }
+};
