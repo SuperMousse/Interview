@@ -1,0 +1,30 @@
+class Solution {
+public:
+    /*
+    最长递增子序列：给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
+    输入：nums = [10,9,2,5,3,7,101,18]
+    输出：4
+    解释：最长递增子序列是 [2,3,7,101]，因此长度为 4 。
+    */
+    int lengthOfLIS(vector<int>& nums) {
+        if (nums.empty()) {
+            return 0;
+        }
+        // dp[i]表示以i为结尾(含i)的最长递增子序列的长度
+        // 则dp[i] = max_{j<i} (dp[j]+1)，且nums[i]>nums[j]，即i大于前面每一个数字
+        int len = nums.size();
+        vector<int> dp(len, 0);
+        dp[0] = 1;
+        int maxValue = 1;
+        for(int i = 1; i < len; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = max(dp[i], dp[j]+1);
+                }
+            }
+            maxValue = max(maxValue, dp[i]);
+        }
+        return maxValue;
+    }
+};
