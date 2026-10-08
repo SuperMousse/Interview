@@ -16,7 +16,9 @@ public:
         if (root == nullptr || root == p || root == q) {
             return root;
         }
+        // 在左子树中找p/q
         TreeNode* pLeft = lowestCommonAncestor(root->left, p, q);
+        // 在右子树中找p/q
         TreeNode* pRight = lowestCommonAncestor(root->right, p, q);
         // 左侧子树中没有p/q, p/q只能在右子树里面
         if (pLeft == nullptr) {
